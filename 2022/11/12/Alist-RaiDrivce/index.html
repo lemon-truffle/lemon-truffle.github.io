@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lemon-truffle.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Alist + RaiDrive 云盘本地挂载 以阿里云盘为例  准备 Alist  RaiDrive  可能无法下载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Alist+RaiDrivce">
+<meta property="og:url" content="https://lemon-truffle.github.io/2022/11/12/Alist-RaiDrivce/index.html">
+<meta property="og:site_name" content="柠檬野生菌">
+<meta property="og:description" content="Alist + RaiDrive 云盘本地挂载 以阿里云盘为例  准备 Alist  RaiDrive  可能无法下载">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/11/12/Alist-RaiDrivce/2022-11-11-22-43-43-image.png">
+<meta property="article:published_time" content="2022-11-12T03:47:04.000Z">
+<meta property="article:modified_time" content="2022-11-12T04:46:13.442Z">
+<meta property="article:author" content="lemon-truffle">
+<meta property="article:tag" content="Tools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lemon-truffle.github.io/2022/11/12/Alist-RaiDrivce/2022-11-11-22-43-43-image.png">
+
+
+<link rel="canonical" href="https://lemon-truffle.github.io/2022/11/12/Alist-RaiDrivce/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lemon-truffle.github.io/2022/11/12/Alist-RaiDrivce/","path":"2022/11/12/Alist-RaiDrivce/","title":"Alist+RaiDrivce"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Alist+RaiDrivce | 柠檬野生菌</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">柠檬野生菌</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Alist-RaiDrive-%E4%BA%91%E7%9B%98%E6%9C%AC%E5%9C%B0%E6%8C%82%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">Alist + RaiDrive 云盘本地挂载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">1.1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-Alist"><span class="nav-number">1.2.</span> <span class="nav-text">配置 Alist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AERaiDrive"><span class="nav-number">1.3.</span> <span class="nav-text">配置RaiDrive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC"><span class="nav-number">1.4.</span> <span class="nav-text">开启自启动脚本</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lemon-truffle"
+      src="/uploads/custom-logo.jpg">
+  <p class="site-author-name" itemprop="name">lemon-truffle</p>
+  <div class="site-description" itemprop="description">柠檬野生菌的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/lemon_fungus" title="GitHub → https:&#x2F;&#x2F;gitee.com&#x2F;lemon_fungus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-truffle.github.io/2022/11/12/Alist-RaiDrivce/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/custom-logo.jpg">
+      <meta itemprop="name" content="lemon-truffle">
+      <meta itemprop="description" content="柠檬野生菌的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柠檬野生菌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Alist+RaiDrivce
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-12 11:47:04 / 修改时间：12:46:13" itemprop="dateCreated datePublished" datetime="2022-11-12T11:47:04+08:00">2022-11-12</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Alist-RaiDrive-云盘本地挂载"><a href="#Alist-RaiDrive-云盘本地挂载" class="headerlink" title="Alist + RaiDrive 云盘本地挂载"></a>Alist + RaiDrive 云盘本地挂载</h1><ul>
+<li>以阿里云盘为例</li>
+</ul>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/alist-org/alist/releases">Alist</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.raidrive.com/download">RaiDrive</a></p>
+</li>
+<li><p>可能无法下载<span id="more"></span></p>
+</li>
+</ul>
+<h2 id="配置-Alist"><a href="#配置-Alist" class="headerlink" title="配置 Alist"></a>配置 Alist</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/install/manual.html">手动安装 | AList文档</a></p>
+</li>
+<li><p>手动解压 <code>Win+R</code> <code>cmd</code>运行<code>.\alist.exe server</code> 记住密码(不用记也行)</p>
+</li>
+<li><p>浏览器打开 <code>127.0.0.1:5244</code></p>
+</li>
+<li><p>点击下方管理-&gt;存储-&gt;添加-&gt;选择-&gt;阿里云盘</p>
+</li>
+<li><p>重要的是填写挂载路径 以及 刷新令牌 可以到Alist<a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/drivers/aliyundrive.html">阿里云盘 | AList文档</a>看具体操作方法</p>
+</li>
+</ul>
+<h2 id="配置RaiDrive"><a href="#配置RaiDrive" class="headerlink" title="配置RaiDrive"></a>配置RaiDrive</h2><ul>
+<li><p>双击安装 允许网络和驱动安装</p>
+</li>
+<li><p>安装完成后 右上方添加-&gt;NAS-&gt;WebDAV </p>
+</li>
+<li><p>选择盘符 -&gt;名称-&gt;地址 127.0.0.1:5244 -&gt;取消勾选地址-&gt; 账户密码-&gt;连接</p>
+<p><img src="/2022/11/12/Alist-RaiDrivce/2022-11-11-22-43-43-image.png"></p>
+</li>
+</ul>
+<h2 id="开启自启动脚本"><a href="#开启自启动脚本" class="headerlink" title="开启自启动脚本"></a>开启自启动脚本</h2><ul>
+<li><p>网上都是 vbs 脚本 由于vbs太老了在我电脑上运行老报错也不想搞环境 用bat折腾了一下</p>
+</li>
+<li><p>三个都放在alist.exe目录下</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">if &quot;%1&quot;==&quot;h&quot; goto begin</span><br><span class="line">start mshta vbscript:createobject(&quot;wscript.shell&quot;).run(&quot;&quot;&quot;%~nx0&quot;&quot; h&quot;,0)(window.close)&amp;&amp;exit</span><br><span class="line">:begin</span><br><span class="line">:: 启动 任务</span><br><span class="line">start /min cmd /c alist.bat</span><br><span class="line">start /min cmd /c Raidriver.bat</span><br><span class="line">::pause</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">if &quot;%1&quot;==&quot;h&quot; goto begin</span><br><span class="line">start mshta vbscript:createobject(&quot;wscript.shell&quot;).run(&quot;&quot;&quot;%~nx0&quot;&quot; h&quot;,0)(window.close)&amp;&amp;exit</span><br><span class="line">:begin</span><br><span class="line">:: 启动 alist</span><br><span class="line">.\alist.exe server</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">if &quot;%1&quot;==&quot;h&quot; goto begin</span><br><span class="line">start mshta vbscript:createobject(&quot;wscript.shell&quot;).run(&quot;&quot;&quot;%~nx0&quot;&quot; h&quot;,0)(window.close)&amp;&amp;exit</span><br><span class="line">:begin</span><br><span class="line">:: 延时 1000ms</span><br><span class="line">set /a delay=1000</span><br><span class="line">set TotalTime=0</span><br><span class="line">set NowTime=%time%</span><br><span class="line">::读取起始时间，时间格式为：13:01:05.95</span><br><span class="line">:delay_continue</span><br><span class="line">set /a minute1=1%NowTime:~3,2%-100</span><br><span class="line">::读取起始时间的分钟数</span><br><span class="line">set /a second1=1%NowTime:~-5,2%%NowTime:~-2%0-100000</span><br><span class="line">::将起始时间的秒数转为毫秒</span><br><span class="line">set NowTime=%time%</span><br><span class="line">set /a minute2=1%NowTime:~3,2%-100</span><br><span class="line">:: 读取现在时间的分钟数</span><br><span class="line">set /a second2=1%NowTime:~-5,2%%NowTime:~-2%0-100000</span><br><span class="line">::将现在时间的秒数转为毫秒</span><br><span class="line">set /a TotalTime+=(%minute2%-%minute1%+60)%%60*60000+%second2%-%second1%</span><br><span class="line">if %TotalTime% lss %delay% goto delay_continue</span><br><span class="line">:: echo %TotalTime%ms</span><br><span class="line">:: 启动 RaiDrive  换成你的安装路径</span><br><span class="line">cd /d D:\Program Files\OpenBoxLab\RaiDrive</span><br><span class="line">.\RaiDrive.exe</span><br><span class="line">::pause</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将第一个脚本 创建快捷方式放到<code>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</code></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Tools/" rel="tag"># Tools</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/30/QT-Windows-%E5%B0%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" rel="prev" title="QT Windows 小功能实现">
+                  <i class="fa fa-chevron-left"></i> QT Windows 小功能实现
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/12/Windows%20%E6%89%B9%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4/" rel="next" title="Windows 批处理命令">
+                  Windows 批处理命令 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lemon-truffle</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">115k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:45</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+<!--显示运行时间-->
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/03/2021 15:41:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/js/custom_js/click_show_love.js"></script>
+
+
+<!--单击显示文字-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/click_show_text.js"></script>
+
+
+<!--点击爆炸效果  -->
+
+<canvas class="click_fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/custom_js/click_fireworks.js"></script>
+
+
+<!--显示恶搞标题-->
+
+<script type="text/javascript" src="/js/custom_js/funny_title.js"></script>
+
+
+<!--显示雪花效果-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/show_snow1.js"></script>
+
+
+
+
+<!-- 数字雨 -->
+
+<canvas id="canvas" width="1440" height="900" ></canvas>
+<script type="text/javascript" src="/js/custom_js/show_code_rain.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lemon-truffle.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="windows 批处理命令学习[TOC]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows 批处理命令">
+<meta property="og:url" content="https://lemon-truffle.github.io/2022/11/12/Windows%20%E6%89%B9%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="柠檬野生菌">
+<meta property="og:description" content="windows 批处理命令学习[TOC]">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-12T08:01:12.000Z">
+<meta property="article:modified_time" content="2023-10-17T16:02:11.479Z">
+<meta property="article:author" content="lemon-truffle">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lemon-truffle.github.io/2022/11/12/Windows%20%E6%89%B9%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lemon-truffle.github.io/2022/11/12/Windows%20%E6%89%B9%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4/","path":"2022/11/12/Windows 批处理命令/","title":"Windows 批处理命令"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Windows 批处理命令 | 柠檬野生菌</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">柠檬野生菌</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#windows-%E6%89%B9%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">windows 批处理命令学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#del"><span class="nav-number">1.1.1.</span> <span class="nav-text">del</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if"><span class="nav-number">1.1.2.</span> <span class="nav-text">if</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for"><span class="nav-number">1.1.3.</span> <span class="nav-text">for</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#choice"><span class="nav-number">1.1.4.</span> <span class="nav-text">choice</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">使用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4Qt%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%E5%86%97%E4%BD%99%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.1.</span> <span class="nav-text">删除Qt编译构建冗余文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Qt%E6%89%93%E5%8C%85%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.2.</span> <span class="nav-text">Qt打包脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4Keil%E7%9A%84%E7%BC%96%E8%AF%91%E8%B0%83%E8%AF%95%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.3.</span> <span class="nav-text">删除Keil的编译调试信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%94%B5%E8%84%91%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.4.</span> <span class="nav-text">获取电脑信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bat%E5%BB%B6%E6%97%B6"><span class="nav-number">1.2.5.</span> <span class="nav-text">Bat延时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%E9%81%8D%E5%8E%86"><span class="nav-number">1.2.6.</span> <span class="nav-text">文件名遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.7.</span> <span class="nav-text">获取文件的详细信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git-%E6%8F%90%E4%BA%A4%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.8.</span> <span class="nav-text">Git 提交脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BB%BB%E5%8A%A1%E8%BF%9B%E7%A8%8B%E5%A4%84%E7%90%86"><span class="nav-number">1.2.9.</span> <span class="nav-text">系统任务进程处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Netsh-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.10.</span> <span class="nav-text">Netsh 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#route%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.11.</span> <span class="nav-text">route命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.</span> <span class="nav-text">解决问题</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lemon-truffle"
+      src="/uploads/custom-logo.jpg">
+  <p class="site-author-name" itemprop="name">lemon-truffle</p>
+  <div class="site-description" itemprop="description">柠檬野生菌的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/lemon_fungus" title="GitHub → https:&#x2F;&#x2F;gitee.com&#x2F;lemon_fungus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-truffle.github.io/2022/11/12/Windows%20%E6%89%B9%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/custom-logo.jpg">
+      <meta itemprop="name" content="lemon-truffle">
+      <meta itemprop="description" content="柠檬野生菌的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柠檬野生菌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows 批处理命令
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-12 16:01:12" itemprop="dateCreated datePublished" datetime="2022-11-12T16:01:12+08:00">2022-11-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2023-10-18 00:02:11" itemprop="dateModified" datetime="2023-10-18T00:02:11+08:00">2023-10-18</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>12k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="windows-批处理命令学习"><a href="#windows-批处理命令学习" class="headerlink" title="windows 批处理命令学习"></a>windows 批处理命令学习</h2><p>[TOC]</p>
+<span id="more"></span>
+
+<h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">:: 如果不知道命令如何使用 可查看该命令<span class="built_in">help</span></span><br><span class="line">xxxx /?</span><br><span class="line">:: 显示输出</span><br><span class="line"><span class="built_in">echo</span> </span><br><span class="line">:: 本行命令开始关闭回显 @本行开始</span><br><span class="line">@<span class="built_in">echo</span> off </span><br><span class="line">:: 注释  ::</span><br><span class="line">rem</span><br><span class="line">:: <span class="string">&quot;%&quot;</span>参数 依次填充</span><br><span class="line">%1 </span><br><span class="line">:: 显示文件结构树</span><br><span class="line">tree</span><br><span class="line">:: 输出到文件 append</span><br><span class="line">&gt;&gt; xxx.txt</span><br><span class="line">:: 输出到文件 覆盖</span><br><span class="line">&gt; xxx.txt</span><br><span class="line">:: 删除</span><br><span class="line">del</span><br><span class="line">:: 网络 ping</span><br><span class="line">ping www.baidu.com</span><br><span class="line">ping -n 3 www.baidu.com  ::发送3次</span><br><span class="line">:: 获取ip</span><br><span class="line">ipconfig</span><br><span class="line">:: 调用其他批处理</span><br><span class="line">call xx.bat</span><br><span class="line">:: 跳转</span><br><span class="line">goto xxx</span><br><span class="line">:: <span class="string">&quot;:&quot;</span>表示标签 和goto搭配使用 让命令跳转到指定地方 </span><br><span class="line">:xxx  </span><br><span class="line">:: 暂停</span><br><span class="line">pause</span><br><span class="line">:: 退出</span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">:: 关闭或重启计算机</span><br><span class="line">shutdown</span><br><span class="line">:: 解析地址</span><br><span class="line">arp</span><br><span class="line">:: 开启命令</span><br><span class="line">start</span><br><span class="line">:: 关闭指定进程</span><br><span class="line">taskkill</span><br></pre></td></tr></table></figure>
+
+<h4 id="del"><a href="#del" class="headerlink" title="del"></a>del</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">rmdir /s /q  bulid</span><br><span class="line">:: /s 删除本身及子目录</span><br><span class="line">:: /q 安静模式 /s 删除目录树时不需要确认</span><br><span class="line"></span><br><span class="line">C:\Users\MAG&gt;del /?</span><br><span class="line">删除一个或多个文件。</span><br><span class="line"></span><br><span class="line">DEL [/P] [/F] [/S] [/Q] [/A[[:]attributes]] names</span><br><span class="line">ERASE [/P] [/F] [/S] [/Q] [/A[[:]attributes]] names</span><br><span class="line"></span><br><span class="line">  names         指定一个或多个文件或者目录列表。</span><br><span class="line">                通配符可用来删除多个文件。</span><br><span class="line">                如果指定了一个目录，该目录中的所</span><br><span class="line">                有文件都会被删除。</span><br><span class="line"></span><br><span class="line">  /P            删除每一个文件之前提示确认。</span><br><span class="line">  /F            强制删除只读文件。</span><br><span class="line">  /S            删除所有子目录中的指定的文件。</span><br><span class="line">  /Q            安静模式。删除全局通配符时，不要求确认</span><br><span class="line">  /A            根据属性选择要删除的文件</span><br><span class="line">  属性          R  只读文件            S  系统文件</span><br><span class="line">                H  隐藏文件            A  准备存档的文件</span><br><span class="line">                I  无内容索引文件      L  重新分析点</span><br><span class="line">                O  脱机文件            -  表示“否”的前缀</span><br><span class="line"></span><br><span class="line">如果命令扩展被启用，DEL 和 ERASE 更改如下:</span><br><span class="line"></span><br><span class="line">/S 开关的显示句法会颠倒，即只显示已经</span><br><span class="line">删除的文件，而不显示找不到的文件。</span><br></pre></td></tr></table></figure>
+
+<h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if &quot;%1&quot;==&quot;&quot; goto usage</span><br><span class="line">if &quot;%1&quot;==&quot;/?&quot; goto usage</span><br><span class="line">if &quot;%1&quot;==&quot;help&quot; goto usage</span><br><span class="line">f not &quot;%1&quot;==&quot;&quot; goto usage</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if exist xx.gif del xx.gif  如果文件存在就删除</span><br><span class="line"></span><br><span class="line">masm %1.asm</span><br><span class="line">if errorlevel 1 pause &amp; edit %1.asm</span><br><span class="line">link %1.obj</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">::close <span class="built_in">echo</span></span><br><span class="line">cls</span><br><span class="line">::clean screen</span><br><span class="line"><span class="built_in">echo</span> This programme is to make the MASM programme automate</span><br><span class="line">::display info</span><br><span class="line"><span class="built_in">echo</span> Edit by CODERED</span><br><span class="line">::display info</span><br><span class="line"><span class="built_in">echo</span> Mailto me : qqkiller@sina.com</span><br><span class="line">::display info</span><br><span class="line"><span class="keyword">if</span> <span class="string">&quot;%1&quot;</span>==<span class="string">&quot;&quot;</span> goto usage</span><br><span class="line">::<span class="keyword">if</span> input without paramater goto usage</span><br><span class="line"><span class="keyword">if</span> <span class="string">&quot;%1&quot;</span>==<span class="string">&quot;/?&quot;</span> goto usage</span><br><span class="line">::<span class="keyword">if</span> paramater is <span class="string">&quot;/?&quot;</span> goto usage</span><br><span class="line"><span class="keyword">if</span> <span class="string">&quot;%1&quot;</span>==<span class="string">&quot;help&quot;</span> goto usage</span><br><span class="line">::<span class="keyword">if</span> paramater is <span class="string">&quot;help&quot;</span> goto usage</span><br><span class="line">pause</span><br><span class="line">::pause to see usage</span><br><span class="line">masm %1.asm</span><br><span class="line">::assemble the .asm code</span><br><span class="line"><span class="keyword">if</span> errorlevel 1 pause &amp; edit %1.asm</span><br><span class="line">::<span class="keyword">if</span> error pause to see error msg and edit the code</span><br><span class="line">link %1.obj &amp; %1</span><br><span class="line">::<span class="keyword">else</span> link the .obj file and execute the .exe file</span><br><span class="line">:usage</span><br><span class="line">::<span class="built_in">set</span> usage</span><br><span class="line"><span class="built_in">echo</span> Usage: This BAT file name [asm file name]</span><br><span class="line"><span class="built_in">echo</span> Default BAT file name is START.BAT</span><br><span class="line">::display usage</span><br></pre></td></tr></table></figure>
+
+<h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for %%I in (cmd1) do cmd2</span><br><span class="line"></span><br><span class="line">%%I 形式参数 相当于C for中的i 必要条件</span><br><span class="line">cmd1 循环条件 可以是指令 以空格 逗号 顿号等符号 分不同的指令</span><br><span class="line">cmd2 需要循环执行的任务 可以是命令 可以使用%%I 得到的参数</span><br><span class="line"></span><br><span class="line">for /f &quot;delims=&quot; %%I in (cmd1) do cmd2</span><br><span class="line">/f &quot;delims=&quot; 提取字符串</span><br><span class="line">　</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">mode con lines=3000</span><br><span class="line"><span class="built_in">set</span> <span class="comment">#=Any question&amp;set $=Q&amp;set/az=0x53b7e0b4</span></span><br><span class="line">title %<span class="comment">#% +%$%%$% %z%</span></span><br><span class="line"><span class="built_in">cd</span> /d <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line">rem 删除含有指定字符串/关键字的文件夹</span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%a <span class="keyword">in</span> (<span class="string">&#x27;dir /ad/b/s &quot;*Out*&quot; 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">    <span class="keyword">if</span> exist <span class="string">&quot;%%a\&quot; (</span></span><br><span class="line"><span class="string">        echo;delete - &quot;</span>%%a<span class="string">&quot;</span></span><br><span class="line"><span class="string">        rd /s /q &quot;</span>%%a\&quot;</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">rem 清空含有指定字符串/关键字的文件夹</span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%a <span class="keyword">in</span> (<span class="string">&#x27;dir /ad/b/s &quot;*Log*&quot; 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">    <span class="keyword">if</span> exist <span class="string">&quot;%%a\&quot; (</span></span><br><span class="line"><span class="string">        echo;clear - &quot;</span>%%a<span class="string">&quot;</span></span><br><span class="line"><span class="string">        rd /s /q &quot;</span>%%a\&quot;</span><br><span class="line">        md <span class="string">&quot;%%a\&quot;</span></span><br><span class="line"><span class="string">    )</span></span><br><span class="line"><span class="string">)</span></span><br><span class="line"><span class="string">rem 截取文件夹名中指定字符串/关键字后面的内容</span></span><br><span class="line"><span class="string">rem 替换文件名中指定字符串/关键字为其他内容</span></span><br><span class="line"><span class="string"> (echo;Do While WSH.StdIn.AtEndOfStream^&lt;^&gt;True</span></span><br><span class="line"><span class="string"> echo;    f=replace^(WSH.StdIn.ReadLine,WSH.Arguments^(0^),LCase^(WSH.Arguments^(0^)^),1,-1,1^)</span></span><br><span class="line"><span class="string"> echo;    arr=split^(f,&quot;</span>\&quot;^):fn=arr^(ubound^(arr^)^)</span><br><span class="line"> <span class="built_in">echo</span>;    If WSH.Arguments.Count = 2 Then</span><br><span class="line"> <span class="built_in">echo</span>;        s=replace^(fn,WSH.Arguments^(1^),WSH.Arguments^(0^),1,-1,1^)</span><br><span class="line"> <span class="built_in">echo</span>;    Else</span><br><span class="line"> <span class="built_in">echo</span>;        s=split^(f,LCase^(WSH.Arguments^(0^)^),2^)^(1^)</span><br><span class="line"> <span class="built_in">echo</span>;    End If</span><br><span class="line"> <span class="built_in">echo</span>;    WSH.echo f ^&amp; <span class="string">&quot;|&quot;</span> ^&amp; s</span><br><span class="line"> <span class="built_in">echo</span>;Loop)&gt;<span class="string">&quot;%tmp%\t.t&quot;</span></span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;tokens=1* delims=|&quot;</span> %%a <span class="keyword">in</span> (<span class="string">&#x27;dir /ad/b/s &quot;*Kff*&quot; 2^&gt;nul^|cscript -nologo -e:vbscript &quot;%tmp%\t.t&quot; &quot;Kff&quot;&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">    <span class="keyword">for</span> /f <span class="string">&quot;tokens=1* delims=|&quot;</span> %%c <span class="keyword">in</span> (<span class="string">&#x27;dir /a-d/b/s &quot;%%a\*cv*&quot; 2^&gt;nul^|cscript -nologo -e:vbscript &quot;%tmp%\t.t&quot; &quot;%%b&quot; &quot;cv&quot;&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">        <span class="built_in">echo</span>;<span class="string">&quot;%%c&quot;</span> --^&gt; <span class="string">&quot;%%d&quot;</span></span><br><span class="line">        ren <span class="string">&quot;%%c&quot;</span> <span class="string">&quot;%%d&quot;</span></span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">:end</span><br><span class="line"><span class="built_in">echo</span>;%<span class="comment">#% +%$%%$% %z%</span></span><br><span class="line">pause</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="choice"><a href="#choice" class="headerlink" title="choice"></a>choice</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">$ choice /?</span><br><span class="line">CHOICE [/C choices] [/N] [/CS] [/T timeout /D choice] [/M text]</span><br><span class="line"></span><br><span class="line">描述:</span><br><span class="line">    该工具允许用户从选择列表选择一个项目并返回所选项目的索引。</span><br><span class="line"></span><br><span class="line">参数列表:</span><br><span class="line">   /C    choices       指定要创建的选项列表。默认列表是 <span class="string">&quot;YN&quot;</span>。</span><br><span class="line">   /N                  在提示符中隐藏选项列表。提示前面的消息得到显示，</span><br><span class="line">                       选项依旧处于启用状态。</span><br><span class="line">   /CS                 允许选择分大小写的选项。在默认情况下，这个工具</span><br><span class="line">                       是不分大小写的。</span><br><span class="line">   /T    timeout       做出默认选择之前，暂停的秒数。可接受的值是从 0</span><br><span class="line">                       到 9999。如果指定了 0，就不会有暂停，默认选项</span><br><span class="line">                       会得到选择。</span><br><span class="line">   /D    choice        在 nnnn 秒之后指定默认选项。字符必须在用 /C 选</span><br><span class="line">                       项指定的一组选择中; 同时，必须用 /T 指定 nnnn。</span><br><span class="line">   /M    text          指定提示之前要显示的消息。如果没有指定，工具只</span><br><span class="line">                       显示提示。</span><br><span class="line">   /?                  显示此帮助消息。</span><br><span class="line"></span><br><span class="line">   注意:</span><br><span class="line">   ERRORLEVEL 环境变量被设置为从选择集选择的键索引。列出的第一个选</span><br><span class="line">   择返回 1，第二个选择返回 2，等等。如果用户按的键不是有效的选择，</span><br><span class="line">   该工具会发出警告响声。如果该工具检测到错误状态，它会返回 255 的</span><br><span class="line">   ERRORLEVEL 值。如果用户按 Ctrl+Break 或 Ctrl+C 键，该工具会返回 0</span><br><span class="line">   的 ERRORLEVEL 值。在一个批程序中使用 ERRORLEVEL 参数时，将参数降</span><br><span class="line">   序排列。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line">   CHOICE /?</span><br><span class="line">   CHOICE /C YNC /M <span class="string">&quot;确认请按 Y，否请按 N，或者取消请按 C。&quot;</span></span><br><span class="line">   CHOICE /T 10 /C ync /CS /D y</span><br><span class="line">   CHOICE /C ab /M <span class="string">&quot;选项 1 请选择 a，选项 2 请选择 b。&quot;</span></span><br><span class="line">   CHOICE /C ab /N /M <span class="string">&quot;选项 1 请选择 a，选项 2 请选择 b。&quot;</span></span><br><span class="line"></span><br><span class="line">choice /C YN /T 10 /D N /M <span class="string">&quot;是否删除*.exe *.rc&quot;</span></span><br><span class="line"><span class="keyword">if</span> errorlevel 2 goto opll </span><br><span class="line"><span class="keyword">if</span> errorlevel 1 (<span class="built_in">echo</span> 删除 exe</span><br><span class="line"><span class="built_in">echo</span> 删除 rc)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>errorlevel</code> 判断的不是 字符而是字符所在的序号  比如这里的<code>Y</code>是<code>1</code> 所以<code>1</code>是执行<code>Yes</code>的结果</li>
+</ul>
+<h3 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h3><ul>
+<li>一些实用的<code>bat</code>脚本</li>
+</ul>
+<h4 id="删除Qt编译构建冗余文件"><a href="#删除Qt编译构建冗余文件" class="headerlink" title="删除Qt编译构建冗余文件"></a>删除Qt编译构建冗余文件</h4><ul>
+<li>Qt 构建信息删除脚本  <code>qtclear.bat</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">del *.o         /s</span><br><span class="line">del *.moc       /s</span><br><span class="line">del moc_*.cpp   /s</span><br><span class="line">del moc_*.h     /s</span><br><span class="line">del *.obj   	/s</span><br><span class="line">del moc_*.obj   /s</span><br><span class="line">del qrc_*.cpp   /s</span><br><span class="line">del ui_*.h      /s</span><br><span class="line">del Makefile*   /s</span><br><span class="line">del *.cache     /s</span><br><span class="line">del *.stash     /s</span><br><span class="line">::del *.rc        /s</span><br><span class="line">del *.Debug     /s</span><br><span class="line">del *.Release   /s</span><br><span class="line">::del *.exe       /s</span><br><span class="line">del *.pro.user	/s</span><br><span class="line">del *.pro.user.*/s</span><br><span class="line">del *.qbs.user  /s</span><br><span class="line">del *.qbs.user.*/s</span><br><span class="line">::del  build-*    /s</span><br><span class="line">		  </span><br><span class="line">::pause</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Qt 构建信息删除脚本 因为有时候删除程序创建的文件需要管理员权限 便有了以下脚本 <code>del_build_pro.bat</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> 注意：删除后不可恢复 请谨慎操作！</span><br><span class="line"><span class="built_in">echo</span> 1、删除当前路径下所有Qt项目构建中产生的文件(.o .obj moc等))</span><br><span class="line"><span class="built_in">echo</span> 2、删除当前路径下所有bulid-*及其子文件夹</span><br><span class="line">choice /C 12 /T 20 /D 1 /M <span class="string">&quot;1、删除Qt构建文件(默认)  2、删除bulid-*文件夹&quot;</span></span><br><span class="line"><span class="keyword">if</span> errorlevel 2 goto op2</span><br><span class="line"><span class="keyword">if</span> errorlevel 1 goto op1</span><br><span class="line"></span><br><span class="line">:op1</span><br><span class="line">del *.o         /s</span><br><span class="line">del *.moc       /s</span><br><span class="line">del moc_*.cpp   /s</span><br><span class="line">del moc_*.h     /s</span><br><span class="line">del *.obj   	/s</span><br><span class="line">del *.pdb		/s</span><br><span class="line">del *.ilk		/s</span><br><span class="line">del moc_*.obj   /s</span><br><span class="line">del qrc_*.cpp   /s</span><br><span class="line">del ui_*.h      /s</span><br><span class="line">del Makefile*   /s</span><br><span class="line">del *.cache     /s</span><br><span class="line">del *.stash     /s</span><br><span class="line">del *.Debug     /s</span><br><span class="line">del *.Release   /s</span><br><span class="line">choice /C YN /T 10 /D N /M <span class="string">&quot;是否删除*.exe *.rc&quot;</span></span><br><span class="line"><span class="keyword">if</span> errorlevel 2 goto opll </span><br><span class="line"><span class="keyword">if</span> errorlevel 1 (del *.rc /s</span><br><span class="line">del *.exe /s)</span><br><span class="line"></span><br><span class="line">:opll</span><br><span class="line">choice /C YN /T 10 /D N /M <span class="string">&quot;是否删除*.user&quot;</span></span><br><span class="line"><span class="keyword">if</span> errorlevel 2 goto end</span><br><span class="line"><span class="keyword">if</span> errorlevel 1 (del *.pro.user	/s</span><br><span class="line">del *.pro.user.*/s</span><br><span class="line">del *.qbs.user  /s</span><br><span class="line">del *.qbs.user.*/s)</span><br><span class="line">goto end </span><br><span class="line"></span><br><span class="line">:op2</span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%i <span class="keyword">in</span> (<span class="string">&#x27;dir /ad/b/s &quot;build-*-*&quot; 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> ( rd /s /q <span class="string">&quot;%%i&quot;</span>)</span><br><span class="line">goto end </span><br><span class="line"></span><br><span class="line">:end</span><br><span class="line">rem pause</span><br></pre></td></tr></table></figure>
+
+<h4 id="Qt打包脚本"><a href="#Qt打包脚本" class="headerlink" title="Qt打包脚本"></a>Qt打包脚本</h4><ul>
+<li>这个脚本命令本质上是执行<code>windeployqt.exe</code>将Qt的依赖项复制到exe目录下</li>
+<li>不同人的安装版本或路径不一样需要稍作修改</li>
+<li>可结合一些打包软件(NSIS)一起使用正真实现一键打包</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">::设置Qt安装目录</span><br><span class="line"><span class="built_in">set</span> qt_dir=D:\Qt\Qt5.12.10\5.12.10\</span><br><span class="line">::默认构建器名称</span><br><span class="line">::不同的Qt版本编译器名称不同可根据需求改变 kit 变量</span><br><span class="line"><span class="built_in">set</span> kit = msvc2015_64</span><br><span class="line"><span class="built_in">echo</span> Qt windeployqt 打包脚本</span><br><span class="line"><span class="built_in">echo</span> msvc2015_64(默认编译器)</span><br><span class="line">choice /C 12345 /T 5 /D 3 /M <span class="string">&quot;1、mingw73_32  2、mingw73_64 3、msvc2015_64 4、msvc2017 5、msvc2017_64&quot;</span></span><br><span class="line">::<span class="built_in">set</span><span class="string">&quot;=&quot;</span>两端不能有空格</span><br><span class="line">::choice 如果不选择默认执行下一条指令(这里是3)</span><br><span class="line"><span class="keyword">if</span> errorlevel 3 (<span class="built_in">set</span> kit=msvc2015_64</span><br><span class="line">goto wdp)</span><br><span class="line"><span class="keyword">if</span> errorlevel 1 (<span class="built_in">set</span> kit=mingw73_32</span><br><span class="line">goto wdp)</span><br><span class="line"><span class="keyword">if</span> errorlevel 2 (<span class="built_in">set</span> kit=mingw73_64</span><br><span class="line">goto wdp)</span><br><span class="line"><span class="keyword">if</span> errorlevel 4 (<span class="built_in">set</span> kit=msvc2017</span><br><span class="line">goto wdp)</span><br><span class="line"><span class="keyword">if</span> errorlevel 5 (<span class="built_in">set</span> kit=msvc2017_64</span><br><span class="line">goto wdp)</span><br><span class="line"></span><br><span class="line">:wdp</span><br><span class="line"><span class="built_in">set</span> windeployqt_dir=%qt_dir%%kit%\bin\windeployqt.exe</span><br><span class="line">::<span class="built_in">echo</span> %windeployqt_dir%</span><br><span class="line"><span class="keyword">for</span> /r <span class="string">&quot;%cd%&quot;</span> %%i <span class="keyword">in</span> (*.exe) <span class="keyword">do</span> (%windeployqt_dir% <span class="string">&quot;%%~nxi&quot;</span>)</span><br><span class="line">::pause</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除Keil的编译调试信息"><a href="#删除Keil的编译调试信息" class="headerlink" title="删除Keil的编译调试信息"></a>删除Keil的编译调试信息</h4><ul>
+<li><code>keilkilll.bat</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">del *.bak /s</span><br><span class="line">del *.ddk /s</span><br><span class="line">del *.edk /s</span><br><span class="line">del *.lst /s</span><br><span class="line">del *.lnp /s</span><br><span class="line">del *.mpf /s</span><br><span class="line">del *.mpj /s</span><br><span class="line">del *.obj /s</span><br><span class="line">del *.om	f /s</span><br><span class="line">::del *.opt /s  ::不允许删除JLINK的设置</span><br><span class="line">del *.plg /s</span><br><span class="line">del *.rpt /s</span><br><span class="line">del *.tmp /s</span><br><span class="line">del *.__i /s</span><br><span class="line">del *.crf /s</span><br><span class="line">del *.o /s</span><br><span class="line">del *.d /s</span><br><span class="line">del *.axf /s</span><br><span class="line">del *.tra /s</span><br><span class="line">del *.dep /s           </span><br><span class="line">del JLinkLog.txt /s</span><br><span class="line"></span><br><span class="line">del *.iex /s</span><br><span class="line">del *.htm /s</span><br><span class="line">del *.sct /s</span><br><span class="line">del *.map /s</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="获取电脑信息"><a href="#获取电脑信息" class="headerlink" title="获取电脑信息"></a>获取电脑信息</h4><ul>
+<li>脚本源自网络(记不住是那篇文章了)稍作修改 <code>getPcInfo.bat</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> on</span><br><span class="line"><span class="built_in">echo</span> 开始获取本机信息，请稍等......</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span>  exist .\ComputerInfos.txt (</span><br><span class="line">	del .\ComputerInfos.txt </span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">rem 查看本机系统详细信息</span><br><span class="line"><span class="built_in">echo</span> 1-本机系统详细信息 &gt;&gt; .\ComputerInfos.txt </span><br><span class="line">systeminfo &gt;&gt; .\ComputerInfos.txt </span><br><span class="line"> </span><br><span class="line">rem 查看本机CPU信息</span><br><span class="line"><span class="built_in">echo</span> 2-本机CPU序列号 &gt;&gt; .\ComputerInfos.txt </span><br><span class="line">wmic cpu get processorid &gt;&gt; .\ComputerInfos.txt </span><br><span class="line"> </span><br><span class="line">rem 2-查看本机主板信息</span><br><span class="line"><span class="built_in">echo</span> 主板信息（主板厂家、系统序号、主板序列号、主板版本）&gt;&gt; .\ComputerInfos.txt</span><br><span class="line">wmic baseboard get Manufacturer, Product, SerialNumber, Version &gt;&gt; .\ComputerInfos.txt </span><br><span class="line"> </span><br><span class="line">rem 3-查看本机产品信息</span><br><span class="line"><span class="built_in">echo</span> 本机信息（本机序列号、品牌、型号）&gt;&gt; .\ComputerInfos.txt</span><br><span class="line">wmic csproduct get IdentifyingNumber,Vendor, Version &gt;&gt; .\ComputerInfos.txt </span><br><span class="line"> </span><br><span class="line">rem 4-查看本机BIOS信息</span><br><span class="line"><span class="built_in">echo</span> 本机BIOS信息（本机BIOS序列号）&gt;&gt; .\ComputerInfos.txt</span><br><span class="line">wmic bios get serialnumber &gt;&gt; .\ComputerInfos.txt </span><br><span class="line"> </span><br><span class="line">rem 查看本机系统信息dxdiag </span><br><span class="line"> </span><br><span class="line">rem 5-查看本机的所有网络信息</span><br><span class="line"><span class="built_in">echo</span> 本机所有网络信息 &gt;&gt; .\ComputerInfos.txt</span><br><span class="line">ipconfig /all &gt;&gt; .\ComputerInfos.txt </span><br><span class="line"></span><br><span class="line">rem 5-查看本机的所有网络信息</span><br><span class="line"><span class="built_in">echo</span> 本机所在网络信息 &gt;&gt; .\ComputerInfos.txt</span><br><span class="line">arp /a &gt;&gt; .\ComputerInfos.txt </span><br><span class="line"> </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;===================本机信息保存在 .\ComputerInfos.txt================ &quot;</span></span><br><span class="line">)</span><br><span class="line"> </span><br><span class="line">rem pause</span><br></pre></td></tr></table></figure>
+
+<h4 id="Bat延时"><a href="#Bat延时" class="headerlink" title="Bat延时"></a>Bat延时</h4><ul>
+<li>源自网络</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> /p delay=请输入需延迟的毫秒数：</span><br><span class="line"><span class="built_in">set</span> TotalTime=0</span><br><span class="line"><span class="built_in">set</span> NowTime=%time%</span><br><span class="line">::读取起始时间，时间格式为：13:01:05.95</span><br><span class="line"><span class="built_in">echo</span> 程序开始时间：%NowTime%</span><br><span class="line">:delay_continue</span><br><span class="line"><span class="built_in">set</span> /a minute1=1%NowTime:~3,2%-100</span><br><span class="line">::读取起始时间的分钟数</span><br><span class="line"><span class="built_in">set</span> /a second1=1%NowTime:~-5,2%%NowTime:~-2%0-100000</span><br><span class="line">::将起始时间的秒数转为毫秒</span><br><span class="line"><span class="built_in">set</span> NowTime=%time%</span><br><span class="line"><span class="built_in">set</span> /a minute2=1%NowTime:~3,2%-100</span><br><span class="line">:: 读取现在时间的分钟数</span><br><span class="line"><span class="built_in">set</span> /a second2=1%NowTime:~-5,2%%NowTime:~-2%0-100000</span><br><span class="line">::将现在时间的秒数转为毫秒</span><br><span class="line"><span class="built_in">set</span> /a TotalTime+=(%minute2%-%minute1%+60)%%60*60000+%second2%-%second1%</span><br><span class="line"><span class="keyword">if</span> %TotalTime% lss %delay% goto delay_continue</span><br><span class="line"><span class="built_in">echo</span> 程序结束时间：%time%</span><br><span class="line"><span class="built_in">echo</span> 设定延迟时间：%delay%毫秒</span><br><span class="line"><span class="built_in">echo</span> 实际延迟时间：%TotalTime%毫秒</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件名遍历"><a href="#文件名遍历" class="headerlink" title="文件名遍历"></a>文件名遍历</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> source_dir=<span class="string">&quot;.\&quot;</span></span><br><span class="line"><span class="string">set out_file = &quot;</span>info.txt<span class="string">&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">for /R %source_dir% %%f in (*.dll *.bat) do (</span></span><br><span class="line"><span class="string">    echo 完整路径信息: %%f &gt;&gt; info.txt</span></span><br><span class="line"><span class="string">    echo 所在目录信息: %%~dpf &gt;&gt; info.txt</span></span><br><span class="line"><span class="string">    echo 文件前缀名称: %%~nf &gt;&gt; info.txt</span></span><br><span class="line"><span class="string">    echo 文件后缀名称: %%~xf &gt;&gt; info.txt</span></span><br><span class="line"><span class="string">    echo 完整文件名称: %%~nxf &gt;&gt; info.txt</span></span><br><span class="line"><span class="string">    echo 不带后缀路径: %%~dpnf &gt;&gt; info.txt</span></span><br><span class="line"><span class="string">    echo 文件修改时间: %%~tf &gt;&gt; info.txt</span></span><br><span class="line"><span class="string">    echo 文件内容大小: %%~zf Byte &gt;&gt; info.txt</span></span><br><span class="line"><span class="string">	echo. &gt;&gt; info.txt </span></span><br><span class="line"><span class="string">)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">::pause</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="获取文件的详细信息"><a href="#获取文件的详细信息" class="headerlink" title="获取文件的详细信息"></a>获取文件的详细信息</h4><ul>
+<li>类似于选择文件右键属性-&gt;详细信息 该脚本<code>getdllinfo.bat</code>会产生一个当前时间的<code>getdllinfo.bat</code></li>
+<li>这里获取的是<code>.exe</code> <code>.dll</code> 可以换为其它类型文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> source_dir = <span class="string">&quot;.\&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">if  exist .\dllinfo-%date:~0,4%-%date:~5,2%-%date:~8,2%.txt (</span></span><br><span class="line"><span class="string">	del .\dllinfo-%date:~0,4%-%date:~5,2%-%date:~8,2%.txt </span></span><br><span class="line"><span class="string">) </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">echo 获取详细信息中请稍后...</span></span><br><span class="line"><span class="string">for /R %source_dir% %%i in (*.dll *.exe) do (</span></span><br><span class="line"><span class="string">	powershell &quot;</span>(Get-Item -path “%%i”).VersionInfo | Format-List<span class="string">&quot; &gt;&gt; &quot;</span>dllinfo-%date:~0,4%-%date:~5,2%-%date:~8,2%.txt<span class="string">&quot;</span></span><br><span class="line"><span class="string">)</span></span><br><span class="line"><span class="string">echo 获取完成</span></span><br><span class="line"><span class="string">rem pause</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这种方式用起来还存在问题</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> EXE=<span class="string">&#x27;.\xxx.exe&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>  exist .\info.txt (</span><br><span class="line">	del .\info.txt</span><br><span class="line">) </span><br><span class="line">rem <span class="built_in">echo</span> var =  文件名</span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).Name&quot;</span> &gt;&gt;%var%info.txt</span><br><span class="line"></span><br><span class="line">rem <span class="built_in">echo</span> 文件说明&gt;&gt;.\info.txt </span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).VersionInfo.FileDescription&quot;</span> &gt;&gt; info.txt</span><br><span class="line"></span><br><span class="line">rem <span class="built_in">echo</span> 件版本&gt;&gt;.\info.txt</span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).VersionInfo.FileVersion&quot;</span> &gt;&gt; info.txt</span><br><span class="line"></span><br><span class="line">rem <span class="built_in">echo</span> 产品名称&gt;&gt;.\info.txt</span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).VersionInfo.ProductName&quot;</span> &gt;&gt; info.txt</span><br><span class="line"></span><br><span class="line">rem <span class="built_in">echo</span> 产品版本&gt;&gt;.\info.txt</span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).VersionInfo.ProductVersion&quot;</span> &gt;&gt; info.txt</span><br><span class="line"></span><br><span class="line">rem <span class="built_in">echo</span> 公司名字&gt;&gt;</span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).VersionInfo.CompanyName&quot;</span> &gt;&gt; info.txt</span><br><span class="line"></span><br><span class="line">rem <span class="built_in">echo</span> 版权信息&gt;&gt;</span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).VersionInfo.LegalCopyright&quot;</span> &gt;&gt; info.txt</span><br><span class="line"></span><br><span class="line">rem <span class="built_in">echo</span> 大小&gt;&gt;.\info.txt </span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).Length&quot;</span> &gt;&gt; info.txt</span><br><span class="line"></span><br><span class="line">rem <span class="built_in">echo</span> 语言&gt;&gt;.\info.txt </span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).VersionInfo.Language&quot;</span> &gt;&gt; info.txt</span><br><span class="line"></span><br><span class="line">rem <span class="built_in">echo</span> 原始文件名&gt;&gt;.\info.txt </span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).VersionInfo.OriginalFileName&quot;</span> &gt;&gt; info.txt</span><br><span class="line"></span><br><span class="line">rem <span class="built_in">echo</span> 创建时间&gt;&gt;.\info.txt </span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).CreationTime&quot;</span> &gt;&gt; info.txt</span><br><span class="line">rem <span class="built_in">echo</span> 修改时间&gt;&gt;.\info.txt</span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).LastWriteTime&quot;</span> &gt;&gt; info.txt</span><br><span class="line">rem <span class="built_in">echo</span> 访问时间&gt;&gt;.\info.txt</span><br><span class="line">powershell <span class="string">&quot;(Get-Item -path %EXE%).LastAccessTime&quot;</span> &gt;&gt; info.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="Git-提交脚本"><a href="#Git-提交脚本" class="headerlink" title="Git 提交脚本"></a>Git 提交脚本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> Git Commit提交脚本</span><br><span class="line">choice /C 12 /T 5 /D 1 /M <span class="string">&quot;1、日常提交（默认）2、添加提交信息&quot;</span></span><br><span class="line">:: 选项需要从大到小</span><br><span class="line"><span class="keyword">if</span> errorlevel 2 (<span class="built_in">set</span> /p commit_msg=请输入Commit提交信息:</span><br><span class="line">goto git_commit)</span><br><span class="line"><span class="keyword">if</span> errorlevel 1 (<span class="built_in">set</span> commit_msg=%COMPUTERNAME%_%USERNAME%-%date:~0,4%%date:~5,2%%date:~8,2%</span><br><span class="line">goto git_commit)</span><br><span class="line">:git_commit</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -am<span class="string">&quot;%message%&quot;</span></span><br><span class="line"><span class="built_in">set</span> /p result=是否需要提交到远程仓库？Y/N </span><br><span class="line">:: /i 不区分大小写</span><br><span class="line"><span class="keyword">if</span> /i “%result%”==“Y” (git push gitee main)</span><br><span class="line">::pause</span><br></pre></td></tr></table></figure>
+
+<h4 id="系统任务进程处理"><a href="#系统任务进程处理" class="headerlink" title="系统任务进程处理"></a>系统任务进程处理</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出加载了 xxx_api.dll 的所有任务 格式控制为csv</span></span><br><span class="line">tasklist /m xxx_api.dll /fo csv</span><br><span class="line"><span class="comment"># 格式控制输出不显示列标题</span></span><br><span class="line">tasklist /m xxx_api.dll /fo csv /nh</span><br><span class="line"><span class="comment"># 列出程序名等于XXX.exe的所有任务 格式控制输出不显示列标题</span></span><br><span class="line">tasklist /<span class="keyword">fi</span> <span class="string">&quot;IMAGENAME eq XXX.exe&quot;</span> /fo csv  /nh</span><br><span class="line"><span class="comment"># 列出程序名等于XXX.exe的所有任务</span></span><br><span class="line">tasklist /fo csv /nh /<span class="keyword">fi</span> <span class="string">&quot;IMAGENAME eq XXX.exe&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows-server/administration/windows-commands/tasklist">tasklist | Microsoft Learn</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows-server/administration/windows-commands/taskkill">taskkill | Microsoft Learn</a></p>
+<h4 id="Netsh-命令"><a href="#Netsh-命令" class="headerlink" title="Netsh 命令"></a>Netsh 命令</h4><p>Network shell (netsh) 是一种命令行实用工具，使用该工具，你可以在运行 Windows Server 的计算机上安装网络通信服务器组件之后配置和显示各种网络通信服务器角色和组件的状态。</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754516(v=ws.10)">netsh command 参考</a></p>
+<h4 id="route命令"><a href="#route命令" class="headerlink" title="route命令"></a>route命令</h4><p>显示和修改本地 IP 路由表中的项</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows-server/administration/windows-commands/route_ws2008">https://learn.microsoft.com/zh-cn/windows-server/administration/windows-commands/route_ws2008</a></p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><ul>
+<li>中文乱码请使用 ASCII编码</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/12/Alist-RaiDrivce/" rel="prev" title="Alist+RaiDrivce">
+                  <i class="fa fa-chevron-left"></i> Alist+RaiDrivce
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/12/DMCA%E5%8A%9F%E8%83%BD%E7%BA%AA%E8%A6%81/" rel="next" title="DMCA功能纪要">
+                  DMCA功能纪要 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lemon-truffle</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">115k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:45</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+<!--显示运行时间-->
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/03/2021 15:41:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/js/custom_js/click_show_love.js"></script>
+
+
+<!--单击显示文字-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/click_show_text.js"></script>
+
+
+<!--点击爆炸效果  -->
+
+<canvas class="click_fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/custom_js/click_fireworks.js"></script>
+
+
+<!--显示恶搞标题-->
+
+<script type="text/javascript" src="/js/custom_js/funny_title.js"></script>
+
+
+<!--显示雪花效果-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/show_snow1.js"></script>
+
+
+
+
+<!-- 数字雨 -->
+
+<canvas id="canvas" width="1440" height="900" ></canvas>
+<script type="text/javascript" src="/js/custom_js/show_code_rain.js"></script>
+
+
+</body>
+</html>

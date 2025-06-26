@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lemon-truffle.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Python  Learningnumbertype（） #数据类型 msg1&#x3D;’hello world’">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python09">
+<meta property="og:url" content="https://lemon-truffle.github.io/2019/10/14/python09/index.html">
+<meta property="og:site_name" content="柠檬野生菌">
+<meta property="og:description" content="Python  Learningnumbertype（） #数据类型 msg1&#x3D;’hello world’">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-14T02:01:03.000Z">
+<meta property="article:modified_time" content="2023-10-05T02:38:30.183Z">
+<meta property="article:author" content="lemon-truffle">
+<meta property="article:tag" content="Note">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lemon-truffle.github.io/2019/10/14/python09/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lemon-truffle.github.io/2019/10/14/python09/","path":"2019/10/14/python09/","title":"python09"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>python09 | 柠檬野生菌</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">柠檬野生菌</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-Learning"><span class="nav-number">1.</span> <span class="nav-text">Python  Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#number"><span class="nav-number">1.0.1.</span> <span class="nav-text">number</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#str"><span class="nav-number">1.1.</span> <span class="nav-text">str</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list"><span class="nav-number">1.2.</span> <span class="nav-text">list</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#list-%E7%9B%B8%E5%8A%A0"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">list 相加</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">1.3.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.0.0.0.1.</span> <span class="nav-text">添加元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set-%E8%BF%90%E7%AE%97"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">set 运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%BB%84"><span class="nav-number">1.4.</span> <span class="nav-text">元组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%85%E6%9C%891%E4%B8%AA%E5%85%83%E7%B4%A0%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">1.4.0.0.1.</span> <span class="nav-text">仅有1个元素的创建</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tuple%E5%85%B6%E5%AE%9E%E4%B9%9F%E6%98%AF%E2%80%98%E5%8F%AF%E5%8F%98%E2%80%99%E7%9A%84"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">tuple其实也是‘可变’的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="nav-number">1.4.1.</span> <span class="nav-text">其他操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E4%B8%8E%E5%88%97%E8%A1%A8%E7%B1%BB%E4%BC%BC%E3%80%82%E6%AF%94%E5%A6%82%E9%80%9A%E8%BF%87%E7%B4%A2%E5%BC%95%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%EF%BC%8C%E5%88%87%E7%89%87"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">1、与列表类似。比如通过索引获取元素，切片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%83%E7%BB%84%E6%8B%BC%E6%8E%A5"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">元组拼接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">循环获取元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8"><span class="nav-number">1.5.</span> <span class="nav-text">字典</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%AD%97%E5%85%B8%E7%9A%84%E5%80%BC"><span class="nav-number">1.5.0.0.1.</span> <span class="nav-text">修改字典的值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%AD%97%E5%85%B8"><span class="nav-number">1.5.0.0.2.</span> <span class="nav-text">删除字典</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E5%90%88%E5%B9%B6"><span class="nav-number">1.5.0.0.3.</span> <span class="nav-text">字典合并</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%94%A8%E6%B3%95"><span class="nav-number">1.5.0.0.4.</span> <span class="nav-text">其他用法</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lemon-truffle"
+      src="/uploads/custom-logo.jpg">
+  <p class="site-author-name" itemprop="name">lemon-truffle</p>
+  <div class="site-description" itemprop="description">柠檬野生菌的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/lemon_fungus" title="GitHub → https:&#x2F;&#x2F;gitee.com&#x2F;lemon_fungus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-truffle.github.io/2019/10/14/python09/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/custom-logo.jpg">
+      <meta itemprop="name" content="lemon-truffle">
+      <meta itemprop="description" content="柠檬野生菌的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柠檬野生菌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python09
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-10-14 10:01:03" itemprop="dateCreated datePublished" datetime="2019-10-14T10:01:03+08:00">2019-10-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2023-10-05 10:38:30" itemprop="dateModified" datetime="2023-10-05T10:38:30+08:00">2023-10-05</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Python-Learning"><a href="#Python-Learning" class="headerlink" title="Python  Learning"></a>Python  Learning</h1><h3 id="number"><a href="#number" class="headerlink" title="number"></a>number</h3><p>type（） #数据类型</p>
+<p>msg1&#x3D;’hello world’</p>
+ <span id="more"></span>
+
+<blockquote>
+<p>为什么0. + 0.1 和 0.2 + 0.7 怎么和我们想要的结果不一样？<br>这是因为我们生活中使用的数字都是十进制，在计算机计算的时候会自动转换成<br>二进制的形式(即0和1)， 0.1不会无限循环，而0.2则会变成无线循环的数。运算<br>完成之后再转换成十进制时会对尾部的小数进行截取处理。所以导致了精度的差<br>异，这个在其他语言也是存在的 并不是bug<br>如何解决呢 可以借助Python的Decimal来处理这一问题 </p>
+</blockquote>
+<h2 id="str"><a href="#str" class="headerlink" title="str"></a>str</h2><p>print(‘%s %s’ %(msg1,msg2))</p>
+<p> print(‘{}{}’.format(msg1,msg2)</p>
+<p>print(a + ‘ ‘ + b) # 如 果 多 个 字 符 串 + 号 拼 接 ， 会 创 建 多 个 对 象 ，<br>print(a, b)<br>print(‘%s %s’ % (a, b)) # 推 荐 ， 效 率 高<br>print(‘Hello’’ World’)<br>print(‘{} {}’.format(a, b)) # 推 荐 ， 效 率 高<br>print(‘ ‘.join([‘Hello’, ‘World’])) </p>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><blockquote>
+<p>list &#x3D; [‘f’, ‘e’, ‘a’, ‘d’, ‘b’, ‘w’, ‘c’]         可重复元素</p>
+</blockquote>
+<p>list[0] &#x3D; ‘f’  获取元素</p>
+<p> list.append(‘q’)    list 末尾添加元素</p>
+<p>list.insert(0,’wang’)  指定位置(不可省缺)添加元素     </p>
+<p> del   list[0]   删除指定元素</p>
+<p>del  list  删除整个list</p>
+<p>list.pop()   弹出指定元素 默认-1 （最后一个）</p>
+<p>len(list)    返回list长度</p>
+<p>‘a’ in list  查询元素是否在list中   是  True   否  F alse</p>
+<p>list  分片&#x2F;截取</p>
+<p>list[初始索引：终止索引：步长]的方式去完成。步长默认是1 </p>
+<p>list[0:6:2]</p>
+<blockquote>
+<p>list[num:] 表示从num位开始一直到最后，包括num位<br>list[:num] 从起始位置开始，到num位结束，不包括第num位<br>list[num: -1] 表示从num为开始，一直到最后一个，不包括最后一个<br>list[:] 等同于list返回全部<br>list[::-1] 表示num1到num2倒叙排列，如果[::-1]表示全部倒序 </p>
+</blockquote>
+<h4 id="list-相加"><a href="#list-相加" class="headerlink" title="list 相加"></a>list 相加</h4><p>list1 +  list2        产生一个新list     list1，list2不变</p>
+<p>list1.extend(list2)   拼接元素    不会产生新的对象   拼接结果在list1中  list2 不变 </p>
+<p>list.count(‘a’)      统计相同元素个数 </p>
+<p>list.sort()     list 排序   默认升序</p>
+<p>list.sort(reverse&#x3D;True)    降序</p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>集合中的元素不可以重复！！ </p>
+<p>创建set </p>
+<p>name &#x3D; set()     空集  不能用 {}  </p>
+<p>非空集合创建</p>
+<blockquote>
+<p>name &#x3D; {‘tom’, ‘lily’, ‘lucy’} </p>
+</blockquote>
+<blockquote>
+<p>name &#x3D; set([‘tom’, ‘lily’, ‘lucy’]) </p>
+</blockquote>
+<h6 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h6><p>name.add(‘wang’)</p>
+<p>a.update({‘z’, ‘x’}) </p>
+<p>a.update([‘j’,’k’]) </p>
+<p>a.remove(‘b’)    移除</p>
+<p>discard(元素),和remove的区别在于当删除不存在的元素则不会报错 </p>
+<p>a.discard(‘a’) </p>
+<p>a.pop()   集合中随机弹出   不能弹出指定元素</p>
+<h4 id="set-运算"><a href="#set-运算" class="headerlink" title="set 运算"></a>set 运算</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt; &gt; set1 = &#123;&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;&#125;</span><br><span class="line">&gt; &gt; &gt; set2 = &#123;&#x27;a&#x27;, &#x27;d&#x27;, &#x27;z&#x27;, &#x27;x&#x27;&#125;</span><br><span class="line">&gt; &gt; &gt; 在 集 合 set1 而 不 在 set2 中 的 元 素</span><br><span class="line"></span><br><span class="line">&gt; &gt; &gt; set1 - set2</span><br><span class="line">&gt; &gt; &gt; &#123;&#x27;b&#x27;, &#x27;c&#x27;&#125;</span><br><span class="line">&gt; &gt; &gt; set1 和 set2 的 所 有 元 素 ， 合 集</span><br><span class="line"></span><br><span class="line">&gt; &gt; &gt; set1 | set2</span><br><span class="line">&gt; &gt; &gt; &#123;&#x27;d&#x27;, &#x27;a&#x27;, &#x27;x&#x27;, &#x27;c&#x27;, &#x27;z&#x27;, &#x27;b&#x27;&#125;</span><br><span class="line">&gt; &gt; &gt; 不 同 时 在 set1 和 set2 的 元 素</span><br><span class="line"></span><br><span class="line">&gt; &gt; &gt; set1 ^ set2</span><br><span class="line">&gt; &gt; &gt; &#123;&#x27;x&#x27;, &#x27;c&#x27;, &#x27;z&#x27;, &#x27;b&#x27;&#125;</span><br><span class="line">&gt; &gt; &gt; 同 时 在 set1 和 set2 的 元 素 , 交 集</span><br><span class="line"></span><br><span class="line">&gt; &gt; &gt; set1 &amp; set2</span><br><span class="line">&gt; &gt; &gt; &#123;&#x27;d&#x27;, &#x27;a&#x27;&#125; </span><br></pre></td></tr></table></figure>
+
+<p>交 集</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt; &gt; set1.intersection(set2)</span><br><span class="line">&gt; &gt; &gt; &#123;&#x27;d&#x27;, &#x27;a&#x27;&#125;</span><br><span class="line">&gt; &gt; &gt; 合 集</span><br><span class="line"></span><br><span class="line">&gt; &gt; &gt; set1.union(set2)</span><br><span class="line">&gt; &gt; &gt; &#123;&#x27;d&#x27;, &#x27;a&#x27;, &#x27;x&#x27;, &#x27;c&#x27;, &#x27;z&#x27;, &#x27;b&#x27;&#125;</span><br><span class="line">&gt; &gt; &gt; 差 集</span><br><span class="line"></span><br><span class="line">&gt; &gt; &gt; set1.difference(set2)</span><br><span class="line">&gt; &gt; &gt; &#123;&#x27;b&#x27;, &#x27;c&#x27;&#125; </span><br></pre></td></tr></table></figure>
+
+<p>a.clear()   清空集合</p>
+<p>获取集合的长度，判断元素是否在集合中与上面的列表方法一样。 </p>
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>元组和列表基本类似，区别在于元组一旦创建就不能再修改。所以它没有新增修改<br>的方法。这样做能够使数据更安全，如果可以尽量使用tuple(元组) </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tuple = (&#x27;a&#x27;,&#x27;b&#x27;)</span><br><span class="line">type(tuple)</span><br><span class="line">&lt;class &#x27;tuple&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="仅有1个元素的创建"><a href="#仅有1个元素的创建" class="headerlink" title="仅有1个元素的创建"></a>仅有1个元素的创建</h5><p>只有一个元素创建元组的时候也需要加上逗号， </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; t = (1,)</span><br><span class="line"></span><br><span class="line">&gt; type(t)</span><br><span class="line">&gt; &lt;class &#x27;tuple&#x27; </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="tuple其实也是‘可变’的"><a href="#tuple其实也是‘可变’的" class="headerlink" title="tuple其实也是‘可变’的"></a>tuple其实也是‘可变’的</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">list</span><br><span class="line">[&#x27;e&#x27;, &#x27;a&#x27;, &#x27;d&#x27;, &#x27;b&#x27;, &#x27;w&#x27;, &#x27;c&#x27;]</span><br><span class="line">t</span><br><span class="line">&#x27;a&#x27;</span><br><span class="line">t=(&#x27;a&#x27;,list)</span><br><span class="line">t</span><br><span class="line">(&#x27;a&#x27;, [&#x27;e&#x27;, &#x27;a&#x27;, &#x27;d&#x27;, &#x27;b&#x27;, &#x27;w&#x27;, &#x27;c&#x27;])</span><br><span class="line">list[0]=&#x27;wang&#x27;</span><br><span class="line">t</span><br><span class="line">(&#x27;a&#x27;, [&#x27;wang&#x27;, &#x27;a&#x27;, &#x27;d&#x27;, &#x27;b&#x27;, &#x27;w&#x27;, &#x27;c&#x27;])</span><br></pre></td></tr></table></figure>
+
+<p>tuple不可修改，其实指的是它的引用是不可改变，在上面的过程中tuple最后一<br>个元素的引用始终指向的是list，并没有改变。改变的只是list的值 </p>
+<h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3><h4 id="1、与列表类似。比如通过索引获取元素，切片"><a href="#1、与列表类似。比如通过索引获取元素，切片" class="headerlink" title="1、与列表类似。比如通过索引获取元素，切片"></a>1、与列表类似。比如通过索引获取元素，切片</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; t = (&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;a&#x27;)</span><br><span class="line">&gt; t</span><br><span class="line">&gt; (&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;a&#x27;)</span><br><span class="line">&gt; t[2]</span><br><span class="line">&gt; &#x27;c&#x27;</span><br><span class="line">&gt; t[-3]</span><br><span class="line">&gt; &#x27;d&#x27;</span><br><span class="line">&gt; t[1: 2]</span><br><span class="line">&gt; (&#x27;b&#x27;,) </span><br><span class="line"></span><br><span class="line">&gt; t[1: 5]</span><br><span class="line">&gt; (&#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;)</span><br><span class="line"></span><br><span class="line">&gt; t[5:1: -1]</span><br><span class="line">&gt; (&#x27;a&#x27;, &#x27;e&#x27;, &#x27;d&#x27;, &#x27;c&#x27;) **</span><br></pre></td></tr></table></figure>
+
+<h4 id="元组拼接"><a href="#元组拼接" class="headerlink" title="元组拼接"></a>元组拼接</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">t1 = (&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;)</span><br><span class="line">t2 = (&#x27;m&#x27;, &#x27;n&#x27;, &#x27;v&#x27;)</span><br><span class="line">t1 + t2</span><br><span class="line">(&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;m&#x27;, &#x27;n&#x27;, &#x27;v&#x27;)</span><br><span class="line">t1 * 3</span><br><span class="line">(&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;) </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="循环获取元素"><a href="#循环获取元素" class="headerlink" title="循环获取元素"></a>循环获取元素</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">t = (&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;a&#x27;)</span><br><span class="line">for i in t:</span><br><span class="line">... print(i)</span><br><span class="line">...</span><br><span class="line">a</span><br><span class="line"></span><br><span class="line">b</span><br><span class="line"></span><br><span class="line">c</span><br><span class="line"></span><br><span class="line">d</span><br><span class="line"></span><br><span class="line">e</span><br><span class="line"></span><br><span class="line">a </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>dict(字典) </p>
+<p>{‘键’: ‘值’， ‘键’: ‘值’， ‘键’: ‘值’} </p>
+<p>dict1 &#x3D; {}   创建空字典</p>
+<p>dict2 &#x3D; {‘name’: ‘xiaoming’, ‘age’: 18} </p>
+<h5 id="修改字典的值"><a href="#修改字典的值" class="headerlink" title="修改字典的值"></a>修改字典的值</h5><p>一 个 key 只 能 对 应 一 个 value ， 当 再 次 给 某 个 key 赋 值 的 时 候 回 覆 盖 掉 旧 值 ，<br>所以可以理解为键是唯一的，但是值并不是，而且值可以是任何一种数据类型。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dict2 = &#123;&#x27;name&#x27;: &#x27;xiaoming&#x27;, &#x27;age&#x27;: 18&#125;</span><br><span class="line">dict2[&#x27;name&#x27;]</span><br><span class="line">&#x27;xiaoming&#x27;</span><br><span class="line">dict2[&#x27;name&#x27;] = &#x27;lily&#x27;</span><br><span class="line">dict2</span><br><span class="line">&#123;&#x27;name&#x27;: &#x27;lily&#x27;, &#x27;age&#x27;: 18&#125; </span><br></pre></td></tr></table></figure>
+
+<p>新增字典的值   （跟修改写法一致 ）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dict2 = &#123;&#x27;name&#x27;: &#x27;xiaoming&#x27;, &#x27;age&#x27;: 18&#125;</span><br><span class="line">dict2[&#x27;sex&#x27;] = 1</span><br><span class="line">dict2 &#123;&#x27;name&#x27;: &#x27;xiaoming&#x27;, &#x27;age&#x27;: 18, &#x27;sex&#x27;: 1&#125; </span><br></pre></td></tr></table></figure>
+
+<h5 id="删除字典"><a href="#删除字典" class="headerlink" title="删除字典"></a>删除字典</h5><p>del和pop(删除并返回) </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dict2 = &#123;&#x27;name&#x27;: &#x27;xiaoming&#x27;, &#x27;age&#x27;: 18&#125;</span><br><span class="line">del dict2[&#x27;name&#x27;]</span><br><span class="line">dict2</span><br><span class="line">&#123;&#x27;age&#x27;: 18&#125;</span><br><span class="line">dict2 = &#123;&#x27;name&#x27;: &#x27;xiaoming&#x27;, &#x27;age&#x27;: 18&#125;</span><br><span class="line">dict2.pop(&#x27;name&#x27;)</span><br><span class="line">&#x27;xiaoming&#x27;</span><br><span class="line">dict2</span><br><span class="line">&#123;&#x27;age&#x27;: 18&#125; </span><br></pre></td></tr></table></figure>
+
+<h5 id="字典合并"><a href="#字典合并" class="headerlink" title="字典合并"></a>字典合并</h5><p>两个字典通过update的方法进行合并 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dict1 = &#123;&#x27;A&#x27;: &#x27;a&#x27;, &#x27;B&#x27;: &#x27;b&#x27;&#125;</span><br><span class="line">dict2 = &#123;&#x27;M&#x27;: &#x27;m&#x27;, &#x27;N&#x27;: &#x27;n&#x27;&#125; </span><br><span class="line"></span><br><span class="line">将 dict2 合 并 到 dict1</span><br><span class="line"></span><br><span class="line">dict1.update(dict2)</span><br><span class="line">dict1</span><br><span class="line">&#123;&#x27;A&#x27;: &#x27;a&#x27;, &#x27;B&#x27;: &#x27;b&#x27;, &#x27;M&#x27;: &#x27;m&#x27;, &#x27;N&#x27;: &#x27;n&#x27;&#125; </span><br></pre></td></tr></table></figure>
+
+<h5 id="其他用法"><a href="#其他用法" class="headerlink" title="其他用法"></a>其他用法</h5><p>1、 获取字典的所有key </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dict2 = &#123;&#x27;name&#x27;: &#x27;xiaoming&#x27;, &#x27;age&#x27;: 18&#125;</span><br><span class="line">dict2.keys()</span><br><span class="line">dict_keys([&#x27;name&#x27;, &#x27;age&#x27;]) </span><br></pre></td></tr></table></figure>
+
+<p>2、返回字典的所有value </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dict2 = &#123;&#x27;name&#x27;: &#x27;xiaoming&#x27;, &#x27;age&#x27;: 18&#125;</span><br><span class="line">dict2.values()</span><br><span class="line">dict_values([&#x27;xiaoming&#x27;, 18]) </span><br></pre></td></tr></table></figure>
+
+<p>3、返回字典的所有键和值 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dict2 = &#123;&#x27;name&#x27;: &#x27;xiaoming&#x27;, &#x27;age&#x27;: 18&#125;</span><br><span class="line">dict2.items()</span><br><span class="line">dict_items([(&#x27;name&#x27;, &#x27;xiaoming&#x27;), (&#x27;age&#x27;, 18)]) </span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Note/" rel="tag"># Note</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/07/17/esp8266%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" rel="prev" title="ESP8266_Learning快速上手">
+                  <i class="fa fa-chevron-left"></i> ESP8266_Learning快速上手
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/31/Hexo+git%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" rel="next" title="Hexo + git 安装使用">
+                  Hexo + git 安装使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lemon-truffle</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">115k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:45</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+<!--显示运行时间-->
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/03/2021 15:41:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/js/custom_js/click_show_love.js"></script>
+
+
+<!--单击显示文字-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/click_show_text.js"></script>
+
+
+<!--点击爆炸效果  -->
+
+<canvas class="click_fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/custom_js/click_fireworks.js"></script>
+
+
+<!--显示恶搞标题-->
+
+<script type="text/javascript" src="/js/custom_js/funny_title.js"></script>
+
+
+<!--显示雪花效果-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/show_snow1.js"></script>
+
+
+
+
+<!-- 数字雨 -->
+
+<canvas id="canvas" width="1440" height="900" ></canvas>
+<script type="text/javascript" src="/js/custom_js/show_code_rain.js"></script>
+
+
+</body>
+</html>

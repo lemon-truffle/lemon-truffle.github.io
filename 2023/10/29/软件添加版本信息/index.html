@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lemon-truffle.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="软件添加版本信息[TOC] 说明：  这里说的版本信息是右键软件可以在信息信息中看到的相信 这些都只是在Windows中的效果 window中基本上都是通过添加资源文件.rc实现的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件添加版本信息">
+<meta property="og:url" content="https://lemon-truffle.github.io/2023/10/29/%E8%BD%AF%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF/index.html">
+<meta property="og:site_name" content="柠檬野生菌">
+<meta property="og:description" content="软件添加版本信息[TOC] 说明：  这里说的版本信息是右键软件可以在信息信息中看到的相信 这些都只是在Windows中的效果 window中基本上都是通过添加资源文件.rc实现的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lemon-truffle.github.io/2023/10/29/%E8%BD%AF%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF/image-20231023174012331.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2023/10/29/%E8%BD%AF%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF/image-20231023174051066.png">
+<meta property="article:published_time" content="2023-10-29T10:13:12.000Z">
+<meta property="article:modified_time" content="2024-05-01T14:43:59.689Z">
+<meta property="article:author" content="lemon-truffle">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lemon-truffle.github.io/2023/10/29/%E8%BD%AF%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF/image-20231023174012331.png">
+
+
+<link rel="canonical" href="https://lemon-truffle.github.io/2023/10/29/%E8%BD%AF%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lemon-truffle.github.io/2023/10/29/%E8%BD%AF%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF/","path":"2023/10/29/软件添加版本信息/","title":"软件添加版本信息"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>软件添加版本信息 | 柠檬野生菌</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">柠檬野生菌</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">软件添加版本信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VS%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.</span> <span class="nav-text">VS添加版本信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">添加资源文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E5%AE%9A%E4%B9%89%E5%A4%B4"><span class="nav-number">1.1.2.</span> <span class="nav-text">添加版本定义头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E7%89%88%E6%9C%AC"><span class="nav-number">1.1.3.</span> <span class="nav-text">自动更新版本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%89%B9%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">添加批处理脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%94%9F%E6%88%90%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">设置生成事件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.</span> <span class="nav-text">Qt添加版本信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">添加资源文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E4%BF%AE%E6%94%B9"><span class="nav-number">1.2.2.</span> <span class="nav-text">文件信息修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E7%89%88%E6%9C%AC-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">自动更新版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-number">1.3.</span> <span class="nav-text">CMake添加版本信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">添加资源文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E7%89%88%E6%9C%AC-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">自动更新版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lemon-truffle"
+      src="/uploads/custom-logo.jpg">
+  <p class="site-author-name" itemprop="name">lemon-truffle</p>
+  <div class="site-description" itemprop="description">柠檬野生菌的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/lemon_fungus" title="GitHub → https:&#x2F;&#x2F;gitee.com&#x2F;lemon_fungus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-truffle.github.io/2023/10/29/%E8%BD%AF%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/custom-logo.jpg">
+      <meta itemprop="name" content="lemon-truffle">
+      <meta itemprop="description" content="柠檬野生菌的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柠檬野生菌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件添加版本信息
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-29 18:13:12" itemprop="dateCreated datePublished" datetime="2023-10-29T18:13:12+08:00">2023-10-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2024-05-01 22:43:59" itemprop="dateModified" datetime="2024-05-01T22:43:59+08:00">2024-05-01</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="软件添加版本信息"><a href="#软件添加版本信息" class="headerlink" title="软件添加版本信息"></a>软件添加版本信息</h1><p>[TOC]</p>
+<p>说明：</p>
+<ul>
+<li>这里说的版本信息是右键软件可以在信息信息中看到的相信</li>
+<li>这些都只是在Windows中的效果</li>
+<li>window中基本上都是通过添加资源文件.rc实现的</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="VS添加版本信息"><a href="#VS添加版本信息" class="headerlink" title="VS添加版本信息"></a>VS添加版本信息</h2><ul>
+<li>测试环境：Vs2015</li>
+</ul>
+<h3 id="添加资源文件"><a href="#添加资源文件" class="headerlink" title="添加资源文件"></a>添加资源文件</h3><ul>
+<li>右键项目 -&gt; 添加 -&gt; 资源 -&gt; 选择Version -&gt; 新建</li>
+</ul>
+<p><img src="/2023/10/29/%E8%BD%AF%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF/image-20231023174012331.png" alt="image-20231023174012331"></p>
+<p><img src="/2023/10/29/%E8%BD%AF%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF/image-20231023174051066.png" alt="image-20231023174051066"></p>
+<h3 id="添加版本定义头"><a href="#添加版本定义头" class="headerlink" title="添加版本定义头"></a>添加版本定义头</h3><ul>
+<li>version.h</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _VAR2STR(s)			#s</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VAR2STR(s)			_VAR2STR(s)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VER_MAJOR			1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VER_MINOR			0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VER_REVISION		0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VER_BUILD			1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VERSION				VER_MAJOR.VER_MINOR.VER_REVISION.VER_BUILD</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VERSION_RC			VER_MAJOR,VER_MINOR,VER_REVISION,VER_BUILD</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STR_VERSION			VAR2STR(VERSION)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STR_VERSION_RC		STR_VERSION</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COMPILE_TIME		__DATE__ <span class="meta-string">&quot; &quot;</span> __TIME__</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE_VERSION		STR_VERSION_RC</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE_DESCRIPTION	<span class="meta-string">&quot;VS 自动修改软件版本号测试&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COMPANY				<span class="meta-string">&quot;搞不懂软件工作室&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PRODUCTNAME			<span class="meta-string">&quot;自动版本号测试软件&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SOFTWARENAME		<span class="meta-string">&quot;SoftwareVerioon.exe&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COPYRIGHT			<span class="meta-string">&quot;Copyright (C) 2022-2023&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改资源文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;version.h&quot;</span><br><span class="line"></span><br><span class="line">/////////////////////////////////////////////////////////////////////////////</span><br><span class="line">//</span><br><span class="line">// Version</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">VS_VERSION_INFO VERSIONINFO</span><br><span class="line"> FILEVERSION VERSION_RC</span><br><span class="line"> PRODUCTVERSION VERSION_RC</span><br><span class="line"> FILEFLAGSMASK 0x3fL</span><br><span class="line">#ifdef _DEBUG</span><br><span class="line"> FILEFLAGS 0x1L</span><br><span class="line">#else</span><br><span class="line"> FILEFLAGS 0x0L</span><br><span class="line">#endif</span><br><span class="line"> FILEOS 0x40004L</span><br><span class="line"> FILETYPE 0x1L</span><br><span class="line"> FILESUBTYPE 0x0L</span><br><span class="line">BEGIN</span><br><span class="line">    BLOCK &quot;StringFileInfo&quot;</span><br><span class="line">    BEGIN</span><br><span class="line">        BLOCK &quot;080404b0&quot;</span><br><span class="line">        BEGIN</span><br><span class="line">            VALUE &quot;CompanyName&quot;, COMPANY</span><br><span class="line">            VALUE &quot;FileDescription&quot;, FILE_DESCRIPTION</span><br><span class="line">            VALUE &quot;FileVersion&quot;, FILE_VERSION</span><br><span class="line">            VALUE &quot;InternalName&quot;, SOFTWARENAME</span><br><span class="line">            VALUE &quot;LegalCopyright&quot;, COPYRIGHT</span><br><span class="line">            VALUE &quot;OriginalFilename&quot;, SOFTWARENAME</span><br><span class="line">            VALUE &quot;ProductName&quot;, PRODUCTNAME</span><br><span class="line">            VALUE &quot;ProductVersion&quot;, STR_VERSION_RC</span><br><span class="line">        END</span><br><span class="line">    END</span><br><span class="line">    BLOCK &quot;VarFileInfo&quot;</span><br><span class="line">    BEGIN</span><br><span class="line">        VALUE &quot;Translation&quot;, 0x804, 1200</span><br><span class="line">    END</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line">#endif    // 中文(简体，中国) resources</span><br><span class="line">/////////////////////////////////////////////////////////////////////////////</span><br></pre></td></tr></table></figure>
+
+<h3 id="自动更新版本"><a href="#自动更新版本" class="headerlink" title="自动更新版本"></a>自动更新版本</h3><h4 id="添加批处理脚本"><a href="#添加批处理脚本" class="headerlink" title="添加批处理脚本"></a>添加批处理脚本</h4><ul>
+<li>使用批处理脚本完成版本号增加的工作</li>
+</ul>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="设置生成事件"><a href="#设置生成事件" class="headerlink" title="设置生成事件"></a>设置生成事件</h4><ul>
+<li>右键项目 -&gt; 配置属性 -&gt; 生成事件 -&gt; 后期生成事件 -&gt; 命令行 -&gt; 添加命令</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Qt添加版本信息"><a href="#Qt添加版本信息" class="headerlink" title="Qt添加版本信息"></a>Qt添加版本信息</h2><ul>
+<li>测试环境：Qt5.12.10、Qt5.15.2</li>
+</ul>
+<h3 id="添加资源文件-1"><a href="#添加资源文件-1" class="headerlink" title="添加资源文件"></a>添加资源文件</h3><ul>
+<li><p>只需要在.pro中添加VERSION qmake便会自动生成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VERSION = 1.0.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>但是如果修改资源文件每次重新构建时会重新生成一个资源文件覆盖掉以前的</p>
+</li>
+<li><p>给出的建议是先让qmake自动生成然后，将修改好的拷贝到源文件，并在pro中添加资源文件</p>
+</li>
+<li><p>这样做的目的是让qmake生成一个模板，当然如果已经有可直接添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RC_FILE += $PWD/xxx.rc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果使用RC_ICON添加应用图标可能会失效，推荐在RC文件中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 之前使用 RC_ICONS 添加 图标的方式可能不行</span><br><span class="line">RC_ICONS = xxxx.ico</span><br><span class="line"># 在资源文件中添加</span><br><span class="line">IDI_ICON1 ICON DISCARDABLE &quot;xxxx.ico&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="文件信息修改"><a href="#文件信息修改" class="headerlink" title="文件信息修改"></a>文件信息修改</h3><ul>
+<li>方法是通用的可以直接用vs上面的文件 rc，version.h的定义</li>
+<li>只是需要用上面的方法添加资源文件</li>
+</ul>
+<h3 id="自动更新版本-1"><a href="#自动更新版本-1" class="headerlink" title="自动更新版本"></a>自动更新版本</h3><h2 id="CMake添加版本信息"><a href="#CMake添加版本信息" class="headerlink" title="CMake添加版本信息"></a>CMake添加版本信息</h2><h3 id="添加资源文件-2"><a href="#添加资源文件-2" class="headerlink" title="添加资源文件"></a>添加资源文件</h3><ul>
+<li><p>CMake在Windows平台依然是通过添加资源文件的方式实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set(RC_FILE $&#123;PROJECT_SOURCE_DIR&#125;/xxx.rc)    # 添加资源文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译时将资源文件变量也加入其中</p>
+</li>
+</ul>
+<h3 id="自动更新版本-2"><a href="#自动更新版本-2" class="headerlink" title="自动更新版本"></a>自动更新版本</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/oLuoJinFanHua12/article/details/100655719">VS DLL文件和EXE文件添加文件版本信息-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bugchecker/p/auto-add-version-num-on-each-build-under-visual-studio.html">Visual studio每次build自动增加版本号 - onemuji - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sxsy323/article/details/49488543">个比较实用的VS C++版本号自增的实现方式_vscod 属性增加版本信息-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/windows/working-with-resource-files?view=msvc-170">使用资源文件</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/12/QtCreator+CMake/" rel="prev" title="QtCreator+CMake环境配置">
+                  <i class="fa fa-chevron-left"></i> QtCreator+CMake环境配置
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/29/%E5%BA%93%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/" rel="next" title="库文件的一些操作">
+                  库文件的一些操作 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lemon-truffle</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">115k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:45</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+<!--显示运行时间-->
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/03/2021 15:41:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/js/custom_js/click_show_love.js"></script>
+
+
+<!--单击显示文字-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/click_show_text.js"></script>
+
+
+<!--点击爆炸效果  -->
+
+<canvas class="click_fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/custom_js/click_fireworks.js"></script>
+
+
+<!--显示恶搞标题-->
+
+<script type="text/javascript" src="/js/custom_js/funny_title.js"></script>
+
+
+<!--显示雪花效果-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/show_snow1.js"></script>
+
+
+
+
+<!-- 数字雨 -->
+
+<canvas id="canvas" width="1440" height="900" ></canvas>
+<script type="text/javascript" src="/js/custom_js/show_code_rain.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lemon-truffle.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Qt+CMake应用开发[TOC]  开发环境：  Qt5.15.2 + Qt Creator 12.01  + CMake3.28.0-rc3 + MSVC2015 Qt5.15对CMake的支持非常友好，只需要安装CMake并添加环境就行，基本不需要做过多的配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt+CMake应用开发">
+<meta property="og:url" content="https://lemon-truffle.github.io/2024/03/17/Qt-CMake%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="柠檬野生菌">
+<meta property="og:description" content="Qt+CMake应用开发[TOC]  开发环境：  Qt5.15.2 + Qt Creator 12.01  + CMake3.28.0-rc3 + MSVC2015 Qt5.15对CMake的支持非常友好，只需要安装CMake并添加环境就行，基本不需要做过多的配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-17T05:11:17.000Z">
+<meta property="article:modified_time" content="2024-03-17T05:14:39.943Z">
+<meta property="article:author" content="lemon-truffle">
+<meta property="article:tag" content="CMake">
+<meta property="article:tag" content="Qt">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lemon-truffle.github.io/2024/03/17/Qt-CMake%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lemon-truffle.github.io/2024/03/17/Qt-CMake%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/","path":"2024/03/17/Qt-CMake应用开发/","title":"Qt+CMake应用开发"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Qt+CMake应用开发 | 柠檬野生菌</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">柠檬野生菌</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Qt-CMake%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">Qt+CMake应用开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QtCreator%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.2.</span> <span class="nav-text">QtCreator新建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">添加文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%BA%90%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.1.</span> <span class="nav-text">添加源文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.2.</span> <span class="nav-text">添加资源文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0Qt%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6-qrc"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">添加Qt资源文件 qrc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0Windows-%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6-rc"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">添加Windows 资源文件 rc</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%BF%BB%E8%AF%91%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.3.</span> <span class="nav-text">添加翻译文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%AD%90%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.4.</span> <span class="nav-text">添加子项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lemon-truffle"
+      src="/uploads/custom-logo.jpg">
+  <p class="site-author-name" itemprop="name">lemon-truffle</p>
+  <div class="site-description" itemprop="description">柠檬野生菌的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/lemon_fungus" title="GitHub → https:&#x2F;&#x2F;gitee.com&#x2F;lemon_fungus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-truffle.github.io/2024/03/17/Qt-CMake%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/custom-logo.jpg">
+      <meta itemprop="name" content="lemon-truffle">
+      <meta itemprop="description" content="柠檬野生菌的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柠檬野生菌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Qt+CMake应用开发
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-17 13:11:17 / 修改时间：13:14:39" itemprop="dateCreated datePublished" datetime="2024-03-17T13:11:17+08:00">2024-03-17</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>8.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Qt-CMake应用开发"><a href="#Qt-CMake应用开发" class="headerlink" title="Qt+CMake应用开发"></a>Qt+CMake应用开发</h1><p>[TOC]</p>
+<ul>
+<li><p>开发环境：</p>
+<ul>
+<li>Qt5.15.2 + Qt Creator 12.01  + CMake3.28.0-rc3 + MSVC2015</li>
+<li>Qt5.15对CMake的支持非常友好，只需要安装CMake并添加环境就行，基本不需要做过多的配置</li>
+</ul>
+<span id="more"></span></li>
+</ul>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><ul>
+<li>Qt5.15对CMake的支持非常友好，只需要安装CMake并添加环境就行，基本不需要做过多的配置</li>
+</ul>
+<h2 id="QtCreator新建项目"><a href="#QtCreator新建项目" class="headerlink" title="QtCreator新建项目"></a>QtCreator新建项目</h2><ul>
+<li>新建项目和Qt创建项目时一样，只是在”Define Build System“选择CMake作为构建系统，而不是qmake。</li>
+<li>构建器笔者使用的是MSVC2015，可自行根据需求选择</li>
+<li>创建完成后QtCreator 会自动生成 CMakeLists.txt</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(CmakeTest VERSION <span class="number">0.1</span> LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_AUTOUIC <span class="keyword">ON</span>)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_AUTOMOC <span class="keyword">ON</span>)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_AUTORCC <span class="keyword">ON</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">17</span>)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD_REQUIRED <span class="keyword">ON</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">find_package</span>(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)</span><br><span class="line"><span class="keyword">find_package</span>(Qt<span class="variable">$&#123;QT_VERSION_MAJOR&#125;</span> REQUIRED COMPONENTS Widgets)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(PROJECT_SOURCES</span><br><span class="line">        main.cpp</span><br><span class="line">        mainwindow.cpp</span><br><span class="line">        mainwindow.h</span><br><span class="line">        mainwindow.ui</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$&#123;QT_VERSION_MAJOR&#125;</span> <span class="keyword">GREATER_EQUAL</span> <span class="number">6</span>)</span><br><span class="line">    qt_add_executable(<span class="variable">$&#123;PROJECT_NAME&#125;</span></span><br><span class="line">        MANUAL_FINALIZATION</span><br><span class="line">        <span class="variable">$&#123;PROJECT_SOURCES&#125;</span></span><br><span class="line">    )</span><br><span class="line"><span class="comment"># Define target properties for Android with Qt 6 as:</span></span><br><span class="line"><span class="comment">#    set_property(TARGET $&#123;PROJECT_NAME&#125; APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR</span></span><br><span class="line"><span class="comment">#                 $&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/android)</span></span><br><span class="line"><span class="comment"># For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation</span></span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">    <span class="keyword">if</span>(ANDROID)</span><br><span class="line">        <span class="keyword">add_library</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> SHARED</span><br><span class="line">            <span class="variable">$&#123;PROJECT_SOURCES&#125;</span></span><br><span class="line">        )</span><br><span class="line"><span class="comment"># Define properties for Android with Qt 5 after find_package() calls as:</span></span><br><span class="line"><span class="comment">#    set(ANDROID_PACKAGE_SOURCE_DIR &quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/android&quot;)</span></span><br><span class="line">    <span class="keyword">else</span>()</span><br><span class="line">        <span class="keyword">add_executable</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span></span><br><span class="line">            <span class="variable">$&#123;PROJECT_SOURCES&#125;</span></span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">endif</span>()</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">target_link_libraries</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> PRIVATE Qt<span class="variable">$&#123;QT_VERSION_MAJOR&#125;</span>::Widgets)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.</span></span><br><span class="line"><span class="comment"># If you are developing for iOS or macOS you should consider setting an</span></span><br><span class="line"><span class="comment"># explicit, fixed bundle identifier manually though.</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$&#123;QT_VERSION&#125;</span> <span class="keyword">VERSION_LESS</span> <span class="number">6.1</span>.<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">set</span>(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.<span class="variable">$&#123;PROJECT_NAME&#125;</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"><span class="keyword">set_target_properties</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> PROPERTIES</span><br><span class="line">    <span class="variable">$&#123;BUNDLE_ID_OPTION&#125;</span></span><br><span class="line">    MACOSX_BUNDLE_BUNDLE_VERSION <span class="variable">$&#123;PROJECT_VERSION&#125;</span></span><br><span class="line">    MACOSX_BUNDLE_SHORT_VERSION_STRING <span class="variable">$&#123;PROJECT_VERSION_MAJOR&#125;</span>.<span class="variable">$&#123;PROJECT_VERSION_MINOR&#125;</span></span><br><span class="line">    MACOSX_BUNDLE <span class="keyword">TRUE</span></span><br><span class="line">    WIN32_EXECUTABLE <span class="keyword">TRUE</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span>(GNUInstallDirs)</span><br><span class="line"><span class="keyword">install</span>(TARGETS <span class="variable">$&#123;PROJECT_NAME&#125;</span></span><br><span class="line">    BUNDLE DESTINATION .</span><br><span class="line">    LIBRARY DESTINATION <span class="variable">$&#123;CMAKE_INSTALL_LIBDIR&#125;</span></span><br><span class="line">    RUNTIME DESTINATION <span class="variable">$&#123;CMAKE_INSTALL_BINDIR&#125;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(QT_VERSION_MAJOR <span class="keyword">EQUAL</span> <span class="number">6</span>)</span><br><span class="line">    qt_finalize_executable(<span class="variable">$&#123;PROJECT_NAME&#125;</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>可以根据自己的习惯对 CMakeLists.txt 做修改</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(CmakeTest VERSION <span class="number">0.1</span> LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_AUTOUIC <span class="keyword">ON</span>)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_AUTOMOC <span class="keyword">ON</span>)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_AUTORCC <span class="keyword">ON</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">11</span>)	    <span class="comment"># 使用C++11</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD_REQUIRED <span class="keyword">ON</span>)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_EXTENSIONS <span class="keyword">OFF</span>)   <span class="comment"># 禁用扩展</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">find_package</span>(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)</span><br><span class="line"><span class="keyword">find_package</span>(Qt<span class="variable">$&#123;QT_VERSION_MAJOR&#125;</span> REQUIRED COMPONENTS Widgets)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加文件</span></span><br><span class="line"><span class="keyword">file</span>(GLOB UI_FILE <span class="string">&quot;$&#123;PROJECT_SOURCE_DIR&#125;/*.ui&quot;</span>)       <span class="comment"># 添加.ui文件</span></span><br><span class="line"><span class="keyword">file</span>(GLOB SRC_FILE <span class="string">&quot;$&#123;PROJECT_SOURCE_DIR&#125;/*.cpp&quot;</span>)     <span class="comment"># 添加.cpp文件</span></span><br><span class="line"><span class="keyword">file</span>(GLOB HEADER_FILE <span class="string">&quot;$&#123;PROJECT_SOURCE_DIR&#125;/*.h&quot;</span>)    <span class="comment"># 添加.h文件 显式的添加头文件到项目树中</span></span><br><span class="line"><span class="keyword">set</span>(PROJECT_SOURCES <span class="variable">$&#123;HEADER_FILE&#125;</span> <span class="variable">$&#123;SRC_FILE&#125;</span> <span class="variable">$&#123;UI_FILE&#125;</span>) <span class="comment"># 合并变量</span></span><br><span class="line"><span class="comment"># 设置输出路径</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_RUNTIME_OUTPUT_DIRECTORY <span class="string">&quot;$&#123;PROJECT_BINARY_DIR&#125;/bin&quot;</span>) <span class="comment"># 设置可执行文件生成路径</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_LIBRARY_OUTPUT_DIRECTORY <span class="string">&quot;$&#123;PROJECT_BINARY_DIR&#125;/lib&quot;</span>) <span class="comment"># 设置动态库生成路径</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_ARCHIVE_OUTPUT_DIRECTORY <span class="string">&quot;$&#123;PROJECT_BINARY_DIR&#125;/lib&quot;</span>) <span class="comment"># 设置静态库生成路径</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$&#123;QT_VERSION_MAJOR&#125;</span> <span class="keyword">GREATER_EQUAL</span> <span class="number">6</span>)</span><br><span class="line">    qt_add_executable(<span class="variable">$&#123;PROJECT_NAME&#125;</span></span><br><span class="line">        MANUAL_FINALIZATION</span><br><span class="line">        <span class="variable">$&#123;PROJECT_SOURCES&#125;</span></span><br><span class="line">    )</span><br><span class="line"><span class="comment"># Define target properties for Android with Qt 6 as:</span></span><br><span class="line"><span class="comment">#    set_property(TARGET $&#123;PROJECT_NAME&#125; APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR</span></span><br><span class="line"><span class="comment">#                 $&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/android)</span></span><br><span class="line"><span class="comment"># For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation</span></span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">    <span class="keyword">if</span>(ANDROID)</span><br><span class="line">        <span class="keyword">add_library</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> SHARED</span><br><span class="line">            <span class="variable">$&#123;PROJECT_SOURCES&#125;</span></span><br><span class="line">        )</span><br><span class="line"><span class="comment"># Define properties for Android with Qt 5 after find_package() calls as:</span></span><br><span class="line"><span class="comment">#    set(ANDROID_PACKAGE_SOURCE_DIR &quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/android&quot;)</span></span><br><span class="line">    <span class="keyword">else</span>()</span><br><span class="line">        <span class="keyword">add_executable</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span></span><br><span class="line">            <span class="variable">$&#123;PROJECT_SOURCES&#125;</span></span><br><span class="line">            CenterWindow.h CenterWindow.cpp</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">endif</span>()</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">target_link_libraries</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> PRIVATE Qt<span class="variable">$&#123;QT_VERSION_MAJOR&#125;</span>::Widgets)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.</span></span><br><span class="line"><span class="comment"># If you are developing for iOS or macOS you should consider setting an</span></span><br><span class="line"><span class="comment"># explicit, fixed bundle identifier manually though.</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$&#123;QT_VERSION&#125;</span> <span class="keyword">VERSION_LESS</span> <span class="number">6.1</span>.<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">set</span>(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.<span class="variable">$&#123;PROJECT_NAME&#125;</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"><span class="keyword">set_target_properties</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> PROPERTIES</span><br><span class="line">    <span class="variable">$&#123;BUNDLE_ID_OPTION&#125;</span></span><br><span class="line">    MACOSX_BUNDLE_BUNDLE_VERSION <span class="variable">$&#123;PROJECT_VERSION&#125;</span></span><br><span class="line">    MACOSX_BUNDLE_SHORT_VERSION_STRING <span class="variable">$&#123;PROJECT_VERSION_MAJOR&#125;</span>.<span class="variable">$&#123;PROJECT_VERSION_MINOR&#125;</span></span><br><span class="line">    MACOSX_BUNDLE <span class="keyword">TRUE</span></span><br><span class="line">    WIN32_EXECUTABLE <span class="keyword">TRUE</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span>(GNUInstallDirs)</span><br><span class="line"><span class="keyword">install</span>(TARGETS <span class="variable">$&#123;PROJECT_NAME&#125;</span></span><br><span class="line">    BUNDLE DESTINATION .</span><br><span class="line">    LIBRARY DESTINATION <span class="variable">$&#123;CMAKE_INSTALL_LIBDIR&#125;</span></span><br><span class="line">    RUNTIME DESTINATION <span class="variable">$&#123;CMAKE_INSTALL_BINDIR&#125;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(QT_VERSION_MAJOR <span class="keyword">EQUAL</span> <span class="number">6</span>)</span><br><span class="line">    qt_finalize_executable(<span class="variable">$&#123;PROJECT_NAME&#125;</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><h3 id="添加源文件"><a href="#添加源文件" class="headerlink" title="添加源文件"></a>添加源文件</h3><ul>
+<li><p>CMake添加类时与Pro项目不同，不能项目上右键添加。</p>
+</li>
+<li><p>鼠标点击菜单栏 -&gt; 文件 -&gt; New File -&gt; 选择模板 -&gt; 类名 -&gt; 后面的步骤都是一样的， 新生成出的类会自动添加到CMakeLists.txt 中</p>
+</li>
+<li><p>不推荐CMakeLists中使用显式的添加文件名的方式去添加每一个文件，文件越多可读性越差，且不方便频繁新增移除文件。</p>
+</li>
+<li><p>推荐使用 CMake file语法匹配文件</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加文件</span></span><br><span class="line"><span class="keyword">file</span>(GLOB UI_FILE <span class="string">&quot;$&#123;PROJECT_SOURCE_DIR&#125;/*.ui&quot;</span>)       <span class="comment"># 添加.ui文件</span></span><br><span class="line"><span class="keyword">file</span>(GLOB SRC_FILE <span class="string">&quot;$&#123;PROJECT_SOURCE_DIR&#125;/*.cpp&quot;</span>)     <span class="comment"># 添加.cpp文件</span></span><br><span class="line"><span class="keyword">file</span>(GLOB HEADER_FILE <span class="string">&quot;$&#123;PROJECT_SOURCE_DIR&#125;/*.h&quot;</span>)    <span class="comment"># 添加.h文件 显式的添加头文件到项目树中</span></span><br><span class="line"><span class="keyword">set</span>(PROJECT_SOURCES <span class="variable">$&#123;HEADER_FILE&#125;</span> <span class="variable">$&#123;SRC_FILE&#125;</span> <span class="variable">$&#123;UI_FILE&#125;</span>) <span class="comment"># 合并变量</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>手动添加文件</p>
+<ul>
+<li>在外部编辑器中编辑好文件拷贝到源文件目录下 右键项目 执行CMake，CMake会自动添加文件到项目中（前提是使用file匹配了文件）</li>
+</ul>
+</li>
+</ul>
+<h3 id="添加资源文件"><a href="#添加资源文件" class="headerlink" title="添加资源文件"></a>添加资源文件</h3><h4 id="添加Qt资源文件-qrc"><a href="#添加Qt资源文件-qrc" class="headerlink" title="添加Qt资源文件 qrc"></a>添加Qt资源文件 qrc</h4><ul>
+<li><p>Qt资源文件依然是右键菜单栏文件 -&gt; New File -&gt; 选择Qt资源文件 -&gt; 后面的步骤与Pro项目添加方式相同</p>
+</li>
+<li><p>但资源文件不会自动添加到CMakeLists中</p>
+</li>
+<li><p>在CMakeLists添加以下代码可自动添加文件到项目结构中</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">file</span>(GLOB QRC_FILE <span class="string">&quot;$&#123;PROJECT_SOURCE_DIR&#125;/*.qrc&quot;</span>)     <span class="comment"># 添加.qrc文件 显式的添加qt资源文件到项目树中</span></span><br><span class="line"><span class="keyword">set</span>(PROJECT_SOURCES <span class="variable">$&#123;HEADER_FILE&#125;</span> <span class="variable">$&#123;SRC_FILE&#125;</span> <span class="variable">$&#123;UI_FILE&#125;</span> <span class="variable">$&#123;QRC_FILE&#125;</span>) <span class="comment"># 合并变量</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可右键qrc文件 -&gt;用…打开 -&gt; 资源管理器 -&gt; 对qrc文件进行修改</p>
+</li>
+</ul>
+<h4 id="添加Windows-资源文件-rc"><a href="#添加Windows-资源文件-rc" class="headerlink" title="添加Windows 资源文件 rc"></a>添加Windows 资源文件 rc</h4><ul>
+<li><p>添加windows资源文件的目的是可以设置应用程序的详细信息、以及图标等</p>
+</li>
+<li><p>windows资源文件QtCreator不能自动生成，但可使用Vs生成，如果只需要修改应用程序图标 只需要行代码就行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IDI_ICON1	ICON	DISCARDABLE	&quot;logo.ico&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="添加翻译文件"><a href="#添加翻译文件" class="headerlink" title="添加翻译文件"></a>添加翻译文件</h3><ul>
+<li><p>添加翻译文件与pro项目相同在创建项目时 <strong>Translator File</strong> 时选择一个翻译文件</p>
+</li>
+<li><p>QtCreator会自动创建翻译文件并添加到CMakeLists中</p>
+</li>
+<li><p>如果你的程序中需要翻译的字符串都使用tr()包裹，那么执行CMake时会自动执行 lupdate，更新ts翻译文件</p>
+</li>
+<li><p>手动添加翻译</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加组件 LinguistTools</span></span><br><span class="line"><span class="keyword">find_package</span>(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)</span><br><span class="line"><span class="keyword">find_package</span>(Qt<span class="variable">$&#123;QT_VERSION_MAJOR&#125;</span> REQUIRED COMPONENTS Widgets LinguistTools)</span><br><span class="line"><span class="comment"># 添加翻译文件名 这里可以添加多个翻译文件</span></span><br><span class="line"><span class="keyword">set</span>(TS_FILES <span class="variable">$&#123;PROJECT_NAME&#125;</span>_zh_CN.ts)</span><br><span class="line"><span class="comment"># 创建翻译文件</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$&#123;QT_VERSION_MAJOR&#125;</span> <span class="keyword">GREATER_EQUAL</span> <span class="number">6</span>)</span><br><span class="line">	qt_create_translation(QM_FILES <span class="variable">$&#123;CMAKE_SOURCE_DIR&#125;</span> <span class="variable">$&#123;TS_FILES&#125;</span>)	</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">	<span class="comment"># 创建指定的ts文件，并ts文件转换为qm （每次重新构建项目时会重新生成会删除以前的文件）</span></span><br><span class="line">	qt5_create_translation(QM_FILES <span class="variable">$&#123;CMAKE_SOURCE_DIR&#125;</span> <span class="variable">$&#123;TS_FILES&#125;</span>)</span><br><span class="line">	qt5_add_translation(QM_FILES <span class="variable">$&#123;TS_FILES&#125;</span>)   <span class="comment"># 将ts文件转换为qm</span></span><br><span class="line">    <span class="keyword">add_executable</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> <span class="variable">$&#123;PROJECT_SOURCES&#125;</span> <span class="variable">$&#123;QM_FILES&#125;</span>) <span class="comment"># 必须要在编译时加上 QM_FILES 文件否则不会生成.qm</span></span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这里有个反人类操作</p>
+<ul>
+<li>qt5_create_translation 每次都会创建一个新的ts文件并删除以前的，但在实际应用中，可能只想更新ts，保留以前的翻译工作</li>
+<li>qt5_add_translation 只会单纯的将ts文件转换为qm</li>
+<li>所有我们需要一个正常点的函数<ul>
+<li>检查指定翻译文件是否存在，不存在则生成；存在则更新；最后将ts转换为qm</li>
+<li>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/Tclser/article/details/125364058">这篇文章</a>可以是实现</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">qt5_create_translation(QM_FILES <span class="variable">$&#123;CMAKE_SOURCE_DIR&#125;</span> <span class="variable">$&#123;TS_FILES&#125;</span>) <span class="comment"># 创建翻译文件</span></span><br><span class="line"><span class="keyword">add_custom_target</span>(lupdate_task DEPENDS <span class="variable">$&#123;TS_FILES&#125;</span>) 			<span class="comment"># 不知道为什么这样做ts存在时是更新，不是删除创建</span></span><br><span class="line"><span class="keyword">add_custom_target</span>(lrelease_task DEPENDS <span class="variable">$&#123;QM_FILES&#125;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 经过测试使用以上方法时，有时在没有文件时会报错</span></span><br><span class="line"><span class="keyword">foreach</span>(_file <span class="variable">$&#123;TS_FILES&#125;</span>)</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">EXISTS</span> <span class="variable">$&#123;_file&#125;</span>)</span><br><span class="line">        <span class="keyword">add_custom_target</span>(lupdate_task DEPENDS <span class="variable">$&#123;_file&#125;</span>)</span><br><span class="line">    <span class="keyword">endif</span>()</span><br><span class="line"><span class="keyword">endforeach</span>()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中添加外部命令的方式也是有用的，但也是能正常工作的，为了方便移植程序这里就不加</li>
+<li>RC2135 : file not found: IDI_ICON1  rc编码修改为UTF-8</li>
+</ul>
+</li>
+</ul>
+<h2 id="添加子项目"><a href="#添加子项目" class="headerlink" title="添加子项目"></a>添加子项目</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://cmake-doc.readthedocs.io/zh-cn/latest/index.html">https://cmake-doc.readthedocs.io/zh-cn/latest/index.html</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/CMake/" rel="tag"># CMake</a>
+              <a href="/tags/Qt/" rel="tag"># Qt</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/01/28/Acer-Hexo-Test/" rel="prev" title="Acer_Hexo_Test">
+                  <i class="fa fa-chevron-left"></i> Acer_Hexo_Test
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/03/17/Git%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95/" rel="next" title="Git详细用法">
+                  Git详细用法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lemon-truffle</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">115k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:45</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+<!--显示运行时间-->
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/03/2021 15:41:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/js/custom_js/click_show_love.js"></script>
+
+
+<!--单击显示文字-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/click_show_text.js"></script>
+
+
+<!--点击爆炸效果  -->
+
+<canvas class="click_fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/custom_js/click_fireworks.js"></script>
+
+
+<!--显示恶搞标题-->
+
+<script type="text/javascript" src="/js/custom_js/funny_title.js"></script>
+
+
+<!--显示雪花效果-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/show_snow1.js"></script>
+
+
+
+
+<!-- 数字雨 -->
+
+<canvas id="canvas" width="1440" height="900" ></canvas>
+<script type="text/javascript" src="/js/custom_js/show_code_rain.js"></script>
+
+
+</body>
+</html>

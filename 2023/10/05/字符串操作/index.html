@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lemon-truffle.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="字符串操作[TOC]  目前仅有 C&#x2F;C++&#x2F;Qt 本文限制在C&#x2F;C++11标准及以下 字符串操作：查找、截取、拼接、数值转换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串操作">
+<meta property="og:url" content="https://lemon-truffle.github.io/2023/10/05/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="柠檬野生菌">
+<meta property="og:description" content="字符串操作[TOC]  目前仅有 C&#x2F;C++&#x2F;Qt 本文限制在C&#x2F;C++11标准及以下 字符串操作：查找、截取、拼接、数值转换">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-05T01:37:53.000Z">
+<meta property="article:modified_time" content="2023-10-05T01:56:51.282Z">
+<meta property="article:author" content="lemon-truffle">
+<meta property="article:tag" content="基操">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lemon-truffle.github.io/2023/10/05/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lemon-truffle.github.io/2023/10/05/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/","path":"2023/10/05/字符串操作/","title":"字符串操作"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>字符串操作 | 柠檬野生菌</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">柠檬野生菌</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">字符串操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">C中的字符串操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E3%80%81%E6%88%AA%E5%8F%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">查找、截取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.1.2.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%BC%E6%8E%A5%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="nav-number">1.1.3.</span> <span class="nav-text">拼接、格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.1.4.</span> <span class="nav-text">数值转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%80%BC"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">字符串转数值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">数值转字符串</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">C++中的字符操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE"><span class="nav-number">1.2.1.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%AA%E5%8F%96"><span class="nav-number">1.2.3.</span> <span class="nav-text">截取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%BC%E6%8E%A5%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">拼接、格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BD%AC%E6%8D%A2-1"><span class="nav-number">1.2.5.</span> <span class="nav-text">数值转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%80%BC-1"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">字符串转数值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2-1"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">数值转字符串</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">Qt中字符串操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%AA%E5%8F%96-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">截取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%BC%E6%8E%A5%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96-2"><span class="nav-number">1.3.4.</span> <span class="nav-text">拼接、格式化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">编码转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BD%AC%E6%8D%A2-2"><span class="nav-number">1.3.5.</span> <span class="nav-text">数值转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%80%BC-2"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">字符串转数值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2-2"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">数值转字符串</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%B4%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.4.</span> <span class="nav-text">字符串间的类型转换</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lemon-truffle"
+      src="/uploads/custom-logo.jpg">
+  <p class="site-author-name" itemprop="name">lemon-truffle</p>
+  <div class="site-description" itemprop="description">柠檬野生菌的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/lemon_fungus" title="GitHub → https:&#x2F;&#x2F;gitee.com&#x2F;lemon_fungus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-truffle.github.io/2023/10/05/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/custom-logo.jpg">
+      <meta itemprop="name" content="lemon-truffle">
+      <meta itemprop="description" content="柠檬野生菌的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柠檬野生菌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          字符串操作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-05 09:37:53 / 修改时间：09:56:51" itemprop="dateCreated datePublished" datetime="2023-10-05T09:37:53+08:00">2023-10-05</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h1><p>[TOC]</p>
+<ul>
+<li>目前仅有 C&#x2F;C++&#x2F;Qt</li>
+<li>本文限制在C&#x2F;C++11标准及以下</li>
+<li>字符串操作：查找、截取、拼接、数值转换</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="C中的字符串操作"><a href="#C中的字符串操作" class="headerlink" title="C中的字符串操作"></a>C中的字符串操作</h2><ul>
+<li>C中的字符串通常是 char* 类型的字符串数组类型</li>
+<li>一般使用  sprintf 做字符串拼接、转换</li>
+<li>输出使用 printf 控制</li>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte">空终止字节字符串 - cppreference.com</a></li>
+</ul>
+<h3 id="查找、截取"><a href="#查找、截取" class="headerlink" title="查找、截取"></a>查找、截取</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/strchr">strchr</a> 查找字符的首次出现</li>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/strrchr">strrchr </a>查找字符的最后一次出现</li>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/strstr">strstr</a> 查找子串字符的首次出现</li>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/strtok">strtok, strtok_s</a> 查找字节字符串中的下一个记号</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ipv4ToUint32_c</span><span class="params">(<span class="keyword">char</span> *ip_str, <span class="keyword">uint32_t</span> &amp;ip_int)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//rsize_t str_max = sizeof ip_str;</span></span><br><span class="line">	<span class="comment">//char *next_token;</span></span><br><span class="line">	<span class="comment">//char *token = strtok_s(ip_str, &quot;.&quot;, &amp;next_token);</span></span><br><span class="line">	<span class="comment">//while (token)</span></span><br><span class="line">	<span class="comment">//&#123;</span></span><br><span class="line">	<span class="comment">//	ip_uint &lt;&lt;= 8;</span></span><br><span class="line">	<span class="comment">//	ip_uint += strtoul(token, NULL, 10);</span></span><br><span class="line">	<span class="comment">//	token = strtok_s(NULL, &quot;.&quot;, &amp;next_token);</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> *token = strtok(ip_str, <span class="string">&quot;.&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span> (token)</span><br><span class="line">	&#123;</span><br><span class="line">		ip_uint &lt;&lt;= <span class="number">8</span>;</span><br><span class="line">		ip_uint += strtoul(token, <span class="literal">NULL</span>, <span class="number">10</span>);</span><br><span class="line">		token = strtok(<span class="literal">NULL</span>, <span class="string">&quot;.&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h3><h3 id="拼接、格式化"><a href="#拼接、格式化" class="headerlink" title="拼接、格式化"></a>拼接、格式化</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/strcat">strcat, strcat_s</a> 、<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/strncat">strncat, strncat_s </a>字符串拼接</li>
+<li>sprintf、sprintf_s、snprintf</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">uint32ToIpv4_c</span><span class="params">(<span class="keyword">uint32_t</span> ip_i, <span class="keyword">char</span> *c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">snprintf</span>(c, <span class="number">16</span>, <span class="string">&quot;%d.%d.%d.%d&quot;</span>, (<span class="keyword">uint8_t</span>)(ip_i &gt;&gt; <span class="number">24</span>), (<span class="keyword">uint8_t</span>)(ip_i &gt;&gt; <span class="number">16</span>), (<span class="keyword">uint8_t</span>)(ip_i &gt;&gt; <span class="number">8</span>), (<span class="keyword">uint8_t</span>)ip_i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="数值转换"><a href="#数值转换" class="headerlink" title="数值转换"></a>数值转换</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/atof">atof</a>、<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/atoi">atoi, atol, atoll</a></li>
+</ul>
+<h4 id="字符串转数值"><a href="#字符串转数值" class="headerlink" title="字符串转数值"></a>字符串转数值</h4><ul>
+<li><p>不同进制的字符串转换为数值</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/strtol">strtol, strtoll</a> 、<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/strtoul">strtoul, strtoull</a>、<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/strtof">strtof, strtod, strtold</a>、<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/string/byte/strtoimax">strtoimax, strtoumax</a></p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;limits.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 带错误处理的剖析</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *p = <span class="string">&quot;10 200000000000000000000000000000 30 -40 junk&quot;</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Parsing &#x27;%s&#x27;:\n&quot;</span>, p);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (;;)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 库函数调用能设置 errno 为任何非零值，无关乎是否有错误，</span></span><br><span class="line">        <span class="comment">// 故为检查 strtol 设置的错误，需要清除它</span></span><br><span class="line">        errno = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">char</span> *end;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">long</span> i = strtol(p, &amp;end, <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">if</span> (p == end)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">bool</span> range_error = errno == ERANGE;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Extracted &#x27;%.*s&#x27;, strtol returned %ld.&quot;</span>, (<span class="keyword">int</span>)(end-p), p, i);</span><br><span class="line">        p = end;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> (range_error)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot; Range error occurred.&quot;</span>);</span><br><span class="line"> </span><br><span class="line">        <span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Unextracted leftover: &#x27;%s&#x27;\n\n&quot;</span>, p);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 不带错误处理的剖析</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\&quot;1010\&quot; in binary  --&gt; %ld\n&quot;</span>, strtol(<span class="string">&quot;1010&quot;</span>, <span class="literal">NULL</span>, <span class="number">2</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\&quot;12\&quot;   in octal   --&gt; %ld\n&quot;</span>, strtol(<span class="string">&quot;12&quot;</span>,   <span class="literal">NULL</span>, <span class="number">8</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\&quot;A\&quot;    in hex     --&gt; %ld\n&quot;</span>, strtol(<span class="string">&quot;A&quot;</span>,    <span class="literal">NULL</span>, <span class="number">16</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\&quot;junk\&quot; in base-36 --&gt; %ld\n&quot;</span>, strtol(<span class="string">&quot;junk&quot;</span>, <span class="literal">NULL</span>, <span class="number">36</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\&quot;012\&quot;  in auto-detected base --&gt; %ld\n&quot;</span>, strtol(<span class="string">&quot;012&quot;</span>,  <span class="literal">NULL</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\&quot;0xA\&quot;  in auto-detected base --&gt; %ld\n&quot;</span>, strtol(<span class="string">&quot;0xA&quot;</span>,  <span class="literal">NULL</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\&quot;junk\&quot; in auto-detected base --&gt; %ld\n&quot;</span>, strtol(<span class="string">&quot;junk&quot;</span>, <span class="literal">NULL</span>, <span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>* endptr;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%ld\n&quot;</span>, strtoimax(<span class="string">&quot; -123junk&quot;</span>,&amp;endptr,<span class="number">10</span>)); <span class="comment">/* 底 10          */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%ld\n&quot;</span>, strtoimax(<span class="string">&quot;11111111&quot;</span>,&amp;endptr,<span class="number">2</span>));   <span class="comment">/* 底 2           */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%ld\n&quot;</span>, strtoimax(<span class="string">&quot;XyZ&quot;</span>,&amp;endptr,<span class="number">36</span>));       <span class="comment">/* 底 36          */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%ld\n&quot;</span>, strtoimax(<span class="string">&quot;010&quot;</span>,&amp;endptr,<span class="number">0</span>));        <span class="comment">/* 八进制自动检测   */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%ld\n&quot;</span>, strtoimax(<span class="string">&quot;10&quot;</span>,&amp;endptr,<span class="number">0</span>));         <span class="comment">/* 十进制自动检测   */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%ld\n&quot;</span>, strtoimax(<span class="string">&quot;0x10&quot;</span>,&amp;endptr,<span class="number">0</span>));       <span class="comment">/* 十六进制自动检测 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 值域错误                 */</span></span><br><span class="line"><span class="comment">/* LONG_MAX+1 --&gt; LONG_MAX */</span></span><br><span class="line">errno = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%ld\n&quot;</span>, strtoimax(<span class="string">&quot;9223372036854775808&quot;</span>,&amp;endptr,<span class="number">10</span>));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, strerror(errno));</span><br></pre></td></tr></table></figure>
+
+<h4 id="数值转字符串"><a href="#数值转字符串" class="headerlink" title="数值转字符串"></a>数值转字符串</h4><ul>
+<li>snprintf</li>
+<li>在windows平台： <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/c-runtime-library/reference/itoa-s-itow-s?view=msvc-170">_itoa_s、_itow_s </a></li>
+</ul>
+<h2 id="C-中的字符操作"><a href="#C-中的字符操作" class="headerlink" title="C++中的字符操作"></a>C++中的字符操作</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/string/basic_string">std::basic_string</a></li>
+<li>C++的字符串格式化处理一直不咋样</li>
+</ul>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><ul>
+<li><p>find、rfind、 find_first_of、 find_first_not_of、find_last_of、find_last_not_of</p>
+</li>
+<li><p>寻找字符的首次出现：<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/string/basic_string/find">find</a>  <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/string/basic_string/find_first_of">find_first_of</a></p>
+</li>
+<li><p>寻找子串的最后一次出现：<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/string/basic_string/rfind">rfind</a>  <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/string/basic_string/find_last_of">find_last_of</a></p>
+</li>
+</ul>
+<h3 id="替换-1"><a href="#替换-1" class="headerlink" title="替换"></a>替换</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/string/basic_string/replace">string::replace</a></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> std::string str = <span class="string">&quot;C++ primer 4ths&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> std::string replace = <span class="string">&quot;is a books&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从位置 11 开始删除 4 个字符并添加 &quot;5th&quot;</span></span><br><span class="line">std::string replace_str1 = str;</span><br><span class="line">replace_str1.<span class="built_in">replace</span>(<span class="number">11</span>, <span class="number">4</span>, <span class="string">&quot;5th&quot;</span>);</span><br><span class="line">std::cout &lt;&lt; replace_str1 &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同上</span></span><br><span class="line">std::string replace_str2 = str;</span><br><span class="line">replace_str2.<span class="built_in">replace</span>(replace_str2.<span class="built_in">end</span>() - <span class="number">4</span>,replace_str2.<span class="built_in">end</span>(),<span class="string">&quot;6th&quot;</span>);</span><br><span class="line">std::cout &lt;&lt; replace_str2 &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从位置 11 开始删除 4 个字符并添加 &quot;is a book&quot;</span></span><br><span class="line">std::string replace_str3 = str;</span><br><span class="line">replace_str3.<span class="built_in">replace</span>(<span class="number">11</span>, <span class="number">4</span>, replace, <span class="number">0</span>, replace.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">std::cout &lt;&lt; replace_str3 &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="截取"><a href="#截取" class="headerlink" title="截取"></a>截取</h3><ul>
+<li><code>std::string</code>成员函数 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/string/basic_string/substr">substr(pos, len)</a></li>
+<li>返回一个从<code>pos</code>开始，<code>len</code>长的子串</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">std::string a = <span class="string">&quot;0123456789abcdefghij&quot;</span>;    </span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// pos 在边界外，抛出</span></span><br><span class="line">    std::string sub5 = a.<span class="built_in">substr</span>(a.<span class="built_in">size</span>()+<span class="number">3</span>, <span class="number">50</span>);</span><br><span class="line">    std::cout &lt;&lt; sub5 &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in"><span class="keyword">catch</span></span>(<span class="keyword">const</span> std::out_of_range&amp; e)</span><br><span class="line">&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;pos 超出了字符串的大小\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ipv4ToUint32</span><span class="params">(std::string ip_s, <span class="keyword">uint32_t</span> &amp;ip_uint)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> pos_dot = ip_s.<span class="built_in">find</span>(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">		ip_uint &lt;&lt;= <span class="number">8</span>;</span><br><span class="line">		ip_uint += (<span class="keyword">uint8_t</span>)std::<span class="built_in">stoi</span>(ip_s.<span class="built_in">substr</span>(<span class="number">0</span>, pos_dot));</span><br><span class="line">		ip_s = ip_s.<span class="built_in">substr</span>(pos_dot + <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="拼接、格式化-1"><a href="#拼接、格式化-1" class="headerlink" title="拼接、格式化"></a>拼接、格式化</h3><ul>
+<li><p>直接使用操作符 +</p>
+</li>
+<li><p>std::strstream</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="comment">// stringstream 用起来不太方便 </span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">double</span> pi = <span class="number">3.14159263</span>;</span><br><span class="line">std::stringstream ss;</span><br><span class="line">ss &lt;&lt; <span class="string">&quot;a:&quot;</span> &lt;&lt; std::<span class="built_in">setfill</span>(<span class="string">&#x27;0&#x27;</span>) &lt;&lt; std::<span class="built_in">setw</span>(<span class="number">8</span>) &lt;&lt; std::right &lt;&lt; std::hex &lt;&lt; a &lt;&lt; <span class="string">&quot; pi:&quot;</span> &lt;&lt; pi;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">uint32ToIpv4</span><span class="params">(<span class="keyword">uint32_t</span> ip_uint, std::string &amp;s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	s = std::<span class="built_in">to_string</span>((<span class="keyword">uint8_t</span>)(ip_uint &gt;&gt; <span class="number">24</span>)) + <span class="string">&quot;.&quot;</span> +</span><br><span class="line">		std::<span class="built_in">to_string</span>((<span class="keyword">uint8_t</span>)(ip_uint &gt;&gt; <span class="number">16</span>)) + <span class="string">&quot;.&quot;</span> +</span><br><span class="line">		std::<span class="built_in">to_string</span>((<span class="keyword">uint8_t</span>)(ip_uint &gt;&gt; <span class="number">8</span>))  + <span class="string">&quot;.&quot;</span> +</span><br><span class="line">		std::<span class="built_in">to_string</span>((<span class="keyword">uint8_t</span>)(ip_uint));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mxnote/articles/17126084.html">C++ - std::string字符串格式化方法总结 - MasonLee - 博客园 (cnblogs.com)</a></p>
+<h3 id="数值转换-1"><a href="#数值转换-1" class="headerlink" title="数值转换"></a>数值转换</h3><h4 id="字符串转数值-1"><a href="#字符串转数值-1" class="headerlink" title="字符串转数值"></a>字符串转数值</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/string/basic_string/stol">std::stoi, std::stol, std::stoll</a>、<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/string/basic_string/stoul">std::stoul, std::stoull</a>、<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/string/basic_string/stof">std::stof, std::stod, std::stold</a></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> data =</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;45&quot;</span>,</span><br><span class="line">    <span class="string">&quot;+45&quot;</span>,</span><br><span class="line">    <span class="string">&quot; -45&quot;</span>,</span><br><span class="line">    <span class="string">&quot;3.14159&quot;</span>,</span><br><span class="line">    <span class="string">&quot;31337 with words&quot;</span>,</span><br><span class="line">    <span class="string">&quot;words and 2&quot;</span>,</span><br><span class="line">    <span class="string">&quot;12345678901&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> std::string s : data)</span><br><span class="line">&#123;</span><br><span class="line">    std::<span class="keyword">size_t</span> pos&#123;&#125;;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;std::stoi(&quot;</span> &lt;&lt; std::<span class="built_in">quoted</span>(s) &lt;&lt; <span class="string">&quot;)：&quot;</span>;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> i&#123;std::<span class="built_in">stoi</span>(s, &amp;pos)&#125;;</span><br><span class="line">        std::cout &lt;&lt; i &lt;&lt; <span class="string">&quot;；pos：&quot;</span> &lt;&lt; pos &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in"><span class="keyword">catch</span></span> (std::invalid_argument <span class="keyword">const</span>&amp; ex)</span><br><span class="line">    &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;std::invalid_argument::what()：&quot;</span> &lt;&lt; ex.<span class="built_in">what</span>() &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in"><span class="keyword">catch</span></span> (std::out_of_range <span class="keyword">const</span>&amp; ex)</span><br><span class="line">    &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;std::out_of_range::what()：&quot;</span> &lt;&lt; ex.<span class="built_in">what</span>() &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">long</span> ll&#123;std::<span class="built_in">stoll</span>(s, &amp;pos)&#125;;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;std::stoll(&quot;</span> &lt;&lt; std::<span class="built_in">quoted</span>(s) &lt;&lt; <span class="string">&quot;)：&quot;</span> &lt;&lt; ll</span><br><span class="line">                  &lt;&lt; <span class="string">&quot;；pos：&quot;</span> &lt;&lt; pos &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">std::cout &lt;&lt; <span class="string">&quot;\n以不同的底进行调用：\n&quot;</span>; <span class="comment">// C++17 structured  bindings</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [s, base] : &#123;std::pair&lt;<span class="keyword">const</span> <span class="keyword">char</span>*, <span class="keyword">int</span>&gt;</span><br><span class="line">    &#123;<span class="string">&quot;11&quot;</span>,  <span class="number">2</span>&#125;, &#123;<span class="string">&quot;22&quot;</span>,  <span class="number">3</span>&#125;, &#123;<span class="string">&quot;33&quot;</span>,  <span class="number">4</span>&#125;, &#123;<span class="string">&quot;77&quot;</span>,  <span class="number">8</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;99&quot;</span>, <span class="number">10</span>&#125;, &#123;<span class="string">&quot;FF&quot;</span>, <span class="number">16</span>&#125;, &#123;<span class="string">&quot;jJ&quot;</span>, <span class="number">20</span>&#125;, &#123;<span class="string">&quot;Zz&quot;</span>, <span class="number">36</span>&#125;&#125;)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> i&#123;std::<span class="built_in">stoi</span>(s, <span class="literal">nullptr</span>, base)&#125;;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;std::stoi(&quot;</span> &lt;&lt; std::<span class="built_in">quoted</span>(s)</span><br><span class="line">              &lt;&lt; <span class="string">&quot;, nullptr, &quot;</span> &lt;&lt; base &lt;&lt; <span class="string">&quot;)：&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="数值转字符串-1"><a href="#数值转字符串-1" class="headerlink" title="数值转字符串"></a>数值转字符串</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/string/basic_string/to_string">to_string</a>、to_wstring</li>
+</ul>
+<h2 id="Qt中字符串操作"><a href="#Qt中字符串操作" class="headerlink" title="Qt中字符串操作"></a>Qt中字符串操作</h2><ul>
+<li>Qt中的字符串对象主要是QString、QByteArray</li>
+</ul>
+<h3 id="查找-1"><a href="#查找-1" class="headerlink" title="查找"></a>查找</h3><ul>
+<li>使用QString成员函数</li>
+<li>indexOf、startsWith、endsWith、contains、lastIndexOf</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QString str = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line"><span class="comment">// 返回子串在字符串中的位置</span></span><br><span class="line"><span class="keyword">int</span> pos = str.<span class="built_in">indexOf</span>(<span class="string">&quot;w&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换-2"><a href="#替换-2" class="headerlink" title="替换"></a>替换</h3><ul>
+<li>replace()</li>
+</ul>
+<h3 id="截取-1"><a href="#截取-1" class="headerlink" title="截取"></a>截取</h3><ul>
+<li>mid(startpos, len)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QString str = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line"><span class="comment">// 默认len=-1就是到字符串末尾</span></span><br><span class="line">QString str_temp = str.<span class="built_in">mid</span>(str.<span class="built_in">indexOf</span>(<span class="string">&quot;w&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="拼接、格式化-2"><a href="#拼接、格式化-2" class="headerlink" title="拼接、格式化"></a>拼接、格式化</h3><ul>
+<li>直接使用操作符 +</li>
+<li>QString的arg函数也能满足各种格式化</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 格式化控制 2位16进制不足用0填充</span></span><br><span class="line">QString cmd = <span class="built_in">QString</span>(<span class="string">&quot;%1&quot;</span>).<span class="built_in">arg</span>(<span class="number">25</span>,<span class="number">2</span>,<span class="number">16</span>,<span class="built_in">QLatin1Char</span>(<span class="string">&#x27;0&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h4><ul>
+<li>toLocal8Bit、toUtf8</li>
+</ul>
+<h3 id="数值转换-2"><a href="#数值转换-2" class="headerlink" title="数值转换"></a>数值转换</h3><h4 id="字符串转数值-2"><a href="#字符串转数值-2" class="headerlink" title="字符串转数值"></a>字符串转数值</h4><ul>
+<li>toInt、 toFloat、toDouble、toStd</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">QString str =<span class="string">&quot;100&quot;</span></span><br><span class="line"><span class="comment">// 默认base = 10 , 从10进制字符串到int</span></span><br><span class="line"><span class="keyword">int</span> x = str.<span class="built_in">toInt</span>();</span><br><span class="line"><span class="comment">// 从16进制字符串到int</span></span><br><span class="line"><span class="keyword">bool</span> ok;</span><br><span class="line"><span class="keyword">int</span> x_hex = str.<span class="built_in">toInt</span>(&amp;ok,<span class="number">16</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="数值转字符串-2"><a href="#数值转字符串-2" class="headerlink" title="数值转字符串"></a>数值转字符串</h4><ul>
+<li>QString::number(value, base)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> value = <span class="number">72</span>;</span><br><span class="line"><span class="comment">// 默认base = 10， 从int到10进制字符串</span></span><br><span class="line">QString data_str = QString::<span class="built_in">number</span>(value);</span><br><span class="line"><span class="comment">// 从int到16进制字符串</span></span><br><span class="line">QString data_strhex = QString::<span class="built_in">number</span>(value, <span class="number">16</span>);</span><br><span class="line"><span class="comment">// double输出有效位控制 2位小数位</span></span><br><span class="line">QString data_str_fmt = QString::<span class="built_in">number</span>(value, <span class="string">&#x27;f&#x27;</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符串间的类型转换"><a href="#字符串间的类型转换" class="headerlink" title="字符串间的类型转换"></a>字符串间的类型转换</h2><p>[字符串之间的转换（char<em>、const char</em>、char<a target="_blank" rel="noopener" href="https://blog.csdn.net/bigger_belief/article/details/132872091">]、string、QString、QByteArray、int、double）_Ivy_belief的博客-CSDN博客</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E6%93%8D/" rel="tag"># 基操</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/13/Matlab%E8%B0%83%E7%94%A8%E5%BA%93/" rel="prev" title="Matlab调用库">
+                  <i class="fa fa-chevron-left"></i> Matlab调用库
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/05/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="next" title="基本操作">
+                  基本操作 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lemon-truffle</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">115k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:45</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+<!--显示运行时间-->
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/03/2021 15:41:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/js/custom_js/click_show_love.js"></script>
+
+
+<!--单击显示文字-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/click_show_text.js"></script>
+
+
+<!--点击爆炸效果  -->
+
+<canvas class="click_fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/custom_js/click_fireworks.js"></script>
+
+
+<!--显示恶搞标题-->
+
+<script type="text/javascript" src="/js/custom_js/funny_title.js"></script>
+
+
+<!--显示雪花效果-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/show_snow1.js"></script>
+
+
+
+
+<!-- 数字雨 -->
+
+<canvas id="canvas" width="1440" height="900" ></canvas>
+<script type="text/javascript" src="/js/custom_js/show_code_rain.js"></script>
+
+
+</body>
+</html>

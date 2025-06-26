@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lemon-truffle.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="C++ 学习笔记[TOC]  C++ 学习笔记整理 主要针对C++11  C++知识体系总结：语言核心与代码工程 (qq.com)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++学习笔记">
+<meta property="og:url" content="https://lemon-truffle.github.io/2023/10/05/Cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="柠檬野生菌">
+<meta property="og:description" content="C++ 学习笔记[TOC]  C++ 学习笔记整理 主要针对C++11  C++知识体系总结：语言核心与代码工程 (qq.com)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-05T02:03:16.000Z">
+<meta property="article:modified_time" content="2023-10-05T02:38:56.597Z">
+<meta property="article:author" content="lemon-truffle">
+<meta property="article:tag" content="Note">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lemon-truffle.github.io/2023/10/05/Cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lemon-truffle.github.io/2023/10/05/Cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"2023/10/05/Cpp学习笔记/","title":"C++学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C++学习笔记 | 柠檬野生菌</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">柠檬野生菌</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">C++ 学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#std-function-lambda-bind"><span class="nav-number">1.0.1.</span> <span class="nav-text">std::function lambda bind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-pair-%E3%80%81std-tuple"><span class="nav-number">1.0.2.</span> <span class="nav-text">std::pair 、std::tuple</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-ref-%E3%80%81std-cref%E3%80%81std-move"><span class="nav-number">1.0.3.</span> <span class="nav-text">std::ref 、std::cref、std::move</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decltype-auto"><span class="nav-number">1.0.4.</span> <span class="nav-text">decltype auto</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-result-of"><span class="nav-number">1.0.5.</span> <span class="nav-text">std::result_of</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="nav-number">1.0.6.</span> <span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-make-shared"><span class="nav-number">1.0.7.</span> <span class="nav-text">std::make_shared</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">C++ 多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#std-condition-variable"><span class="nav-number">1.1.1.</span> <span class="nav-text">std::condition_variable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-future"><span class="nav-number">1.1.2.</span> <span class="nav-text">std::future</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-reference-wrapper"><span class="nav-number">1.1.3.</span> <span class="nav-text">std::reference_wrapper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-packaged-task"><span class="nav-number">1.1.4.</span> <span class="nav-text">std::packaged_task</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-async"><span class="nav-number">1.1.5.</span> <span class="nav-text">std::async</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">C++其他函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#decltype"><span class="nav-number">1.2.1.</span> <span class="nav-text">decltype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-move"><span class="nav-number">1.2.2.</span> <span class="nav-text">std::move</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-bind"><span class="nav-number">1.2.3.</span> <span class="nav-text">std::bind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-placeholders-1-std-placeholders-N"><span class="nav-number">1.2.4.</span> <span class="nav-text">std::placeholders::_1, std::placeholders::_N</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-function"><span class="nav-number">1.2.5.</span> <span class="nav-text">std::function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-forward"><span class="nav-number">1.2.6.</span> <span class="nav-text">std::forward</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lemon-truffle"
+      src="/uploads/custom-logo.jpg">
+  <p class="site-author-name" itemprop="name">lemon-truffle</p>
+  <div class="site-description" itemprop="description">柠檬野生菌的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/lemon_fungus" title="GitHub → https:&#x2F;&#x2F;gitee.com&#x2F;lemon_fungus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-truffle.github.io/2023/10/05/Cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/custom-logo.jpg">
+      <meta itemprop="name" content="lemon-truffle">
+      <meta itemprop="description" content="柠檬野生菌的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柠檬野生菌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-05 10:03:16 / 修改时间：10:38:56" itemprop="dateCreated datePublished" datetime="2023-10-05T10:03:16+08:00">2023-10-05</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="C-学习笔记"><a href="#C-学习笔记" class="headerlink" title="C++ 学习笔记"></a>C++ 学习笔记</h1><p>[TOC]</p>
+<ul>
+<li>C++ 学习笔记整理 主要针对C++11</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/lQoH4UF36_zKrw-Jbp2ylw">C++知识体系总结：语言核心与代码工程 (qq.com)</a></p>
+<span id="more"></span>
+
+<h3 id="std-function-lambda-bind"><a href="#std-function-lambda-bind" class="headerlink" title="std::function lambda bind"></a>std::function lambda bind</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Foo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="built_in">Foo</span>(<span class="keyword">int</span> num) : <span class="built_in">num_</span>(num) &#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print_add</span><span class="params">(<span class="keyword">int</span> i)</span> <span class="keyword">const</span> </span>&#123; std::cout &lt;&lt; __FUNCTION__ &lt;&lt; num_ + i &lt;&lt; <span class="string">&#x27;\n&#x27;</span>; &#125;</span><br><span class="line">	<span class="keyword">int</span> num_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_num</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	std::cout &lt;&lt; __FUNCTION__ &lt;&lt; i &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PrintNum</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">int</span> i)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		std::cout &lt;&lt; __FUNCTION__ &lt;&lt; i &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">functionAndBind</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	function: 类似于C中的函数指针</span></span><br><span class="line"><span class="comment">	bind: 将可调用对象和参数绑定在一起 使用std::function保存 并延迟到需要调用的时候</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 存储自由函数</span></span><br><span class="line">	std::function&lt;<span class="built_in"><span class="keyword">void</span></span>(<span class="keyword">int</span>)&gt; f_display = print_num;</span><br><span class="line">	<span class="built_in">f_display</span>(<span class="number">-9</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 存储 lambda</span></span><br><span class="line">	std::function&lt;<span class="built_in"><span class="keyword">void</span></span>()&gt; f_display2 = []() &#123; <span class="built_in">print_num</span>(<span class="number">2</span>); &#125;;</span><br><span class="line">	<span class="built_in">f_display2</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 存储std::bind的调用</span></span><br><span class="line">	<span class="keyword">auto</span> f_display3 = std::<span class="built_in">bind</span>(print_num, <span class="number">3</span>);</span><br><span class="line">	<span class="built_in">f_display3</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 存储成员函数的调用</span></span><br><span class="line">	std::function&lt;<span class="built_in"><span class="keyword">void</span></span>(<span class="keyword">const</span> Foo&amp;, <span class="keyword">int</span>)&gt; f_add_display = &amp;Foo::print_add;</span><br><span class="line">	<span class="function"><span class="keyword">const</span> Foo <span class="title">foo</span><span class="params">(<span class="number">46464</span>)</span></span>;</span><br><span class="line">	<span class="built_in">f_add_display</span>(foo, <span class="number">2</span>);</span><br><span class="line">	<span class="built_in">f_add_display</span>(<span class="number">8565</span>, <span class="number">3</span>); <span class="comment">// 类似与拷贝构造 </span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 存储到数据成员访问器的调用</span></span><br><span class="line">	std::function&lt;<span class="built_in"><span class="keyword">int</span></span>(Foo <span class="keyword">const</span>&amp;)&gt; f_num = &amp;Foo::num_;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;num_: &quot;</span> &lt;&lt; <span class="built_in">f_num</span>(foo) &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 存储成员函数及对象的调用</span></span><br><span class="line">	std::function&lt;<span class="built_in"><span class="keyword">void</span></span>(<span class="keyword">int</span>)&gt; f_add_display2 = std::<span class="built_in">bind</span>(&amp;Foo::print_add, foo, std::placeholders::_1);</span><br><span class="line">	<span class="built_in">f_add_display2</span>(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 存储成员函数及对象指针的调用</span></span><br><span class="line">	std::function&lt;<span class="built_in"><span class="keyword">void</span></span>()&gt; f_add_display3 = std::<span class="built_in">bind</span>(&amp;Foo::print_add, &amp;foo, <span class="number">30</span>);</span><br><span class="line">	<span class="built_in">f_add_display3</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 存储到函数对象的调用</span></span><br><span class="line">	std::function&lt;<span class="built_in"><span class="keyword">void</span></span>(<span class="keyword">int</span>)&gt; f_display_obj = <span class="built_in">PrintNum</span>();</span><br><span class="line">	<span class="built_in">f_display_obj</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**************/</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/137884434">c++11新特性之std::function和lambda表达式 - 知乎 (zhihu.com)</a></p>
+<h3 id="std-pair-、std-tuple"><a href="#std-pair-、std-tuple" class="headerlink" title="std::pair 、std::tuple"></a>std::pair 、std::tuple</h3><ul>
+<li>tuple可用于多个相异元素返回 pair是tuple的特例</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 多元素返回值</span></span><br><span class="line"><span class="function">std::pair&lt;<span class="keyword">int</span>, <span class="keyword">double</span>&gt; <span class="title">getSize</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> width = <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">double</span> height = <span class="number">20.5</span>;</span><br><span class="line">	<span class="keyword">return</span> std::<span class="built_in">make_pair</span>(width, height);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::tuple&lt;<span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">double</span>&gt; <span class="title">getDepthSize</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> width = <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">int</span> height = <span class="number">20.5</span>;</span><br><span class="line">	<span class="keyword">double</span> depth = <span class="number">10.5</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> std::<span class="built_in">make_tuple</span>(width, height, depth);</span><br><span class="line">	<span class="keyword">return</span> std::tuple&lt;<span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">double</span>&gt;&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3.3</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">moreReturnValueTest</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	std::cout &lt;&lt; __FUNCTION__ &lt;&lt; std::endl;</span><br><span class="line">	<span class="keyword">auto</span> size = <span class="built_in">getSize</span>();</span><br><span class="line">	std::cout &lt;&lt; size.first &lt;&lt; size.second &lt;&lt; std::endl;</span><br><span class="line">	std::cout &lt;&lt; std::get&lt;<span class="number">0</span>&gt;(size) &lt;&lt; std::get&lt;<span class="number">1</span>&gt;(size) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">auto</span> depth = <span class="built_in">getDepthSize</span>();</span><br><span class="line">	<span class="comment">// std::get 下标访问元素</span></span><br><span class="line">	std::cout &lt;&lt; std::get&lt;<span class="number">0</span>&gt;(depth) &lt;&lt; std::get&lt;<span class="number">1</span>&gt;(depth) &lt;&lt; std::get&lt;<span class="number">2</span>&gt;(depth) &lt;&lt; std::endl;</span><br><span class="line">	<span class="comment">// std::get 类型访问元素 具有相同类型不适用</span></span><br><span class="line">	<span class="comment">//std::cout &lt;&lt; std::get&lt;int&gt;(depth) &lt;&lt; std::get&lt;double&gt;(depth) &lt;&lt; std::get&lt;int&gt;(depth) &lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="std-ref-、std-cref、std-move"><a href="#std-ref-、std-cref、std-move" class="headerlink" title="std::ref 、std::cref、std::move"></a>std::ref 、std::cref、std::move</h3><ul>
+<li>函数模板 <code>ref</code> 与 <code>cref</code> 是生成 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/reference_wrapper">std::reference_wrapper</a> 类型对象的帮助函数，它们用<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/template_argument_deduction">模板实参推导</a>确定结果的模板实参。</li>
+<li>在函数式编程中（std::bind） bind 是对<code>std::bind</code>使用的是参数的拷贝而不是引用，因此必须显示利用<code>std::ref</code>来进行引用绑定</li>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/ref">std::ref, std::cref - cppreference.com</a></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 左值引用 右值引用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lvalue</span><span class="params">(<span class="keyword">int</span> &amp;a, <span class="keyword">int</span> &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	a = <span class="number">14</span>;</span><br><span class="line">	b = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::vector&lt;<span class="keyword">int</span>&gt; <span class="title">rvalue_tet</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt; value)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	value.<span class="built_in">push_back</span>(<span class="number">10</span>);</span><br><span class="line">	<span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// std::move 将左值转换为右值 减少程序的深拷贝 但如果是字符串 原来的变量将变为空</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lvalueAndRvalueTest</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a, b;</span><br><span class="line">	<span class="built_in">lvalue</span>(std::<span class="built_in">ref</span>(<span class="number">2</span>), std::<span class="built_in">ref</span>(b));</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;a:&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;b:&quot;</span> &lt;&lt; b &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	std::vector&lt;<span class="keyword">int</span>&gt; value_list;</span><br><span class="line">	value_list.<span class="built_in">push_back</span>(a);</span><br><span class="line">	value_list.<span class="built_in">push_back</span>(b);</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;value_list:&quot;</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">int</span> &amp; i : value_list)</span><br><span class="line">	&#123;</span><br><span class="line">		std::cout &lt;&lt; i &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">auto</span> list_temp = <span class="built_in">rvalue_tet</span>(std::<span class="built_in">move</span>(value_list));</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;value_list:&quot;</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">int</span> &amp; i : value_list)</span><br><span class="line">	&#123;</span><br><span class="line">		std::cout &lt;&lt; i &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;list_temp:&quot;</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">int</span> &amp; i : list_temp)</span><br><span class="line">	&#123;</span><br><span class="line">		std::cout &lt;&lt; i &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	list_temp = <span class="built_in">rvalue_tet</span>(std::<span class="built_in">move</span>(list_temp));</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;list_temp:&quot;</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">int</span> &amp; i : list_temp)</span><br><span class="line">	&#123;</span><br><span class="line">		std::cout &lt;&lt; i &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="decltype-auto"><a href="#decltype-auto" class="headerlink" title="decltype auto"></a>decltype auto</h3><ul>
+<li><p>auto的使用必须马上初始化，否则无法推导出类型</p>
+</li>
+<li><p>auto在一行定义多个变量时，各个变量的推导不能产生二义性，否则编译失败</p>
+</li>
+<li><p>auto不能用作函数参数</p>
+</li>
+<li><p>在类中auto不能用作非静态成员变量</p>
+</li>
+<li><p>auto不能定义数组，可以定义指针</p>
+</li>
+<li><p>auto无法推导出模板参数</p>
+</li>
+<li><p>decltype  表达式类型推导</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/137662774">C++11的类型推导详解 - 知乎 (zhihu.com)</a></p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回值后置类型语法  返回值类型依赖于参数类型</span></span><br><span class="line"><span class="comment">// auto 变量类型推断（在编译器阶段推导，且必须马上初始化否则无法推导， 且不能作为函数参数）</span></span><br><span class="line"><span class="comment">// decltype 表达式类型推断</span></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> T2&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">add</span><span class="params">(T t, T2 t2)</span> -&gt; <span class="title">decltype</span><span class="params">(t + t2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> t + t2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="std-result-of"><a href="#std-result-of" class="headerlink" title="std::result_of"></a>std::result_of</h3><ul>
+<li>推导调用类型</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/result_of">std::result_of, std::invoke_result - cppreference.com</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Func&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">wrapper</span><span class="params">(Func fc)</span> -&gt; <span class="keyword">typename</span> std::result_of&lt;<span class="title">Func</span><span class="params">()</span>&gt;::type </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h3><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/ans/1517987598?source_id=1005">c++是否应避免使用普通指针，而使用智能指针（包括shared，unique，weak）？ (zhihu.com)</a></p>
+<ul>
+<li><p><strong>std::unique_ptr</strong></p>
+</li>
+<li><p><strong>std::shared_ptr</strong></p>
+</li>
+<li><p><strong>std::weak_ptr</strong></p>
+</li>
+</ul>
+<h3 id="std-make-shared"><a href="#std-make-shared" class="headerlink" title="std::make_shared"></a>std::make_shared</h3><blockquote>
+<p>\1) 以 <code>args</code> 为 <code>T</code> 的构造函数参数列表，构造 <code>T</code> 类型对象并将它包装于 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/memory/shared_ptr">std::shared_ptr</a> 。对象如同用表达式 ::new (pv) T(<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/forward">std::forward</a><Args>(args)…) 构造，其中 <code>pv</code> 是内部指向适合保有 <code>T</code> 类型对象的存储的 <code>void*</code> 指针。存储典型地大于 <code>sizeof(T)</code> ，以对共享指针控制块和 <code>T</code> 对象使用一次分配。此函数所调用的 <code>std::shared_ptr</code> 构造函数以指向新构造的 <code>T</code> 类型对象指针启用 <code>shared_from_this</code> 。此重载只有在 T 不是数组类型时才会参与重载决议。</Args></p>
+<p>2,3) 同 (1) ，但构造的对象是可能多维的数组，其 <code>std::remove_all_extents_t&lt;T&gt;</code> 类型的非数组元素如同以布置 new 表达式 ::new(pv) <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/remove_all_extents">std::remove_all_extents_t</a><T>() 值初始化。重载 (2) 创建第一维上大小为 <code>N</code> 的数组。数组元素以其地址递增顺序初始化，而当其生存期结束时，以原本构造顺序的逆序销毁。</T></p>
+<p>4,5) 同 (2,3) ，但每个元素从默认值 <code>u</code> 初始化。若 <code>U</code> 不是数组类型，则这如同以如 (1) 中的布置 new 表达式进行；否则，这如同以如同 (1) 中的布置 new 表达式，从来自 <code>u</code> 的对应元素初始化（可能多维的）数组的每个非数组元素。重载 (4) 创建第一维上大小为 <code>N</code> 的数组。数组元素以其地址递增顺序初始化，而当其生存期结束时，以原本构造顺序的逆序销毁。</p>
+<p>\6) 若 <code>T</code> 不是数组类型则同 (1) ，而若 (3) 是 <code>U[N]</code> 则同 if <code>T</code> ，除了<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/default_initialization">默认初始化</a>创建的对象。</p>
+<p>\7) 同 (2) ，除了<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/default_initialization">默认初始化</a>单独的数组元素。</p>
+<p>每种情况下，均将用 p-&gt;~X() 销毁对象（或若 <code>T</code> 为数组类型则为单独的元素） (C++20 起)，其中 <code>p</code> 是指向对象的指针，而 <code>X</code> 是该对象的类型。</p>
+</blockquote>
+<h2 id="C-多线程"><a href="#C-多线程" class="headerlink" title="C++ 多线程"></a>C++ 多线程</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/haippy/p/3284540.html">C++11 并发指南系列 - Haippy - 博客园 (cnblogs.com)</a></p>
+<h3 id="std-condition-variable"><a href="#std-condition-variable" class="headerlink" title="std::condition_variable"></a>std::condition_variable</h3><ul>
+<li>条件变量 用于线程同步</li>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/condition_variable">std::condition_variable - cppreference.com</a></li>
+</ul>
+<blockquote>
+<p><code>condition_variable</code> 类是同步原语，能用于阻塞一个线程，或同时阻塞多个线程，直至另一线程修改共享变量（<em>条件</em>）并通知 <code>condition_variable</code> 。</p>
+<p>有意修改变量的线程必须</p>
+<ol>
+<li>获得 <code>std::mutex</code> （常通过 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/lock_guard">std::lock_guard</a> ）</li>
+<li>在保有锁时进行修改</li>
+<li>在 <code>std::condition_variable</code> 上执行 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/condition_variable/notify_one">notify_one</a> 或 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/condition_variable/notify_all">notify_all</a> （不需要为通知保有锁）</li>
+</ol>
+<p>即使共享变量是原子的，也必须在互斥下修改它，以正确地发布修改到等待的线程。</p>
+<p>任何有意在 <code>std::condition_variable</code> 上等待的线程必须</p>
+<ol>
+<li>在与用于保护共享变量者相同的互斥上获得 <a target="_blank" rel="noopener" href="http://zh.cppreference.com/w/cpp/thread/unique_lock">std::unique_lock</a>&lt;<a target="_blank" rel="noopener" href="http://zh.cppreference.com/w/cpp/thread/mutex">std::mutex</a>&gt;</li>
+<li>执行下列之一：</li>
+</ol>
+<p><code>std::condition_variable</code> 只可与 <a target="_blank" rel="noopener" href="http://zh.cppreference.com/w/cpp/thread/unique_lock">std::unique_lock</a>&lt;<a target="_blank" rel="noopener" href="http://zh.cppreference.com/w/cpp/thread/mutex">std::mutex</a>&gt; 一同使用；此限制在一些平台上允许最大效率。 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/condition_variable_any">std::condition_variable_any</a> 提供可与任何<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/BasicLockable"><em>基本可锁定</em> <em>(BasicLockable)</em> </a>对象，例如 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/shared_lock">std::shared_lock</a> 一同使用的条件变量。</p>
+<p>condition_variable 容许 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/condition_variable/wait">wait</a> 、 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/condition_variable/wait_for">wait_for</a> 、 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/condition_variable/wait_until">wait_until</a> 、 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/condition_variable/notify_one">notify_one</a> 及 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/condition_variable/notify_all">notify_all</a> 成员函数的同时调用。</p>
+<p>类 <code>std::condition_variable</code> 是<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/StandardLayoutType"><em>标准布局类型</em> <em>(StandardLayoutType)</em> </a>。它非<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/CopyConstructible"><em>可复制构造</em> <em>(CopyConstructible)</em> </a>、<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/MoveConstructible"><em>可移动构造</em> <em>(MoveConstructible)</em> </a>、<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/CopyAssignable"><em>可复制赋值</em> <em>(CopyAssignable)</em> </a>或<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/MoveAssignable"><em>可移动赋值</em> <em>(MoveAssignable)</em> </a>。</p>
+</blockquote>
+<h3 id="std-future"><a href="#std-future" class="headerlink" title="std::future"></a>std::future</h3><blockquote>
+<ol>
+<li>异步操作的结果存储：<code>std::future</code>对象可以存储异步操作的结果。当异步操作完成时，其结果会自动存储到<code>std::future</code>对象中。</li>
+<li>异步操作的同步处理：<code>std::future</code>对象提供了一种等待异步操作完成的机制。通过调用<code>std::future</code>的成员函数<code>wait()</code>或<code>wait_for()</code>，我们可以等待异步操作的完成。</li>
+<li>异步操作的结果访问：当异步操作完成时，我们可以使用<code>std::future</code>的成员函数<code>get()</code>来获取异步操作的结果。</li>
+</ol>
+<p>类模板 <code>std::future</code> 提供访问异步操作结果的机制：</p>
+<ul>
+<li><p>（通过 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/async">std::async</a> 、 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/packaged_task">std::packaged_task</a> 或 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/promise">std::promise</a> 创建的）异步操作能提供一个 <code>std::future</code> 对象给该异步操作的创建者。</p>
+</li>
+<li><p>然后，异步操作的创建者能用各种方法查询、等待或从 <code>std::future</code> 提取值。若异步操作仍未提供值，则这些方法可能阻塞。</p>
+</li>
+<li><p>异步操作准备好发送结果给创建者时，它能通过修改链接到创建者的 <code>std::future</code> 的<em>共享状态</em>（例如 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/promise/set_value">std::promise::set_value</a> ）进行。</p>
+</li>
+</ul>
+<p>注意， <code>std::future</code> 所引用的共享状态不与另一异步返回对象共享（与 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/shared_future">std::shared_future</a> 相反）。</p>
+</blockquote>
+<h3 id="std-reference-wrapper"><a href="#std-reference-wrapper" class="headerlink" title="std::reference_wrapper"></a>std::reference_wrapper</h3><blockquote>
+<p><code>std::reference_wrapper</code> 是包装引用于可复制、可赋值对象的类模板。它常用作将引用存储入无法正常保有引用的标准容器（类似 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/container/vector">std::vector</a> ）的机制。</p>
+<p>特别是， <code>std::reference_wrapper</code> 是围绕到类型 <code>T</code> 的对象引用或函数引用的<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/CopyConstructible"><em>可复制构造</em> <em>(CopyConstructible)</em> </a>且<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/CopyAssignable"><em>可复制赋值</em> <em>(CopyAssignable)</em> </a>的包装器。 <code>std::reference_wrapper</code> 的实例是对象（它们可被复制或存储于容器），但它们能隐式转换成 T&amp; ，故能以之为以引用接收底层类型的函数的参数。</p>
+<p>若存储的引用<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/Callable"><em>可调用</em> <em>(Callable)</em> </a>，则可以相同参数调用 <code>std::reference_wrapper</code> 。</p>
+<p>辅助函数 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/ref">std::ref</a> 与 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/ref">std::cref</a> 常用于生成 <code>std::reference_wrapper</code> 对象。</p>
+<p><code>std::reference_wrapper</code> 亦用于按引用传递对象给 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/bind">std::bind</a> 或 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/thread">std::thread</a> 的构造函数。</p>
+<p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/reference_wrapper">https://zh.cppreference.com/w/cpp/utility/functional/reference_wrapper</a></p>
+</blockquote>
+<h3 id="std-packaged-task"><a href="#std-packaged-task" class="headerlink" title="std::packaged_task"></a>std::packaged_task</h3><blockquote>
+<p>类模板 <code>std::packaged_task</code> 包装任何<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/Callable"><em>可调用</em> <em>(Callable)</em> </a>目标（函数、 lambda 表达式、 bind 表达式或其他函数对象），使得能异步调用它。其返回值或所抛异常被存储于能通过 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/future">std::future</a> 对象访问的共享状态中。</p>
+<p>正如 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/function">std::function</a> ， <code>std::packaged_task</code> 是多态、具分配器的容器：可在堆上或以提供的分配器分配存储的可调用对象。</p>
+</blockquote>
+<h3 id="std-async"><a href="#std-async" class="headerlink" title="std::async"></a>std::async</h3><blockquote>
+<p> <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/async">https://zh.cppreference.com/w/cpp/thread/async</a></p>
+<p> 函数模板 <code>std::async</code> 异步地运行函数 f（有可能在可能是线程池一部分的分离线程中），并返回最终将保有该函数调用结果的 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/future">std::future</a>。</p>
+<p> \1) 表现如同以 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/launch">std::launch::async</a> | <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/launch">std::launch::deferred</a> 作为 policy 调用 (2) 。</p>
+<p> \2) 按照特定的启动策略 policy（见<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/thread/async#.E5.90.AF.E5.8A.A8.E7.AD.96.E7.95.A5">下文</a>），以参数 args 调用函数 f。</p>
+<p> 任何情况下，对 <code>std::async</code> 的调用<em>同步于</em>（定义见 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/atomic/memory_order">std::memory_order</a>）对 f 的调用，且 f 的完成<em>先序于</em>令共享状态就绪。</p>
+<table>
+<thead>
+<tr>
+<th>如果 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional"><code>*INVOKE*</code></a>(<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/standard_library/decay-copy"><code>*decay-copy*</code></a>(<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/forward">std::forward</a><F>(f)),     <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/standard_library/decay-copy"><code>*decay-copy*</code></a>(<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/forward">std::forward</a><Args>(args))…) 不是合法表达式，那么程序非良构。</Args></F></th>
+<th>(C++20 前)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>在满足以下任一条件时，程序非良构：<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/is_constructible">std::is_constructible_v</a>&lt;<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/decay">std::decay_t</a><F>, F&gt; 是 false对于 <code>Args</code> 中的某个类型 <code>Arg_i</code>，<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/is_constructible">std::is_constructible_v</a>&lt;<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/decay">std::decay_t</a><Arg_i>, Arg_i&gt; 是 falsestd::is_invocable_v&lt;<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/decay">std::decay_t</a><F>, <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/decay">std::decay_t</a><Args>…&gt; 是 false</Args></F></Arg_i></F></td>
+<td>(C++20 起)</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h2 id="C-其他函数"><a href="#C-其他函数" class="headerlink" title="C++其他函数"></a>C++其他函数</h2><h3 id="decltype"><a href="#decltype" class="headerlink" title="decltype"></a>decltype</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/decltype">https://zh.cppreference.com/w/cpp/language/decltype</a></p>
+<p>\1) 如果实参是没有括号的<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/identifiers">标识表达式</a>或没有括号的<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/operator_member_access">类成员访问</a>表达式，那么 <code>decltype</code> 产生以该表达式命名的实体的类型。如果没有这种实体或该实参指名了一组重载函数，那么程序非良构。</p>
+<table>
+<thead>
+<tr>
+<th>如果实参是指名某个<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/structured_binding">结构化绑定</a>的没有括号的<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/identifiers">标识表达式</a>，那么 <code>decltype</code> 产生其<em>被引用类型</em>（在关于结构化绑定声明的说明中有所描述）。</th>
+<th>(C++17 起)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>如果实参是指名某个<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/template_parameters#.E9.9D.9E.E7.B1.BB.E5.9E.8B.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82">非类型模板形参</a>的没有括号的<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/identifiers">标识表达式</a>，那么 <code>decltype</code> 生成该模板形参的类型（当该模板形参以占位符类型声明时，类型会先进行任何所需的类型推导）。</td>
+<td>(C++20 起)</td>
+</tr>
+</tbody></table>
+<p>\2) 如果实参是其他类型为 <code>T</code> 的任何表达式，且</p>
+<p>a) 如果 <em>表达式</em> 的<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/value_category">值类别</a>是<em>亡值</em>，将会 <code>decltype</code> 产生 <code>T&amp;&amp;</code>；</p>
+<p>b) 如果 <em>表达式</em> 的值类别是<em>左值</em>，将会 <code>decltype</code> 产生 <code>T&amp;</code>；</p>
+<p>c) 如果 <em>表达式</em> 的值类别是<em>纯右值</em>，将会 <code>decltype</code> 产生 <code>T</code>。</p>
+<table>
+<thead>
+<tr>
+<th>如果 <em>表达式</em> 是返回类类型纯右值的函数调用，或是右操作数为这种函数调用的<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/operator_other">逗号表达式</a>，那么不会对该纯右值引入临时量。</th>
+<th>(C++17 前)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>如果 <em>表达式</em> 是除了（可带括号的）<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/consteval">立即调用</a>以外的 (C++20 起)纯右值，那么不会从该纯右值<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/implicit_conversion#.E4.B8.B4.E6.97.B6.E9.87.8F.E5.AE.9E.E8.B4.A8.E5.8C.96">实质化</a>临时对象：即这种纯右值没有结果对象。</td>
+<td>(C++17 起)</td>
+</tr>
+</tbody></table>
+<p>该类型不需要是<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/type#.E4.B8.8D.E5.AE.8C.E6.95.B4.E7.B1.BB.E5.9E.8B">完整类型</a>或拥有可用的<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/destructor">析构函数</a>，而且类型可以是<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/abstract_class">抽象的</a>。此规则不适用于其子表达式：decltype(f(g())) 中，g() 必须有完整类型，但 f() 不必。</p>
+<p>注意如果对象的名字带有括号，那么它会被当做通常的左值表达式，从而 decltype(x) 和 decltype((x)) 通常是不同的类型。</p>
+<p>在难以或不可能以标准写法进行声明的类型时，<code>decltype</code> 很有用，例如 lambda 相关类型或依赖于模板形参的类型。</p>
+</blockquote>
+<h3 id="std-move"><a href="#std-move" class="headerlink" title="std::move"></a>std::move</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/move">https://zh.cppreference.com/w/cpp/utility/move</a></p>
+<p><code>std::move</code> 用于<em>指示</em>对象 <code>t</code> 可以“被移动”，即允许从 <code>t</code> 到另一对象的有效率的资源传递。</p>
+<p>特别是， <code>std::move</code> 生成标识其参数 <code>t</code> 的<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/value_category">亡值表达式</a>。它准确地等价于到右值引用类型的 static_cast 。</p>
+</blockquote>
+<h3 id="std-bind"><a href="#std-bind" class="headerlink" title="std::bind"></a>std::bind</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/bind">https://zh.cppreference.com/w/cpp/utility/functional/bind</a></p>
+<p>函数模板 <code>std::bind</code> 生成 f 的转发调用包装器。调用此包装器等价于以一些<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/bind#.E5.8F.97.E7.BB.91.E5.AE.9A.E5.8F.82.E6.95.B0">绑定</a>到 args 的参数调用 f。</p>
+<p>如果 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/is_constructible">std::is_constructible</a>&lt;<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/decay">std::decay</a><F>::type, F&gt;::value 是 false，或 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/is_constructible">std::is_constructible</a>&lt;<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/decay">std::decay</a><Arg_i>::type, Arg_i&gt;::value 对于 <code>Args</code> 中的某个类型 <code>Arg_i</code> 是 false，那么程序非良构。</Arg_i></F></p>
+<p>如果 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/decay">std::decay</a><Ti>::type 或 <code>Args</code> 中的某个类型不<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/MoveConstructible"><em>可移动构造</em> <em>(MoveConstructible)</em> </a>或<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/Destructible"><em>可析构</em> <em>(Destructible)</em> </a>，那么行为未定义。</Ti></p>
+</blockquote>
+<h3 id="std-placeholders-1-std-placeholders-N"><a href="#std-placeholders-1-std-placeholders-N" class="headerlink" title="std::placeholders::_1, std::placeholders::_N"></a>std::placeholders::_1, std::placeholders::_N</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/placeholders">https://zh.cppreference.com/w/cpp/utility/functional/placeholders</a></p>
+<p><strong>std::placeholders</strong> 命名空间含有占位对象 <code>[_1, . . . _N]</code> ，其中 <code>N</code> 是实现定义的最大数字。</p>
+<p>于 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/bind">std::bind</a> 表达式用作参数时，占位符对象被存储于生成的函数对象，而以未绑定参数调用函数对象时，每个占位符 <code>_N</code> 被对应的第 N 个未绑定参数替换。</p>
+<table>
+<thead>
+<tr>
+<th>每个占位符如同以 extern <em>&#x2F;*unspecified*&#x2F;</em> _1; 声明。</th>
+<th>(C++17 前)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>鼓励实现如同以 inline constexpr <em>&#x2F;*unspecified*&#x2F;</em> _1; 声明占位符，尽管标准仍然允许以 extern <em>&#x2F;*unspecified*&#x2F;</em> _1; 声明它们。</td>
+<td>(C++17 起)</td>
+</tr>
+</tbody></table>
+<p>占位符对象的类型<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/DefaultConstructible"><em>可默认构造</em> <em>(DefaultConstructible)</em> </a>且<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/CopyConstructible"><em>可复制构造</em> <em>(CopyConstructible)</em> </a>，其默认复制&#x2F;移动构造函数不抛异常，且对于任何占位符 <code>_N</code> ，类型 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/is_placeholder">std::is_placeholder</a>&lt;decltype(_N)&gt; 有定义且从 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/types/integral_constant">std::integral_constant</a>&lt;int, N&gt; 导出。</p>
+</blockquote>
+<h3 id="std-function"><a href="#std-function" class="headerlink" title="std::function"></a>std::function</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/function">https://zh.cppreference.com/w/cpp/utility/functional/function</a></p>
+<p>类模板 <code>std::function</code> 是通用多态函数包装器。 <code>std::function</code> 的实例能存储、复制及调用任何<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/CopyConstructible"><em>可复制构造</em> <em>(CopyConstructible)</em> </a>的<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/Callable"><em>可调用</em> <em>(Callable)</em> </a><em>目标</em>——函数（通过其指针）、 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/lambda">lambda 表达式</a>、 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/bind">bind 表达式</a>或其他函数对象，还有指向成员函数指针和指向数据成员指针。</p>
+<p>存储的可调用对象被称为 <code>std::function</code> 的<em>目标</em>。若 <code>std::function</code> 不含目标，则称它为<em>空</em>。调用<em>空</em> <code>std::function</code> 的<em>目标</em>导致抛出 <a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/functional/bad_function_call">std::bad_function_call</a> 异常。</p>
+<p><code>std::function</code> 满足<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/CopyConstructible"><em>可复制构造</em> <em>(CopyConstructible)</em> </a>和<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/CopyAssignable"><em>可复制赋值</em> <em>(CopyAssignable)</em> </a>。</p>
+</blockquote>
+<h3 id="std-forward"><a href="#std-forward" class="headerlink" title="std::forward"></a>std::forward</h3><ul>
+<li>参数包完美转发</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/utility/forward">std::forward - cppreference.com</a></p>
+<p>\1) 转发左值为左值或右值，依赖于 T</p>
+<p>当 <code>t</code> 是<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/reference#.E8.BD.AC.E5.8F.91.E5.BC.95.E7.94.A8">转发引用</a>（作为到无 cv 限定函数模板形参的右值引用的函数实参），此重载将参数以在传递给调用方函数时的<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/value_category">值类别</a>转发给另一个函数。</p>
+<p>例如，若用于如下的包装器，则模板表现为下方所描述：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">void wrapper(T&amp;&amp; arg) </span><br><span class="line">&#123;</span><br><span class="line">// arg 始终是左值</span><br><span class="line">foo(std::forward&lt;T&gt;(arg)); // 转发为左值或右值，依赖于 T</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>若对 <code>wrapper()</code> 的调用传递右值 <code>std::string</code> ，则推导 <code>T</code> 为 <code>std::string</code> （非 <code>std::string&amp;</code> 或 <code>std::string&amp;&amp;</code>） ，且 <code>std::forward</code> 确保将右值引用传递给 <code>foo</code> 。</li>
+<li>若对 <code>wrapper()</code> 的调用传递 const 左值 <code>std::string</code> ，则推导 <code>T</code> 为 <code>const std::string&amp;</code> ，且 <code>std::forward</code> 确保将 const 左值引用传递给 <code>foo</code> 。</li>
+<li>若对 <code>wrapper()</code> 的调用传递非 const 左值 <code>std::string</code> ，则推导 <code>T</code> 为 <code>std::string&amp;</code> ，且 <code>std::forward</code> 确保将非 const 左值引用传递给 <code>foo</code> 。</li>
+</ul>
+<p>\2) 转发右值为右值并禁止右值的转发为左值</p>
+<p>此重载令转发表达式（如函数调用）的结果可行，结果可以是右值或左值，同转发引用参数的原始值类别。</p>
+<p>例如，若包装器不仅转发其参数，还在参数上调用成员函数，并转发其结果：</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Note/" rel="tag"># Note</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/05/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="学习笔记">
+                  <i class="fa fa-chevron-left"></i> 学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/12/QtCreator+CMake/" rel="next" title="QtCreator+CMake环境配置">
+                  QtCreator+CMake环境配置 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lemon-truffle</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">115k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:45</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+<!--显示运行时间-->
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/03/2021 15:41:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/js/custom_js/click_show_love.js"></script>
+
+
+<!--单击显示文字-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/click_show_text.js"></script>
+
+
+<!--点击爆炸效果  -->
+
+<canvas class="click_fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/custom_js/click_fireworks.js"></script>
+
+
+<!--显示恶搞标题-->
+
+<script type="text/javascript" src="/js/custom_js/funny_title.js"></script>
+
+
+<!--显示雪花效果-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/show_snow1.js"></script>
+
+
+
+
+<!-- 数字雨 -->
+
+<canvas id="canvas" width="1440" height="900" ></canvas>
+<script type="text/javascript" src="/js/custom_js/show_code_rain.js"></script>
+
+
+</body>
+</html>

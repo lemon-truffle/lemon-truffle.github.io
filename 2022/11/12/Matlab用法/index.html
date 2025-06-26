@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lemon-truffle.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Matlab 用法[TOC]  未整理  MatLab 函数查看源码的方式 type findpeaks.m  open findpeaks.m edit findpeaks.m 故意填错参数在 错误信息中打开.m 文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matlab 用法">
+<meta property="og:url" content="https://lemon-truffle.github.io/2022/11/12/Matlab%E7%94%A8%E6%B3%95/index.html">
+<meta property="og:site_name" content="柠檬野生菌">
+<meta property="og:description" content="Matlab 用法[TOC]  未整理  MatLab 函数查看源码的方式 type findpeaks.m  open findpeaks.m edit findpeaks.m 故意填错参数在 错误信息中打开.m 文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/11/12/Matlab%E7%94%A8%E6%B3%95/1624003881249.png">
+<meta property="article:published_time" content="2022-11-12T14:14:59.000Z">
+<meta property="article:modified_time" content="2023-10-05T02:45:56.271Z">
+<meta property="article:author" content="lemon-truffle">
+<meta property="article:tag" content="Note">
+<meta property="article:tag" content="Matlab">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lemon-truffle.github.io/2022/11/12/Matlab%E7%94%A8%E6%B3%95/1624003881249.png">
+
+
+<link rel="canonical" href="https://lemon-truffle.github.io/2022/11/12/Matlab%E7%94%A8%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lemon-truffle.github.io/2022/11/12/Matlab%E7%94%A8%E6%B3%95/","path":"2022/11/12/Matlab用法/","title":"Matlab 用法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Matlab 用法 | 柠檬野生菌</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">柠檬野生菌</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Matlab-%E7%94%A8%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Matlab 用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MatLab-%E5%87%BD%E6%95%B0%E6%9F%A5%E7%9C%8B%E6%BA%90%E7%A0%81%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.1.</span> <span class="nav-text">MatLab 函数查看源码的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MatLab-%E5%B0%86-m%E7%A8%8B%E5%BA%8F%E7%94%9F%E6%88%90%E4%B8%BA-C-x2F-C"><span class="nav-number">1.0.2.</span> <span class="nav-text">MatLab 将.m程序生成为 C&#x2F;C++</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MatLab-Mex-%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">MatLab  Mex 编译环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matlab-Coder-%E8%BD%AC%E6%8D%A2C%E8%AF%AD%E8%A8%80%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF"><span class="nav-number">1.2.</span> <span class="nav-text">Matlab Coder  转换C语言出现错误</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E5%88%B0Excel-xlswrite"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">输出到Excel  xlswrite</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E5%88%B0TXT-fopen-load"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">输出到TXT   fopen  load</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">矩阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">算数运算符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matlab%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.3.</span> <span class="nav-text">matlab常用函数说明</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comm-PhaseFrequencyOffset"><span class="nav-number"></span> <span class="nav-text">comm.PhaseFrequencyOffset</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qammod"><span class="nav-number"></span> <span class="nav-text">qammod</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comm-RaisedCosineTransmitFilter"><span class="nav-number"></span> <span class="nav-text">comm.RaisedCosineTransmitFilter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comm-PhaseNoise"><span class="nav-number"></span> <span class="nav-text">comm.PhaseNoise</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comm-RayleighChannel"><span class="nav-number"></span> <span class="nav-text">comm.RayleighChannel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awgn"><span class="nav-number"></span> <span class="nav-text">awgn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dsp-SpectrumAnalyzer"><span class="nav-number"></span> <span class="nav-text">dsp.SpectrumAnalyzer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comm-CarrierSynchronizer"><span class="nav-number"></span> <span class="nav-text">comm.CarrierSynchronizer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cast"><span class="nav-number"></span> <span class="nav-text">cast</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#atan2"><span class="nav-number"></span> <span class="nav-text">atan2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#persistent"><span class="nav-number"></span> <span class="nav-text">persistent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coder-extrinsic"><span class="nav-number"></span> <span class="nav-text">coder.extrinsic</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iqimbal"><span class="nav-number"></span> <span class="nav-text">iqimbal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comm-EVM"><span class="nav-number"></span> <span class="nav-text">comm.EVM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Test-and-Measurement"><span class="nav-number"></span> <span class="nav-text">Test and Measurement</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comm-ConstellationDiagram"><span class="nav-number"></span> <span class="nav-text">comm.ConstellationDiagram</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comm-SymbolSynchronizer"><span class="nav-number"></span> <span class="nav-text">comm.SymbolSynchronizer</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lemon-truffle"
+      src="/uploads/custom-logo.jpg">
+  <p class="site-author-name" itemprop="name">lemon-truffle</p>
+  <div class="site-description" itemprop="description">柠檬野生菌的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/lemon_fungus" title="GitHub → https:&#x2F;&#x2F;gitee.com&#x2F;lemon_fungus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-truffle.github.io/2022/11/12/Matlab%E7%94%A8%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/custom-logo.jpg">
+      <meta itemprop="name" content="lemon-truffle">
+      <meta itemprop="description" content="柠檬野生菌的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柠檬野生菌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Matlab 用法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-12 22:14:59" itemprop="dateCreated datePublished" datetime="2022-11-12T22:14:59+08:00">2022-11-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2023-10-05 10:45:56" itemprop="dateModified" datetime="2023-10-05T10:45:56+08:00">2023-10-05</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Matlab-用法"><a href="#Matlab-用法" class="headerlink" title="Matlab 用法"></a>Matlab 用法</h2><p>[TOC]</p>
+<ul>
+<li>未整理</li>
+</ul>
+<h4 id="MatLab-函数查看源码的方式"><a href="#MatLab-函数查看源码的方式" class="headerlink" title="MatLab 函数查看源码的方式"></a>MatLab 函数查看源码的方式</h4><ul>
+<li>type findpeaks.m </li>
+<li>open findpeaks.m</li>
+<li>edit findpeaks.m</li>
+<li>故意填错参数在 错误信息中打开.m 文件</li>
+</ul>
+<span id="more"></span>
+
+<h4 id="MatLab-将-m程序生成为-C-x2F-C"><a href="#MatLab-将-m程序生成为-C-x2F-C" class="headerlink" title="MatLab 将.m程序生成为 C&#x2F;C++"></a>MatLab 将.m程序生成为 C&#x2F;C++</h4><h3 id="MatLab-Mex-编译环境配置"><a href="#MatLab-Mex-编译环境配置" class="headerlink" title="MatLab  Mex 编译环境配置"></a>MatLab  Mex 编译环境配置</h3><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_29575501/article/details/8108238">https://blog.csdn.net/sinat_29575501/article/details/8108238</a></p>
+<p>​    :star:  <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39715000/article/details/110454224">https://blog.csdn.net/qq_39715000/article/details/110454224</a></p>
+<p>​    TDM64-gcc4.9.2下载 ：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/Previous/1.1309.0/">https://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/Previous/1.1309.0/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; mex -setup</span><br><span class="line">MEX configured to use &#x27;MinGW64 Compiler (C)&#x27; for C language compilation.</span><br><span class="line">Warning: The MATLAB C and Fortran API has changed to support MATLAB</span><br><span class="line">	 variables with more than 2^32-1 elements. In the near future</span><br><span class="line">	 you will be required to update your code to utilize the</span><br><span class="line">	 new API. You can find more information about this at:</span><br><span class="line">	 http://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html.</span><br><span class="line"></span><br><span class="line">To choose a different language, select one from the following:</span><br><span class="line"> mex -setup C++ </span><br><span class="line"> mex -setup FORTRAN</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Matlab-Coder-转换C语言出现错误"><a href="#Matlab-Coder-转换C语言出现错误" class="headerlink" title="Matlab Coder  转换C语言出现错误"></a>Matlab Coder  转换C语言出现错误</h3><p><img src="/2022/11/12/Matlab%E7%94%A8%E6%B3%95/1624003881249.png" alt="1624003881249"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Index variable k is used outside its corresponding FOR loop. The run-time behavior will differ from MATLAB if the loop is not executed.</span><br><span class="line">Index variable k is used outside its corresponding FOR loop. The run-time behavior will differ from MATLAB if the loop is not executed.</span><br></pre></td></tr></table></figure>
+
+<h5 id="输出到Excel-xlswrite"><a href="#输出到Excel-xlswrite" class="headerlink" title="输出到Excel  xlswrite"></a>输出到Excel  xlswrite</h5><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">M=[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>;<span class="number">4</span> <span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span> <span class="number">9</span>]</span><br><span class="line">xlswrite(<span class="string">&#x27;M.xls&#x27;</span>,M)</span><br></pre></td></tr></table></figure>
+
+<h5 id="输出到TXT-fopen-load"><a href="#输出到TXT-fopen-load" class="headerlink" title="输出到TXT   fopen  load"></a>输出到TXT   fopen  load</h5><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">clear;clc;</span><br><span class="line">V=<span class="number">120</span>;</span><br><span class="line">I=<span class="number">2.2</span>;</span><br><span class="line">fo=fopen(<span class="string">&#x27;output.txt&#x27;</span>,<span class="string">&#x27;w&#x27;</span>); <span class="comment">%w 可写</span></span><br><span class="line">fprintf(fo,<span class="string">&#x27;V=%4i volt,I=%5.2f amp \n&#x27;</span>,V,I);</span><br><span class="line">fclose(fo);</span><br><span class="line"></span><br><span class="line">A=<span class="built_in">zeros</span>(<span class="number">4</span>,<span class="number">3</span>);</span><br><span class="line">fi=fopen(<span class="string">&#x27;input.txt&#x27;</span>,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line">[A] =fscanf(fi,<span class="string">&#x27;%f&#x27;</span>,[<span class="number">4</span>,<span class="number">3</span>])  <span class="comment">%得到的数据是个转置</span></span><br><span class="line">A&#x27;</span><br><span class="line">load input.txt   <span class="comment">%直接加载文本</span></span><br><span class="line">x = input(:,<span class="number">1</span>)</span><br><span class="line">y = input(:,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h5><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%单位矩阵I</span></span><br><span class="line">I=<span class="built_in">eye</span>(n)</span><br><span class="line"><span class="comment">%A的转置</span></span><br><span class="line">A&#x27;   </span><br><span class="line"><span class="comment">%A的逆矩阵</span></span><br><span class="line">inv(A)</span><br><span class="line"><span class="comment">%求矩阵逆矩阵</span></span><br><span class="line">det(A)</span><br><span class="line"><span class="comment">%获取矩阵维数</span></span><br><span class="line"><span class="built_in">size</span>(A)</span><br><span class="line"><span class="comment">%点积可以表示为对应元素乘积之和</span></span><br><span class="line">A=[a1 a2 a3] B=[b1 b2 b3]</span><br><span class="line">A·B =sum(A.*B)=sum([a1b1 a2b2 a3b3])=a1b1+a2b2+a3b3</span><br></pre></td></tr></table></figure>
+
+<h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">未定义与 &#x27;matlab.graphics.primitive.Line&#x27; 类型的输入参数相对应的函数&#x27;plotpkmarkers&#x27;。</span><br><span class="line">which -all plotpamarkers</span><br><span class="line">复制  plotpamarkers.m 到当前目录</span><br></pre></td></tr></table></figure>
+
+<h5 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h5><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">+	加；正号</span><br><span class="line">-	减；负号</span><br><span class="line">*	矩阵乘</span><br><span class="line">.*	数组乘</span><br><span class="line">\	矩阵左除</span><br><span class="line">/	矩阵右除</span><br><span class="line">.\	数组除</span><br><span class="line">./	数组除</span><br><span class="line">^	矩阵乘方</span><br><span class="line">.^	数组乘方</span><br><span class="line">’	共轭转置</span><br><span class="line">.’非共轭转置</span><br></pre></td></tr></table></figure>
+
+<h3 id="matlab常用函数说明"><a href="#matlab常用函数说明" class="headerlink" title="matlab常用函数说明"></a>matlab常用函数说明</h3><ul>
+<li>varargin</li>
+</ul>
+<blockquote>
+<p><code>varargin</code> 是函数定义语句中的一个输入变量，允许函数接受任意数量的输入参数。使用小写字符指定 <code>varargin</code>，将其作为最后一个输入参数附加在任何显式声明的输入项后。</p>
+<p>在执行函数时，<code>varargin</code> 是一个 1×N 元胞数组，其中 N 是函数在显式声明的输入后收到的输入项数。但是，如果该函数在显式声明的输入后未收到任何输入，则 <code>varargin</code> 是空元胞数组。</p>
+</blockquote>
+<ul>
+<li>find</li>
+</ul>
+<blockquote>
+<p><code>k = find(X,n)</code> 返回与 <code>X</code> 中的非零元素对应的前 <code>n</code> 个索引。</p>
+</blockquote>
+<ul>
+<li>isnan</li>
+</ul>
+<blockquote>
+<p><code>TF = isnan(A)</code> 返回一个逻辑数组，其中的 <code>1</code> (<code>true</code>) 对应 <code>A</code> 中的 <code>NaN</code> 元素，<code>0</code> (<code>false</code>) 对应其他元素。如果 <code>A</code> 包含复数，则 <code>isnan(A)</code> 中的 <code>1</code> 对应实部或虚部为 <code>NaN</code> 值的元素，<code>0</code> 对应实部和虚部均非 <code>NaN</code> 值的元素。</p>
+</blockquote>
+<blockquote>
+<p><code>TF = isinf(A)</code> 返回一个逻辑数组，其中的 <code>1</code> (<code>true</code>) 对应数组 <code>A</code> 中的 <code>Inf</code> 或 <code>-Inf</code> 元素，<code>0</code> (<code>false</code>) 对应其他元素。如果 <code>A</code> 包含复数，则 <code>isinf(A)</code> 中的 <code>1</code> 对应实部或虚部为无限值的元素，<code>0</code> 对应实部和虚部均为有限值或 <code>NaN</code> 值的元素。</p>
+</blockquote>
+<blockquote>
+<p><code>n = numel(A)</code> 返回数组 <code>A</code> 中的元素数目 <code>n</code> 等同于 <code>prod(size(A))</code>。</p>
+</blockquote>
+<blockquote>
+<p><code>Y = diff(X)</code> 计算沿大小不等于 1 的第一个数组维度的 <code>X</code> 相邻元素之间的差分：</p>
+<ul>
+<li><p>如果 <code>X</code> 是长度为 <code>m</code> 的向量，则 <code>Y = diff(X)</code> 返回长度为 <code>m-1</code> 的向量。<code>Y</code> 的元素是 <code>X</code> 相邻元素之间的差分。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Y = [X(<span class="number">2</span>)-X(<span class="number">1</span>) X(<span class="number">3</span>)-X(<span class="number">2</span>) ... X(m)-X(m<span class="number">-1</span>)]</span><br></pre></td></tr></table></figure></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Y &#x3D; <code>sign(x)</code> 返回与 <code>x</code> 大小相同的数组 <code>Y</code>，其中 <code>Y</code> 的每个元素是：</p>
+<ul>
+<li><code>1</code>，前提是 <code>x</code> 的对应元素大于 <code>0</code>。</li>
+<li><code>0</code>，前提是 <code>x</code> 的对应元素等于 <code>0</code>。</li>
+<li><code>-1</code>，前提是 <code>x</code> 的对应元素小于 <code>0</code>。</li>
+<li><code>x./abs(x)</code>，前提是 <code>x</code> 为复数。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><code>validateattributes(A,classes,attributes)</code> 验证数组 <code>A</code> 是否属于至少一个指定的类（或其子类）并具有所有指定的属性。如果 <code>A</code> 不符合条件，MATLAB® 将引发错误，并显示一条格式化的错误消息。否则，<code>validateattributes</code> 将完成并且不显示任何输出。</p>
+</blockquote>
+<blockquote>
+<p>如果 <code>size</code>(<code>V</code>) 返回具有非负整数值 <code>n</code> 的 <code>[1 n]</code>，则 <code>isrow(V)</code> 返回逻辑值 1 (<code>true</code>)，否则返回逻辑值 0 (<code>false</code>)。</p>
+</blockquote>
+<blockquote>
+<p>如果 <code>A</code> 为空，<code>TF = isempty(A)</code> 返回逻辑值 <code>1</code> (<code>true</code>)，否则返回逻辑值 <code>0</code> (<code>false</code>)。空数组、表或时间表有至少一个长度为 0 的维度，如 0×0 或 0×5。</p>
+</blockquote>
+<blockquote>
+<p>如果 <code>A</code> 是数值数据类型的数组，则 <code>TF = isnumeric(A)</code> 返回逻辑值 <code>1</code> (<code>true</code>)。否则，将返回逻辑值 <code>0</code> (<code>false</code>)。</p>
+<p>MATLAB® 中的数值类型包括：<code>int8</code>、<code>int16</code>、<code>int32</code>、<code>int64</code>、<code>uint8</code>、<code>uint16</code>、<code>uint32</code>、<code>uint64</code>、<code>single</code> 和 <code>double</code>。有关详细信息，请参阅<a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/help/matlab/matlab_prog/integers.html#btbt9yx">整数类</a>和<a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/help/matlab/matlab_prog/floating-point-numbers.html">浮点数</a>。</p>
+</blockquote>
+<blockquote>
+<p>如果 <code>t</code> 是日期时间数组，<code>tf = isdatetime(t)</code> 将返回逻辑值 <code>1</code> (<code>true</code>)。否则，将返回逻辑值 <code>0</code> (<code>false</code>)。</p>
+</blockquote>
+<blockquote>
+<p>如果 <code>A</code> 是标量，<code>TF = isscalar(A)</code> 将返回逻辑值 <code>1</code> (<code>true</code>)。否则，将返回逻辑值 <code>0</code> (<code>false</code>)。标量是大小为 1×1 的二维数组。</p>
+</blockquote>
+<blockquote>
+<p>如果代码生成目标是 <code>target</code>，则 <code>tf = coder.target(target)</code> 返回 true (1)。否则，它返回 false (0)。</p>
+<p>如果为 MATLAB® 类生成代码，则 MATLAB 会在代码生成之前加载类时计算类的初始值。如果您在 MATLAB 类属性初始化中使用 <code>coder.target</code>，<code>coder.target(&#39;MATLAB&#39;)</code> 将返回 true。</p>
+</blockquote>
+<blockquote>
+<p><code>ME = MException(errID,msgtext)</code> 捕获有关特定错误的信息，并将信息存储在 <code>MException</code> 对象 <code>ME</code> 中。<code>MException</code> 对象是使用错误标识符 <code>errID</code> 和错误消息 <code>msgtext</code> 构造的。</p>
+</blockquote>
+<blockquote>
+<p><code>throwAsCaller(exception)</code> 引发异常，如同发生在调用函数内。异常会终止当前正在运行的函数并将控制权交回给键盘或所在的 <code>catch</code> 块。从 <code>try/catch</code> 语句外部引发异常时，MATLAB® 将错误消息显示在命令行窗口中。</p>
+<p>可以通过 <code>try/catch</code> 语句或 <code>MException.last</code> 函数访问 <code>MException</code> 对象。</p>
+<p>有时，较之指向实际引发异常的函数，指向导致异常的调用函数中的位置可提供更多有关错误的信息。可以使用 <code>throwAsCaller</code> 简化错误显示。</p>
+</blockquote>
+<blockquote>
+<p>使用 <code>inputParser</code> 对象，用户可以通过创建输入解析器模式来管理函数的输入。要检查输入项，您可以为所需参数、可选参数和名称-值对组参数定义验证函数。还可以通过设置属性来调整解析行为，例如如何处理大小写、结构体数组输入以及不在输入解析器模式中的输入。</p>
+<p>定义输入解析器模式后，调用 <code>parse</code> 函数。有关输入的信息存储在 <code>inputParser</code> 中。</p>
+</blockquote>
+<blockquote>
+<p><code>addParameter(p,paramName,defaultVal)</code> 将一个可选的名称-值对组参数的参数名称添加到输入解析器模式中。如果函数的输入参数不包含这个可选的名称-值对组，输入解析器会为 <code>paramName</code> 赋予值 <code>defaultVal</code>。</p>
+<p>与使用 <code>addRequired</code> 和 <code>addOptional</code> 函数添加的位置输入参数不同，使用 <code>addParameter</code> 添加的每个参数都对应两个输入参数：一个对应名称，一个对应值。</p>
+</blockquote>
+<blockquote>
+<p><code>varargin</code> 是函数定义语句中的一个输入变量，允许函数接受任意数量的输入参数。使用小写字符指定 <code>varargin</code>，将其作为最后一个输入参数附加在任何显式声明的输入项后。</p>
+<p>在执行函数时，<code>varargin</code> 是一个 1×N 元胞数组，其中 N 是函数在显式声明的输入后收到的输入项数。但是，如果该函数在显式声明的输入后未收到任何输入，则 <code>varargin</code> 是空元胞数组。</p>
+</blockquote>
+<blockquote>
+<p><code>parse(p,argList)</code> 解析并验证 <code>arglist</code> 中的输入。</p>
+</blockquote>
+<blockquote>
+<p><code>tf = strcmp(s1,s2)</code> 比较 <code>s1</code> 和 <code>s2</code>，如果二者相同，则返回 <code>1</code> (<code>true</code>)，否则返回 <code>0</code> (<code>false</code>)。如果文本的大小和内容相同，则它们将视为相等。返回结果 <code>tf</code> 的数据类型为 <code>logical</code>。</p>
+<p>输入参数可以是字符串数组、字符向量和字符向量元胞数组的任何组合。</p>
+</blockquote>
+<blockquote>
+<p>如果 <code>t</code> 是 <code>duration</code> 数组，<code>tf = isduration(t)</code> 将返回逻辑值 <code>1</code> (<code>true</code>)。否则，将返回逻辑值 <code>0</code> (<code>false</code>)。</p>
+</blockquote>
+<blockquote>
+<p><code>S = seconds(X)</code> 返回等同于 <code>X</code> 中的值的秒数组。</p>
+<ul>
+<li>如果 <code>X</code> 是数值数组，则 <code>S</code> 是以秒为单位的 <code>duration</code> 数组。</li>
+<li>如果 <code>X</code> 为 <code>duration</code> 数组，则 <code>S</code> 为 <code>double</code> 数组，其中每个元素与 <code>X</code> 的对应元素中的秒数相等。</li>
+</ul>
+<p><code>seconds</code> 函数在 <code>duration</code> 和 <code>double</code> 值之间转换。要显示以秒为单位的持续时间，请将其 <code>Format</code> 属性设置为 <code>&#39;s&#39;</code>。</p>
+</blockquote>
+<blockquote>
+<p>.’  非共轭转置  ‘ 共轭转置</p>
+</blockquote>
+<blockquote>
+<p><code>s = struct(field1,value1,...,fieldN,valueN)</code> 创建一个包含多个字段的结构体数组。</p>
+<ul>
+<li><p>如果 <code>value</code> 的所有输入都不是元胞数组，或者 <code>value</code> 中作为元胞数组的所有输入都是标量，则 <code>s</code> 是标量结构体。</p>
+</li>
+<li><p>如果任一 <code>value</code> 输入是非标量元胞数组，则 <code>s</code> 具有与该元胞数组相同的维度。此外，如果两个或多个 <code>value</code> 输入是非标量元胞数组，则它们必须都具有相同的维度。</p>
+<p>对于类型为标量元胞数组或任何其他数据类型的数组的任何 <code>value</code>，<code>struct</code> 将 <code>value</code> 的内容插入 <code>s</code> 的所有元素的相关字段中。例如，<code>s = struct(&#39;x&#39;,&#123;&#39;a&#39;,&#39;b&#39;&#125;,&#39;y&#39;,&#39;c&#39;)</code> 返回 <code>s(1).x = &#39;a&#39;</code>、<code>s(2).x = &#39;b&#39;</code>、<code>s(1).y = &#39;c&#39;</code> 和 <code>s(2).y = &#39;c&#39;</code>。</p>
+</li>
+<li><p>如果任何 <code>value</code> 输入是空元胞数组 <code>&#123;&#125;</code>，则输出 <code>s</code> 是空 (0×0) 结构体。要指定一个空字段并保留其他字段的值，请改用 <code>[]</code> 作为 <code>value</code> 输入。</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><code>nargout</code> 针对当前正在执行的函数，返回该函数调用中指定的函数输出参数的数目。该语法仅可在函数体内使用。</p>
+</blockquote>
+<blockquote>
+<p><code>B = flipud(A)</code> 返回 <code>A</code>，围绕水平轴按上下方向翻转其各行。</p>
+<p>如果 <code>A</code> 是一个列向量，则 <code>flipud(A)</code> 返回一个相同长度的向量，其元素的顺序颠倒。如果 <code>A</code> 是一个行向量，则 <code>flipud(A)</code> 只返回 <code>A</code>。对于多维数组，<code>flipud</code> 作用于由第一个和第二个维度构成的平面。</p>
+</blockquote>
+<blockquote>
+<p> randi 均匀分布的伪随机整数<br> <code>X = randi(imax)</code> 返回一个介于 <code>1</code> 和 <code>imax</code> 之间的伪随机整数标量。</p>
+</blockquote>
+<blockquote>
+<h1 id="comm-PhaseFrequencyOffset"><a href="#comm-PhaseFrequencyOffset" class="headerlink" title="comm.PhaseFrequencyOffset"></a>comm.PhaseFrequencyOffset</h1><p>Apply phase and frequency offsets to input signal 对输入信号应用相位和频率偏移</p>
+</blockquote>
+<blockquote>
+<h1 id="qammod"><a href="#qammod" class="headerlink" title="qammod"></a>qammod</h1><p>Quadrature amplitude modulation (QAM) 正交幅度调制</p>
+<p><code>y = qammod(x,M)</code> modulates input signal <code>x</code> by using QAM with the specified modulation order <code>M</code>. Output <code>y</code> is the modulated signal.</p>
+</blockquote>
+<blockquote>
+<h1 id="comm-RaisedCosineTransmitFilter"><a href="#comm-RaisedCosineTransmitFilter" class="headerlink" title="comm.RaisedCosineTransmitFilter"></a>comm.RaisedCosineTransmitFilter</h1><p>Apply pulse shaping by interpolating signal using raised-cosine FIR filter</p>
+</blockquote>
+<blockquote>
+<h1 id="comm-PhaseNoise"><a href="#comm-PhaseNoise" class="headerlink" title="comm.PhaseNoise"></a>comm.PhaseNoise</h1><p>Apply phase noise to baseband signal</p>
+</blockquote>
+<blockquote>
+<h1 id="comm-RayleighChannel"><a href="#comm-RayleighChannel" class="headerlink" title="comm.RayleighChannel"></a>comm.RayleighChannel</h1><p>Filter input signal through multipath Rayleigh fading channel</p>
+</blockquote>
+<blockquote>
+<h1 id="awgn"><a href="#awgn" class="headerlink" title="awgn"></a>awgn</h1><p>Add white Gaussian noise to signal 在信道中加入高斯白噪声</p>
+</blockquote>
+<blockquote>
+<h1 id="dsp-SpectrumAnalyzer"><a href="#dsp-SpectrumAnalyzer" class="headerlink" title="dsp.SpectrumAnalyzer"></a>dsp.SpectrumAnalyzer</h1><p>Display frequency spectrum of time-domain signals</p>
+</blockquote>
+<blockquote>
+<h1 id="comm-CarrierSynchronizer"><a href="#comm-CarrierSynchronizer" class="headerlink" title="comm.CarrierSynchronizer"></a>comm.CarrierSynchronizer</h1><p>Compensate for carrier frequency offset  补偿载波和频率偏移</p>
+</blockquote>
+<blockquote>
+<h1 id="cast"><a href="#cast" class="headerlink" title="cast"></a>cast</h1><p>将变量转换为不同的数据类型</p>
+<p><code>B = cast(A,newclass)</code> 将 <code>A</code> 转换为数据类型（类）<code>newclass</code>，其中 <code>newclass</code> 是与 <code>A</code> 兼容的内置数据类型的名称。<code>cast</code> 函数将 <code>A</code> 中 <code>newclass</code> 范围以外的所有值截断到最近的端点。</p>
+<p>将浮点数转换为整数时，<code>cast</code> 函数会将该数舍入为最接近的整数。如果浮点数的小数部分恰好为 0.5，则它朝偏离零的方向舍入到模更大的整数。</p>
+</blockquote>
+<blockquote>
+<h1 id="atan2"><a href="#atan2" class="headerlink" title="atan2"></a>atan2</h1><p>四象限反正切</p>
+</blockquote>
+<blockquote>
+<h1 id="persistent"><a href="#persistent" class="headerlink" title="persistent"></a>persistent</h1><p>定义持久变量</p>
+</blockquote>
+<blockquote>
+<h1 id="coder-extrinsic"><a href="#coder-extrinsic" class="headerlink" title="coder.extrinsic"></a>coder.extrinsic</h1><p>声明外部函数</p>
+</blockquote>
+<blockquote>
+<h1 id="iqimbal"><a href="#iqimbal" class="headerlink" title="iqimbal"></a>iqimbal</h1><p>Apply I&#x2F;Q imbalance to input signal</p>
+</blockquote>
+<blockquote>
+<h1 id="comm-EVM"><a href="#comm-EVM" class="headerlink" title="comm.EVM"></a>comm.EVM</h1><p>Measure error vector magnitude</p>
+</blockquote>
+<blockquote>
+<h1 id="Test-and-Measurement"><a href="#Test-and-Measurement" class="headerlink" title="Test and Measurement"></a>Test and Measurement</h1><p>Waveform generation, visualization, and performance analysis</p>
+</blockquote>
+<blockquote>
+<h1 id="comm-ConstellationDiagram"><a href="#comm-ConstellationDiagram" class="headerlink" title="comm.ConstellationDiagram"></a>comm.ConstellationDiagram</h1><p>Display constellation diagram for input signals</p>
+</blockquote>
+<blockquote>
+<h1 id="comm-SymbolSynchronizer"><a href="#comm-SymbolSynchronizer" class="headerlink" title="comm.SymbolSynchronizer"></a>comm.SymbolSynchronizer</h1><p>Correct symbol timing clock skew  校正符号定时时钟偏移</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Note/" rel="tag"># Note</a>
+              <a href="/tags/Matlab/" rel="tag"># Matlab</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/12/DMCA%E5%8A%9F%E8%83%BD%E7%BA%AA%E8%A6%81/" rel="prev" title="DMCA功能纪要">
+                  <i class="fa fa-chevron-left"></i> DMCA功能纪要
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/13/VS%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%80%BB%E9%9B%86/" rel="next" title="VS开发问题总集【持续更新中】">
+                  VS开发问题总集【持续更新中】 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lemon-truffle</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">115k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:45</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+<!--显示运行时间-->
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/03/2021 15:41:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/js/custom_js/click_show_love.js"></script>
+
+
+<!--单击显示文字-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/click_show_text.js"></script>
+
+
+<!--点击爆炸效果  -->
+
+<canvas class="click_fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/custom_js/click_fireworks.js"></script>
+
+
+<!--显示恶搞标题-->
+
+<script type="text/javascript" src="/js/custom_js/funny_title.js"></script>
+
+
+<!--显示雪花效果-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/show_snow1.js"></script>
+
+
+
+
+<!-- 数字雨 -->
+
+<canvas id="canvas" width="1440" height="900" ></canvas>
+<script type="text/javascript" src="/js/custom_js/show_code_rain.js"></script>
+
+
+</body>
+</html>

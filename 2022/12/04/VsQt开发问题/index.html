@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lemon-truffle.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="VsQt开发问题[TOC] 环境说明 Win10  Visual Studio 2019 pro  Qt Creator 4.13.1 、Qt 5.12.10  以下教程默认已安装好 Vs 以及Qt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VsQt开发问题">
+<meta property="og:url" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="柠檬野生菌">
+<meta property="og:description" content="VsQt开发问题[TOC] 环境说明 Win10  Visual Studio 2019 pro  Qt Creator 4.13.1 、Qt 5.12.10  以下教程默认已安装好 Vs 以及Qt">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702104002402.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702104045051.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204172329524.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204170543076.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204171010583.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204171327262.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204171420662.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702101412284.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702101321058.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702101731490.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702105034324.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702104901362.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204152356771.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204155630937.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204162127087.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204162543177.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204160857826.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204161531012.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204161738792.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204163828231.png">
+<meta property="og:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204164509822.png">
+<meta property="article:published_time" content="2022-12-04T09:30:50.000Z">
+<meta property="article:modified_time" content="2023-10-05T02:36:14.959Z">
+<meta property="article:author" content="lemon-truffle">
+<meta property="article:tag" content="Qt">
+<meta property="article:tag" content="Vs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702104002402.png">
+
+
+<link rel="canonical" href="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/","path":"2022/12/04/VsQt开发问题/","title":"VsQt开发问题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>VsQt开发问题 | 柠檬野生菌</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">柠檬野生菌</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">VsQt开发问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E"><span class="nav-number">1.0.1.</span> <span class="nav-text">环境说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-Qt%E5%AE%89%E8%A3%85%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.1.</span> <span class="nav-text">VS+Qt安装注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-Studio-2015-%E5%AE%89%E8%A3%85%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.1.1.</span> <span class="nav-text">Visual Studio 2015 安装注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QtCreator-msvc%E7%BC%96%E8%AF%91%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">QtCreator msvc编译器配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-Studio-2019-Qt-5-12-10"><span class="nav-number">1.2.1.</span> <span class="nav-text">Visual Studio 2019 + Qt 5.12.10</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-Studio-2015-Qt5-12-10"><span class="nav-number">1.2.2.</span> <span class="nav-text">Visual Studio 2015  + Qt5.12.10</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VsQt%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">VsQt环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6-Qt-Visual-Studio-Tools"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装插件 Qt Visual Studio Tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.2.</span> <span class="nav-text">插件配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.4.</span> <span class="nav-text">Qt创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vs%E5%88%9B%E5%BB%BAQt%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.5.</span> <span class="nav-text">Vs创建Qt项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VsQt%E5%B7%A5%E7%A8%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.6.</span> <span class="nav-text">VsQt工程转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vs%E5%B7%A5%E7%A8%8B%E8%BD%ACQt%E5%B7%A5%E7%A8%8B"><span class="nav-number">1.6.1.</span> <span class="nav-text">Vs工程转Qt工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt%E5%B7%A5%E7%A8%8B%E8%BD%ACVs%E5%B7%A5%E7%A8%8B"><span class="nav-number">1.6.2.</span> <span class="nav-text">Qt工程转Vs工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%AF%9B%E7%97%85"><span class="nav-number">1.6.3.</span> <span class="nav-text">一些小毛病</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lemon-truffle"
+      src="/uploads/custom-logo.jpg">
+  <p class="site-author-name" itemprop="name">lemon-truffle</p>
+  <div class="site-description" itemprop="description">柠檬野生菌的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/lemon_fungus" title="GitHub → https:&#x2F;&#x2F;gitee.com&#x2F;lemon_fungus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-truffle.github.io/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/custom-logo.jpg">
+      <meta itemprop="name" content="lemon-truffle">
+      <meta itemprop="description" content="柠檬野生菌的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柠檬野生菌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VsQt开发问题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-12-04 17:30:50" itemprop="dateCreated datePublished" datetime="2022-12-04T17:30:50+08:00">2022-12-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2023-10-05 10:36:14" itemprop="dateModified" datetime="2023-10-05T10:36:14+08:00">2023-10-05</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="VsQt开发问题"><a href="#VsQt开发问题" class="headerlink" title="VsQt开发问题"></a>VsQt开发问题</h1><p>[TOC]</p>
+<h3 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h3><ul>
+<li><p>Win10</p>
+</li>
+<li><p>Visual Studio 2019 pro</p>
+</li>
+<li><p>Qt Creator 4.13.1 、Qt 5.12.10</p>
+</li>
+<li><p>以下教程默认已安装好 <code>Vs</code> 以及<code>Qt</code></p>
+</li>
+</ul>
+<span id="more"></span>
+
+
+
+<h2 id="VS-Qt安装注意事项"><a href="#VS-Qt安装注意事项" class="headerlink" title="VS+Qt安装注意事项"></a>VS+Qt安装注意事项</h2><ul>
+<li>一般先安装VS在安装Qt，Q这样t会检测环境变量列出编译器</li>
+<li>Qt如果现需要使用msvc需要在安装时勾选msvc</li>
+</ul>
+<h3 id="Visual-Studio-2015-安装注意事项"><a href="#Visual-Studio-2015-安装注意事项" class="headerlink" title="Visual Studio 2015 安装注意事项"></a>Visual Studio 2015 安装注意事项</h3><ul>
+<li><p>尽量安装最后一版 注意哈希校验这是不会变的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cn_visual_studio_professional_2015_with_update_3_x86_x64_dvd_8923256.iso</span><br><span class="line">//SHA1 99E6C061FFB3194D28682D75D5F2F0F12A8D614F</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装项</p>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702104002402.png" alt="image-20230702104002402"></p>
+</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702104045051.png" alt="image-20230702104045051"></p>
+<h2 id="QtCreator-msvc编译器配置"><a href="#QtCreator-msvc编译器配置" class="headerlink" title="QtCreator msvc编译器配置"></a>QtCreator msvc编译器配置</h2><ul>
+<li>QtCreator 想要使用<code>msvc</code>编译器需要先配置 <code>msvc kits</code></li>
+<li>安装<a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/">Windows SDK</a>配置 windows 调试器</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204172329524.png" alt="image-20221204172329524"></p>
+<h3 id="Visual-Studio-2019-Qt-5-12-10"><a href="#Visual-Studio-2019-Qt-5-12-10" class="headerlink" title="Visual Studio 2019 + Qt 5.12.10"></a>Visual Studio 2019 + Qt 5.12.10</h3><ul>
+<li>安装好<code>WindowsKits  Debbug </code>后 重启<code>QtCreator </code>可以看到自动检测出的<code>cdb</code></li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204170543076.png" alt="image-20221204170543076"></p>
+<ul>
+<li>如果Vs Qt都安装了msvc 编译器的话这里应该能检测出来</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204171010583.png" alt="image-20221204171010583"></p>
+<ul>
+<li>msvc Kits 的配置 <code>msvc2017_32</code></li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204171327262.png" alt="image-20221204171327262"></p>
+<ul>
+<li><code>msvc2017_64</code></li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204171420662.png" alt="image-20221204171420662"></p>
+<h3 id="Visual-Studio-2015-Qt5-12-10"><a href="#Visual-Studio-2015-Qt5-12-10" class="headerlink" title="Visual Studio 2015  + Qt5.12.10"></a>Visual Studio 2015  + Qt5.12.10</h3><ul>
+<li>调试器</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702101412284.png" alt="image-20230702101412284"></p>
+<ul>
+<li>编译器</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702101321058.png" alt="image-20230702101321058"></p>
+<ul>
+<li>msvc2015_64</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702101731490.png" alt="image-20230702101731490"></p>
+<ul>
+<li>msvc2017_32</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702105034324.png" alt="image-20230702105034324"></p>
+<ul>
+<li>msvc2017_64</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20230702104901362.png" alt="image-20230702104901362"></p>
+<h2 id="VsQt环境配置"><a href="#VsQt环境配置" class="headerlink" title="VsQt环境配置"></a>VsQt环境配置</h2><h3 id="安装插件-Qt-Visual-Studio-Tools"><a href="#安装插件-Qt-Visual-Studio-Tools" class="headerlink" title="安装插件 Qt Visual Studio Tools"></a>安装插件 Qt Visual Studio Tools</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2019">Qt Visual Studio Tools</a></p>
+</li>
+<li><p>右键 -&gt;扩展 -&gt;扩展管理 -&gt;联机-&gt; 右边搜索框输入<code>Qt</code> -&gt; 点击<code>Qt Visual Studio Tools</code> -&gt;下载安装-&gt;重启<code>Vs</code>【Vs2015的扩展是在工具里面】</p>
+</li>
+<li><p>如果无法下载或下载过慢可手动下载对应<code>Vs</code>版本安装</p>
+</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204152356771.png" alt="image-20221204152356771"></p>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><ul>
+<li>右键 -&gt;扩展 -&gt;Qt Vs Tools -&gt; QtVersions -&gt;点击add -&gt;编译器命名-&gt;点击文件夹-&gt;选择对应编译器qmake -&gt;打开-&gt;确定 -&gt;重启Vs </li>
+<li>其它版本msvc编译器操作方法类似 不同 Qt tools 工具版本不一样操作方式有点区别 但道理是相通的</li>
+<li>可以新建一个<code>Qt</code>项目测试一下</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204155630937.png" alt="image-20221204155630937"></p>
+<h2 id="Qt创建项目"><a href="#Qt创建项目" class="headerlink" title="Qt创建项目"></a>Qt创建项目</h2><ul>
+<li>Projects-&gt;New-&gt; Qt Widgets Applicationn-&gt;项目名称-&gt;项目路径-&gt;一路下一步 就行</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204162127087.png" alt="image-20221204162127087"></p>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204162543177.png" alt="image-20221204162543177"></p>
+<ul>
+<li>特别说明：如果想转换工程到<code>Vs</code> 请选择<code>Msvc</code>编译器(Kit)</li>
+</ul>
+<h2 id="Vs创建Qt项目"><a href="#Vs创建Qt项目" class="headerlink" title="Vs创建Qt项目"></a>Vs创建Qt项目</h2><ul>
+<li>FIle-&gt;新建-&gt;项目-&gt;搜索Qt -&gt;下滑选择<code>Qt Widgets Application</code> -&gt; 下一步-&gt;创建</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204160857826.png" alt="image-20221204160857826"></p>
+<ul>
+<li>其它参数可以先不管一路往下走</li>
+<li>这里类名可以自行修改如<code>MainWindow</code>（对应Qt创建工程时的类名）</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204161531012.png" alt="image-20221204161531012"></p>
+<ul>
+<li>点击运行</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204161738792.png" alt="image-20221204161738792"></p>
+<h2 id="VsQt工程转换"><a href="#VsQt工程转换" class="headerlink" title="VsQt工程转换"></a>VsQt工程转换</h2><ul>
+<li>Vs的Debug比Qt的Debug好用且功能更多</li>
+<li>这里只是一些基本的转换 中间还有一些小毛病需要解决</li>
+</ul>
+<h3 id="Vs工程转Qt工程"><a href="#Vs工程转Qt工程" class="headerlink" title="Vs工程转Qt工程"></a>Vs工程转Qt工程</h3><ul>
+<li>右键项目 -&gt;<code>Qt Create Basic .pro File</code> -&gt; <code>Project tag</code> 选择<code>Target Name</code>(生成出来的文件名与工程名相同) -&gt;Ok  -&gt; 保存<code>.pri</code></li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204163828231.png" alt="image-20221204163828231"></p>
+<h3 id="Qt工程转Vs工程"><a href="#Qt工程转Vs工程" class="headerlink" title="Qt工程转Vs工程"></a>Qt工程转Vs工程</h3><ul>
+<li>扩展-&gt;<code>Qt Vs Tools</code> -&gt; <code>Open Qt Project File(.pro)</code>-&gt;选择<code>.pro</code>-&gt; 打开</li>
+</ul>
+<p><img src="/2022/12/04/VsQt%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/image-20221204164509822.png" alt="image-20221204164509822"></p>
+<ul>
+<li><p>设置<code>.pro</code>使在<code>Qt</code>和<code>Vs</code>中的编译文件输出到同一目录中</p>
+<ul>
+<li><p><code>Qt</code>的影子构建更好用 没有找到<code>.pro</code>中获取<code>Kit</code>的方法 只能手动修改一次就行 <code>Desktop_Qt_5_12_10_MSVC2015_64bit</code>换成自己的构建器名字</p>
+</li>
+<li><p>因为不喜欢影子构建把<code>debug</code>和<code>release</code>产出两个文件到顶层 所以控制了输出到一个文件下面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 影子构建产生的文件夹名称</span></span><br><span class="line">../%&#123;JS: Util.asciify(<span class="string">&quot;build-%&#123;CurrentProject:Name&#125;-%&#123;CurrentKit:FileSystemName&#125;&quot;</span>)&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CurrentKitName = Desktop_Qt_5_12_10_MSVC2015_64bit</span><br><span class="line">OUTDIR = $$PWD/../&quot;build-$$TARGET-$$CurrentKitName&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">set</span> save built output files</span></span><br><span class="line">CONFIG(debug, debug|release) &#123;</span><br><span class="line">DESTDIR = $$OUTDIR/debug</span><br><span class="line">UI_DIR = $$OUTDIR/outc/debug/uic</span><br><span class="line">RCC_DIR = $$OUTDIR/outc/debug/qrc</span><br><span class="line">MOC_DIR = $$OUTDIR/outc/debug/moc</span><br><span class="line">OBJECTS_DIR = $$OUTDIR/outc/debug/obj</span><br><span class="line">&#125;else&#123;</span><br><span class="line">DESTDIR = $$OUTDIR/release</span><br><span class="line">UI_DIR = $$OUTDIR/outc/release/uic</span><br><span class="line">RCC_DIR = $$OUTDIR/outc/release/qrc</span><br><span class="line">MOC_DIR = $$OUTDIR/outc/release/moc</span><br><span class="line">OBJECTS_DIR = $$OUTDIR/outc/release/obj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这样设置了之后 <code>Qt</code>编译了转换到<code>Vs</code>可直接运行</li>
+</ul>
+<h3 id="一些小毛病"><a href="#一些小毛病" class="headerlink" title="一些小毛病"></a>一些小毛病</h3><ul>
+<li><p>Vs 工程转换为Qt时会出现<code>ui_xxx.h</code>文件找不到等情况都是由于文件生成文件路径引起的</p>
+</li>
+<li><p>工程转换后编译调试输出的文件 发生改变 非常并不便于 文档管理 Qt的影子构建非常好用将编译文件输出到源文件外  改变工程后编译文件都输出到工程外的一个文件夹就行</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Qt/" rel="tag"># Qt</a>
+              <a href="/tags/Vs/" rel="tag"># Vs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/14/Cyusb3014%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/" rel="prev" title="Cyusb3014开发笔记">
+                  <i class="fa fa-chevron-left"></i> Cyusb3014开发笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/01/13/Matlab%E8%B0%83%E7%94%A8%E5%BA%93/" rel="next" title="Matlab调用库">
+                  Matlab调用库 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lemon-truffle</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">115k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:45</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+<!--显示运行时间-->
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/03/2021 15:41:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/js/custom_js/click_show_love.js"></script>
+
+
+<!--单击显示文字-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/click_show_text.js"></script>
+
+
+<!--点击爆炸效果  -->
+
+<canvas class="click_fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/custom_js/click_fireworks.js"></script>
+
+
+<!--显示恶搞标题-->
+
+<script type="text/javascript" src="/js/custom_js/funny_title.js"></script>
+
+
+<!--显示雪花效果-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/show_snow1.js"></script>
+
+
+
+
+<!-- 数字雨 -->
+
+<canvas id="canvas" width="1440" height="900" ></canvas>
+<script type="text/javascript" src="/js/custom_js/show_code_rain.js"></script>
+
+
+</body>
+</html>

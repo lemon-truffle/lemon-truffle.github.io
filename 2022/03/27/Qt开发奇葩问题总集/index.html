@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lemon-truffle.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Qt开发奇葩问题总集[TOC] 说明： 说明  主要记录一些 Qt 开发以及QtCreator 使用过程中遇到的奇葩问题 记录 有些已经解决（有些也晓不得为啥就能解决）有些还未解决   其实觉得问题奇葩 就是目前个人的知识水平还不够  晓不得为啥这样能解决  希望有路过的大佬懂的原因的能解下惑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt开发奇葩问题总集">
+<meta property="og:url" content="https://lemon-truffle.github.io/2022/03/27/Qt%E5%BC%80%E5%8F%91%E5%A5%87%E8%91%A9%E9%97%AE%E9%A2%98%E6%80%BB%E9%9B%86/index.html">
+<meta property="og:site_name" content="柠檬野生菌">
+<meta property="og:description" content="Qt开发奇葩问题总集[TOC] 说明： 说明  主要记录一些 Qt 开发以及QtCreator 使用过程中遇到的奇葩问题 记录 有些已经解决（有些也晓不得为啥就能解决）有些还未解决   其实觉得问题奇葩 就是目前个人的知识水平还不够  晓不得为啥这样能解决  希望有路过的大佬懂的原因的能解下惑">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-27T02:16:43.000Z">
+<meta property="article:modified_time" content="2022-03-27T02:48:15.187Z">
+<meta property="article:author" content="lemon-truffle">
+<meta property="article:tag" content="Qt">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lemon-truffle.github.io/2022/03/27/Qt%E5%BC%80%E5%8F%91%E5%A5%87%E8%91%A9%E9%97%AE%E9%A2%98%E6%80%BB%E9%9B%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lemon-truffle.github.io/2022/03/27/Qt%E5%BC%80%E5%8F%91%E5%A5%87%E8%91%A9%E9%97%AE%E9%A2%98%E6%80%BB%E9%9B%86/","path":"2022/03/27/Qt开发奇葩问题总集/","title":"Qt开发奇葩问题总集"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Qt开发奇葩问题总集 | 柠檬野生菌</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">柠檬野生菌</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E5%BC%80%E5%8F%91%E5%A5%87%E8%91%A9%E9%97%AE%E9%A2%98%E6%80%BB%E9%9B%86"><span class="nav-number">1.</span> <span class="nav-text">Qt开发奇葩问题总集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">说明：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-QColorDialog-%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%87%BA%E7%8E%B0%E6%8F%90%E7%A4%BA-%E6%9C%AA%E8%A7%A3%E5%86%B3"><span class="nav-number">1.2.</span> <span class="nav-text">使用 QColorDialog   控制台出现提示  未解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E5%8F%B0-%E8%87%AA%E5%8A%A8%E8%BE%93%E5%87%BA-CUserInputProcessor-OnSetFocus-in-%E4%B9%8B%E7%B1%BB%E7%9A%84"><span class="nav-number">1.3.</span> <span class="nav-text">Qt 运行程序控制台 自动输出  CUserInputProcessor::OnSetFocus in  之类的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-%E6%89%93%E5%BC%80%E8%BD%AF%E4%BB%B6%E5%87%BA%E7%8E%B0-%E7%BC%BA%E5%BA%93-api-ms-win-core-sysinfo-l1-2-o-dll"><span class="nav-number">1.4.</span> <span class="nav-text">Qt 打开软件出现  缺库 api-ms-win-core-sysinfo-l1-2-o.dll</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Qt-%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%9E%E6%8E%A5%E4%BF%A1%E5%8F%B7%E6%A7%BD-%E5%8F%91%E7%94%9F%E9%94%99%E8%AF%AF"><span class="nav-number">1.4.1.</span> <span class="nav-text">Qt 使用多线程连接信号槽  发生错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Qt-%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E6%9C%AA%E8%A7%A3%E5%86%B3"><span class="nav-number">1.4.2.</span> <span class="nav-text">Qt 多线程  未解决</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-%E4%BD%BF%E7%94%A8MSVC-%E7%BC%96%E8%AF%91%E5%99%A8-%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%E5%AD%97%E7%AC%A6-%E6%8A%A5%E9%94%99"><span class="nav-number">1.5.</span> <span class="nav-text">Qt 使用MSVC 编译器  显示中文字符 报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error-LNK2019"><span class="nav-number">1.6.</span> <span class="nav-text">error: LNK2019</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#error-LNK2019-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">error: LNK2019</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error-LNK2038"><span class="nav-number">1.7.</span> <span class="nav-text">error: LNK2038</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error-C2131"><span class="nav-number">1.8.</span> <span class="nav-text">error: C2131</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error-LNK2005"><span class="nav-number">1.9.</span> <span class="nav-text">error: LNK2005</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cannot-send-events-to-objects-owned-by-a-different-thread"><span class="nav-number">1.9.1.</span> <span class="nav-text">Cannot send events to objects owned by a different thread</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cannot-open-include-file-%E2%80%98corecrt-h%E2%80%99"><span class="nav-number">1.10.</span> <span class="nav-text">Cannot open include file: ‘corecrt.h’</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cannot-open-include-file-%E2%80%98corecrt-h%E2%80%99-1"><span class="nav-number">1.10.1.</span> <span class="nav-text">Cannot open include file: ‘corecrt.h’</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cannot-open-include-file-%E2%80%98Windows-h%E2%80%99"><span class="nav-number">1.10.2.</span> <span class="nav-text">Cannot open include file: ‘Windows.h’</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lemon-truffle"
+      src="/uploads/custom-logo.jpg">
+  <p class="site-author-name" itemprop="name">lemon-truffle</p>
+  <div class="site-description" itemprop="description">柠檬野生菌的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/lemon_fungus" title="GitHub → https:&#x2F;&#x2F;gitee.com&#x2F;lemon_fungus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-truffle.github.io/2022/03/27/Qt%E5%BC%80%E5%8F%91%E5%A5%87%E8%91%A9%E9%97%AE%E9%A2%98%E6%80%BB%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/custom-logo.jpg">
+      <meta itemprop="name" content="lemon-truffle">
+      <meta itemprop="description" content="柠檬野生菌的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柠檬野生菌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Qt开发奇葩问题总集
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-27 10:16:43 / 修改时间：10:48:15" itemprop="dateCreated datePublished" datetime="2022-03-27T10:16:43+08:00">2022-03-27</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Qt开发奇葩问题总集"><a href="#Qt开发奇葩问题总集" class="headerlink" title="Qt开发奇葩问题总集"></a>Qt开发奇葩问题总集</h2><p>[TOC]</p>
+<h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><ul>
+<li>说明  主要记录一些 Qt 开发以及QtCreator 使用过程中遇到的奇葩问题 记录</li>
+<li>有些已经解决（有些也晓不得为啥就能解决）有些还未解决  </li>
+<li>其实觉得问题奇葩 就是目前个人的知识水平还不够  晓不得为啥这样能解决  希望有路过的大佬懂的原因的能解下惑</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="使用-QColorDialog-控制台出现提示-未解决"><a href="#使用-QColorDialog-控制台出现提示-未解决" class="headerlink" title="使用 QColorDialog   控制台出现提示  未解决"></a>使用 QColorDialog   控制台出现提示  未解决</h3><p>使用 QColorDialog   控制台出现提示 也不是报错叭  但是看到总不舒服   202106171602 未解决</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setGeometry: Unable to set geometry 400x400+2619+336 (frame: 416x439+2611+305) on QWidgetWindow/&quot;QColorDialogClassWindow&quot; on &quot;\\.\DISPLAY2&quot;. Resulting geometry: 522x393+2619+336 (frame: 538x432+2611+305) margins: 8, 31, 8, 8 minimum size: 522x393 maximum size: 522x393 MINMAXINFO maxSize=0,0 maxpos=0,0 mintrack=538,432 maxtrack=538,432)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Qt-运行程序控制台-自动输出-CUserInputProcessor-OnSetFocus-in-之类的"><a href="#Qt-运行程序控制台-自动输出-CUserInputProcessor-OnSetFocus-in-之类的" class="headerlink" title="Qt 运行程序控制台 自动输出  CUserInputProcessor::OnSetFocus in  之类的"></a>Qt 运行程序控制台 自动输出  CUserInputProcessor::OnSetFocus in  之类的</h3><p>环境：  win7   Qt Creator4.13.1  Qt5.12.10<br>现象描述：<br> QtCreator 运行程序 控制台自动弹出    换个项目依然是  但是不影响程序执行  就是有点看着不舒服 就是不爽。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CUserInputProcessor::OnSetFocus in</span><br><span class="line">CUserInputProcessor::OnSetFocus out</span><br></pre></td></tr></table></figure>
+
+<p>百度网友解决办法是卸载百度输入法  运行的电脑上确实有百度输入法   同时 发现运行程序时鼠标点Mainwindow外面  输出out  里面输出in  </p>
+<p>换用讯飞输入法后控制台出现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iFlyIMEEntry ::DllMain | strPath:D:\<span class="function">Program <span class="title">Files</span> <span class="params">(x86)</span>\iFlytek\iFlyIME\3.0.1727</span></span><br><span class="line"><span class="function">iFlyIMEEntry::ImeInquire | pos1</span></span><br><span class="line"><span class="function">::GetiflyimeModule | strBuf:D:\Program Files (x86)\iFlytek\iFlyIME\<span class="number">3.0</span><span class="number">.1727</span></span></span><br><span class="line"><span class="function">::GetiflyimeModule | hModule:<span class="number">0X2edd0000</span>iFlyIMEEntry::ImeInquire | pos2</span></span><br><span class="line"><span class="function">iFlyIMEEntry::ImeSelect | pos1iFlyIMEEntry::ImeSelect | pos2iFlyIMEEntry::ImeSelect | pos1iFlyIMEEntry::ImeSelect | pos2</span></span><br></pre></td></tr></table></figure>
+
+<p>解决办法： 卸载百度输入法  </p>
+<p> 出现原因： <em>希望路过的大佬能为我解解惑</em> </p>
+<h3 id="Qt-打开软件出现-缺库-api-ms-win-core-sysinfo-l1-2-o-dll"><a href="#Qt-打开软件出现-缺库-api-ms-win-core-sysinfo-l1-2-o-dll" class="headerlink" title="Qt 打开软件出现  缺库 api-ms-win-core-sysinfo-l1-2-o.dll"></a>Qt 打开软件出现  缺库 api-ms-win-core-sysinfo-l1-2-o.dll</h3><p>环境：QtCreater4.13.1  Qt5.12.10</p>
+<p>系统：Win7 </p>
+<p>出现问题： 忘记截图了   虽然不影响使用 但看起来不舒服</p>
+<p>解决办法：</p>
+<p>1、下载 <a target="_blank" rel="noopener" href="https://dllspedia.com/download/downloading-api-ms-win-core-sysinfo-l1-2-0_dll_32bit_6_2_9200_16384-dll-for-you/88435/">api-ms-win-core-sysinfo-l1-2-o.dll</a></p>
+<p>2、将dll 放到  <code>C:\Windows\System32 </code> 目录下  如果出现了两次提示没有<code>api-ms-win-core-sysinfo-l1-2-o.dll</code> 分别把 32(<code>C:\Windows\System32 </code>)和64位（<code>C:\Windows\SysWOW64</code>）的dll放到目录下</p>
+<p>说明：不知道是dll的原因还是啥  <code>C:\Windows\System32 </code>目录下放 32位的提示错误  最后是交换放置</p>
+<h4 id="Qt-使用多线程连接信号槽-发生错误"><a href="#Qt-使用多线程连接信号槽-发生错误" class="headerlink" title="Qt 使用多线程连接信号槽  发生错误"></a>Qt 使用多线程连接信号槽  发生错误</h4><p>环境：QtCreater4.13.1  Qt5.12.10</p>
+<p>系统：Win7 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QObject::connect: Cannot queue arguments of type &#x27;QList&lt;PsdData&gt;&#x27;</span><br><span class="line">(Make sure &#x27;QList&lt;PsdData&gt;&#x27; is registered using qRegisterMetaType()</span><br></pre></td></tr></table></figure>
+
+<p>解决办法：</p>
+<p>connect 之前调用 qRegisterMetaType()注册数据类型   （自定义的数据类型PsdData）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;QMetaType&gt;</span><br><span class="line">qRegisterMetaType&lt;QList&lt;PsdData&gt;&gt;(&quot;QList&lt;PsdData&gt;&quot;);</span><br><span class="line">qRegisterMetaType&lt;QList&lt;rgbPoint&gt;&gt;(&quot;QList&lt;rgbPoint&gt;&quot;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Qt-多线程-未解决"><a href="#Qt-多线程-未解决" class="headerlink" title="Qt 多线程  未解决"></a>Qt 多线程  未解决</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">This application has requested the Runtime to terminate it in an unusual way.</span><br><span class="line">Please contact the application&#x27;s support team for more information.</span><br><span class="line">CSProxy refcount 22</span><br><span class="line">==========&gt; ExitInstance :gLayerInfo delete 873638104&lt;==============Unload CSProxy from E:\Works_Project\DMCA\DMCA_PSD\Software\build-DMCA_PSD-Desktop_Qt_5_12_10_MinGW_32_bit\debug\DMCA_PSD.exe...</span><br><span class="line">terminate called after throwing an instance of &#x27;std::bad_alloc&#x27;</span><br><span class="line">  what():  std::bad_alloc</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Qt-使用MSVC-编译器-显示中文字符-报错"><a href="#Qt-使用MSVC-编译器-显示中文字符-报错" class="headerlink" title="Qt 使用MSVC 编译器  显示中文字符 报错"></a>Qt 使用MSVC 编译器  显示中文字符 报错</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">error: C2001: newline in constant</span><br><span class="line">.......</span><br><span class="line">error: C3872: &#x27;0xe11b&#x27;: this character is not allowed in an identifier</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>解决办法：将当前文档转化为 UTF-8   使用QStringLiteral（）包裹字符串</p>
+<p>保存UTF-8： （都需要用QStringLiteral包裹中文字符）</p>
+<p>1、使用记事本另存为 选择UTF-8</p>
+<p>2、Qt Creator 工具-&gt;选项-&gt;文本编辑器-&gt;Behavior-&gt;文件编码    默认编码格式-&gt;UTF-8     UTF-8 BOM-&gt;如果编码是UTF-8则添加</p>
+<h3 id="error-LNK2019"><a href="#error-LNK2019" class="headerlink" title="error: LNK2019"></a>error: LNK2019</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">device_sapp.obj:-1: error: LNK2019: unresolved external symbol &quot;public: virtual __cdecl device_sapp::~device_sapp(void)&quot; (??1device_sapp@@UEAA@XZ) referenced in function &quot;public: virtual void * __cdecl device_sapp::`scalar deleting destructor&#x27;(unsigned int)&quot; (??_Gdevice_sapp@@UEAAPEAXI@Z)</span><br></pre></td></tr></table></figure>
+
+<p>虚基类的构造函数与析构函数   与继承的类的析构函数重复</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Exception at 0x7fefdadb87d, code: 0xe06d7363: C++ exception, flags=0x1 (execution cannot be continued) (first chance) in dwrite!DWriteCreateFactory</span><br><span class="line">Exception at 0x7fefdadb87d, code: 0xe06d7363: C++ exception, flags=0x1 (execution cannot be continued) (first chance) in dwrite!DWriteCreateFactory</span><br></pre></td></tr></table></figure>
+
+<h4 id="error-LNK2019-1"><a href="#error-LNK2019-1" class="headerlink" title="error: LNK2019"></a>error: LNK2019</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qcustomplot.obj:-1: error: LNK2019: unresolved external symbol &quot;__declspec(dllimport) public: __cdecl QPrinter::QPrinter(enum QPrinter::PrinterMode)&quot; (__imp_??0QPrinter@@QEAA@W4PrinterMode@0@@Z) referenced in function &quot;public: bool __cdecl QCustomPlot::savePdf(class QString const &amp;,int,int,enum QCP::ExportPen,class QString const &amp;,class QString const &amp;)&quot; (?savePdf@QCustomPlot@@QEAA_NAEBVQString@@HHW4ExportPen@QCP@@00@Z)</span><br></pre></td></tr></table></figure>
+
+<p>出现这样的错误一般是声明了函数没有实现其定义，比如这里提示的是没有自定义类MyWidget的实现函数。如果你已经检查了确定定义是有的，比如我这个就确实有定义了的，那就把该项目编译出的build debug文件夹给删除掉，再重新编译，注意是编译出来的整个文件夹一起删，而不是clean清除后重新构建。</p>
+<p>忘记添加：  <strong>printsupport</strong></p>
+<h3 id="error-LNK2038"><a href="#error-LNK2038" class="headerlink" title="error: LNK2038"></a>error: LNK2038</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SmartFFT.lib(smartfft.obj):-1: error: LNK2038: mismatch detected for &#x27;_ITERATOR_DEBUG_LEVEL&#x27;: value &#x27;0&#x27; doesn&#x27;t match value &#x27;2&#x27; in main.obj</span><br></pre></td></tr></table></figure>
+
+<p>原因：用<strong>release链接到一个debug编译的lib</strong>或者<strong>debug模式链接到一个release编译的lib</strong></p>
+<h3 id="error-C2131"><a href="#error-C2131" class="headerlink" title="error: C2131"></a>error: C2131</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error: C2131: expression did not evaluate to a constant</span><br></pre></td></tr></table></figure>
+
+<p>原因：MSVC编译器  使用变量定义数组的尺寸</p>
+<h3 id="error-LNK2005"><a href="#error-LNK2005" class="headerlink" title="error: LNK2005"></a>error: LNK2005</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error: LNK2005: &quot;void __cdecl doFFT(short *,int,double *)&quot; (?doFFT@@YAXPEAFHPEAN@Z) already defined in main.obj</span><br></pre></td></tr></table></figure>
+
+<p>原因：需要使用<code>static</code>定义 函数为静态方法</p>
+<h4 id="Cannot-send-events-to-objects-owned-by-a-different-thread"><a href="#Cannot-send-events-to-objects-owned-by-a-different-thread" class="headerlink" title="Cannot send events to objects owned by a different thread"></a>Cannot send events to objects owned by a different thread</h4><p>环境：QtCreater4.13.1  Qt5.12.10</p>
+<p>系统：Win7 </p>
+<p>问题描述：Qt 使用<code>std::thread</code>调用了主线程的对象 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ASSERT failure in QCoreApplication::sendEvent: &quot;Cannot send events to objects owned by a different thread. Current thread 0x0xdbd5b20. Receiver &#x27;MainWindow&#x27; (of type &#x27;MainWindow&#x27;) was created in thread 0x0x364090&quot;, file kernel\qcoreapplication.cpp, line 578</span><br><span class="line">(Press Retry to debug the application)</span><br></pre></td></tr></table></figure>
+
+<p>解决办法：使用Qt的的信号槽机制跨线程通信</p>
+<h3 id="Cannot-open-include-file-‘corecrt-h’"><a href="#Cannot-open-include-file-‘corecrt-h’" class="headerlink" title="Cannot open include file: ‘corecrt.h’"></a>Cannot open include file: ‘corecrt.h’</h3><p>环境：QtCreater4.13.1  Qt5.12.10</p>
+<p>系统：Win7 </p>
+<p>原因是更改系统之前安装的Windows SDK版本</p>
+<h4 id="Cannot-open-include-file-‘corecrt-h’-1"><a href="#Cannot-open-include-file-‘corecrt-h’-1" class="headerlink" title="Cannot open include file: ‘corecrt.h’"></a>Cannot open include file: ‘corecrt.h’</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\crtdefs.h:10: error: C1083: Cannot open include file: &#x27;corecrt.h&#x27;: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<h4 id="Cannot-open-include-file-‘Windows-h’"><a href="#Cannot-open-include-file-‘Windows-h’" class="headerlink" title="Cannot open include file: ‘Windows.h’"></a>Cannot open include file: ‘Windows.h’</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\Works_Project\Spectrum_Analyzer\PCIE\SPEED_APP_win\APP_win\PcieSpeed\pcie_fun.c:4: error: C1083: Cannot open include file: &#x27;Windows.h&#x27;: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<p>1、尝试修改系统环境变量   <strong>未解决</strong></p>
+<p>2、通过baidu 在Pro里面链接 库 能解决第一个问题  但会出现第二个问题更严重 （治标不治本） <strong>未解决</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INCLUDEPATH += &quot;C:/Program Files (x86)/Windows Kits/10/Include/10.0.10240.0/ucrt&quot;</span><br><span class="line">LIBS += -L&quot;C:/Program Files (x86)/Windows Kits/10/Lib/10.0.10240.0/ucrt/x64&quot;</span><br></pre></td></tr></table></figure>
+
+<p>（我的个人想法出现问题的大概率需要在哪里重新配置一下就好）</p>
+<p>3、没有找到再哪里找到可以配置的地方 于是重新装了Qt 依然  <strong>未解决</strong> </p>
+<p>4、但是再次打开Qt发现里面的配置配色跟卸载前一样 想到Qt会把配置文件放到用户目录下  <strong>解决</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\用户\AppData\Roaming\QtProject</span><br></pre></td></tr></table></figure>
+
+<p>先备份一下文档 并删除 再次打开QtCreator 这时候打开花的时间有点长 它重新从系统获取了配置 这时候重新测试没有报错</p>
+<p>说明： 遇到这种问题可以不用卸载Qt 直接删除 这个文件就行 但之前辛苦配置出自己的工作环境就搞掉 需要对QtProject每个文件设置什么东西了解下 出现问题删除对应文件即可</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Qt/" rel="tag"># Qt</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/31/Next-%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/" rel="prev" title="Next 主题美化">
+                  <i class="fa fa-chevron-left"></i> Next 主题美化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/03/VS%202015%20Steup%20%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83%E8%BD%AF%E4%BB%B6/" rel="next" title="VS 2015 Steup 打包发布软件">
+                  VS 2015 Steup 打包发布软件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lemon-truffle</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">115k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:45</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+<!--显示运行时间-->
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/03/2021 15:41:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/js/custom_js/click_show_love.js"></script>
+
+
+<!--单击显示文字-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/click_show_text.js"></script>
+
+
+<!--点击爆炸效果  -->
+
+<canvas class="click_fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/custom_js/click_fireworks.js"></script>
+
+
+<!--显示恶搞标题-->
+
+<script type="text/javascript" src="/js/custom_js/funny_title.js"></script>
+
+
+<!--显示雪花效果-->
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/custom_js/show_snow1.js"></script>
+
+
+
+
+<!-- 数字雨 -->
+
+<canvas id="canvas" width="1440" height="900" ></canvas>
+<script type="text/javascript" src="/js/custom_js/show_code_rain.js"></script>
+
+
+</body>
+</html>
